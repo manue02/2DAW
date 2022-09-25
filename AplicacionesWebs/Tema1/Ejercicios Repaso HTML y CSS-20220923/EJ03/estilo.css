@@ -1,0 +1,19 @@
+.cuadrao{
+  
+border: 5px solid;
+margin: 20px;
+width: 150px;         
+  height: 100px;  
+  background-color: rgb(219, 219, 219);
+}
+.borde{
+
+    border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px #888888;
+}
+
+p{
+    text-align: center;
+}
+

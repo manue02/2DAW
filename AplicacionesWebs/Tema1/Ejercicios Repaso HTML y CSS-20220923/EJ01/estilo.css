@@ -1,0 +1,21 @@
+.imagen{
+
+ 
+  
+    
+
+    height: 300px;
+    width: 400px;
+    background: url("f03.png") repeat-x , 
+                url("f02.png") no-repeat bottom left ,
+                url("f01.png") repeat-x bottom;
+    
+   
+    border: 5px solid red;
+    margin: 20px;
+    
+    background-color: #8bd3f8;
+   
+
+}
+

@@ -1,0 +1,61 @@
+
+
+body {
+  heigh:665px;
+  background-image: url("fondo.jpg");
+  background-size: 10rem;
+ 
+}
+
+h1{
+	
+	 font-family: Arial;
+	 margin-left: 20px;
+	 font-size: 60px;
+}
+
+p{
+	
+	
+  
+  text-align: justify;
+  margin: 1em 25em 1.5em -0.5em;
+  flex-wrap: wrap;
+  margin-left: 20px;
+	 
+}
+
+.parrafo{
+	text-align: justify;
+  margin: 3.5em 4.5em 1.5em -0.5em;
+  flex-wrap: wrap;
+  margin-left: 70px;
+	
+}
+
+.parrafo2{
+	
+	text-align: right;
+margin: 0em 0em 0em 20em;
+}
+
+
+.verticalLine { 
+border-left: 2px solid #ff0000;
+ 
+
+ }
+ 
+ .imagen img{
+	 
+	 float: right; 
+	  
+	  width: 350px;
+	   heigh: 200px;
+	 
+ }
+ u{
+	 
+	  text-decoration: underline dotted black;
+ }
+
