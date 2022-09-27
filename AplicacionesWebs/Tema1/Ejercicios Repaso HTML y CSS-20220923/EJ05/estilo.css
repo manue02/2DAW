@@ -1,0 +1,30 @@
+.cuadrao{
+  
+    border: 5px solid;
+    margin: 20px;
+    width: 170px;         
+      height: 100px;  
+      background-color: rgb(31, 7, 240);
+      border: 0px solid;
+      padding: 10px;
+      
+      border-radius: 15px;
+      text-align: center;
+    
+    }
+    .borde{
+    
+     color: white;
+    }
+    
+    p{
+        text-align: center;
+    }
+
+    #rodar{
+
+        -ms-transform: rotate(40deg); /* IE 9 */
+        transform: rotate(40deg);
+    }
+    
+    
