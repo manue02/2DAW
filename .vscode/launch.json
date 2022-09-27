@@ -10,7 +10,7 @@
             "request": "launch",
             "port": 9003,
             "pathMappings": {
-                "Z:\\Curso\\": "${workspaceFolder}/",
+                "Z:\\2DAW\\Curso\\": "${workspaceFolder}/Curso",
             }
         },
         {
