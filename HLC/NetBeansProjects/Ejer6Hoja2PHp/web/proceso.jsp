@@ -19,7 +19,7 @@
             <title>JSP Page</title>
         </head>
         <body>
-            <h3>Operacion seleccionada: <h:outputText value="#{datos.operacion}"/></h3>
+            <h3>Transformacion de la frase: <h:outputText value="#{datos.frase}"/></h3>
             <h:outputText value= "#{datos.resultado}"/>
         </body>
     </html>

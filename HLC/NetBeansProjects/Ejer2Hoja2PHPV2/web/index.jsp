@@ -27,7 +27,7 @@
             <h:inputText value="#{datos.operando2}"/><br>
             Seleccione operacion:
             <h:selectOneMenu value="#{datos.operacion}">
-              <%--
+              <%-- Esto es otra forma de hacerlo
                 <f:selectItem itemLabel="Suma" itemValue="Suma"/>
                 <f:selectItem itemLabel="Resta" itemValue="Resta"/>
                 <f:selectItem itemLabel="Multiplicacion" itemValue="Multiplicacion"/>

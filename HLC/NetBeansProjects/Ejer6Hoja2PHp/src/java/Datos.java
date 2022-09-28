@@ -13,10 +13,11 @@ import javax.faces.model.SelectItem;
  * @author alumno
  */
 public class Datos {
-    private String operando1;
-    private String operando2;
-    private String operacion;
-    private String resultado;
+  
+        private String frase;
+        private int contador;
+        private String resultado;
+
 
     /**
      * Creates a new instance of Datos
@@ -25,45 +26,31 @@ public class Datos {
     }
 
     /**
-     * @return the operando1
+     * @return the frase
      */
-    public String getOperando1() {
-        return operando1;
+    public String getFrase() {
+        return frase;
     }
 
     /**
-     * @param operando1 the operando1 to set
+     * @param frase the frase to set
      */
-    public void setOperando1(String operando1) {
-        this.operando1 = operando1;
+    public void setFrase(String frase) {
+        this.frase = frase;
     }
 
     /**
-     * @return the operando2
+     * @return the contador
      */
-    public String getOperando2() {
-        return operando2;
+    public int getContador() {
+        return contador;
     }
 
     /**
-     * @param operando2 the operando2 to set
+     * @param contador the contador to set
      */
-    public void setOperando2(String operando2) {
-        this.operando2 = operando2;
-    }
-
-    /**
-     * @return the operacion
-     */
-    public String getOperacion() {
-        return operacion;
-    }
-
-    /**
-     * @param operacion the operacion to set
-     */
-    public void setOperacion(String operacion) {
-        this.operacion = operacion;
+    public void setContador(int contador) {
+        this.contador = contador;
     }
 
     /**
@@ -71,29 +58,15 @@ public class Datos {
      */
     public String getResultado() {
         
-        Integer cuenta = 0;
-        switch(operacion){
-            case "Suma":
-                cuenta = Integer.parseInt(operando1) + Integer.parseInt(operando2);
-                        break;
-            case "Resta":
-                cuenta = Integer.parseInt(operando1) - Integer.parseInt(operando2);
-                        break;
-            case "Multiplicacion":
-                cuenta = Integer.parseInt(operando1) * Integer.parseInt(operando2);
-                        break;
+        while (this.contador < 7){
+        
+             System.out.print(this.frase);
+            this.contador++;
         }
-        return cuenta + " ";
+        
+        return resultado;
     }
-    
-     public ArrayList getListaOpciones() {
-      
-         ArrayList lista = new ArrayList();
-         lista.add(new SelectItem("Suma" , "Suma"));
-         lista.add(new SelectItem("Resta" , "Resta"));
-         lista.add(new SelectItem("Multiplicacion" , "Multiplicacion"));
 
-         return lista;
-     }
+
      }
 

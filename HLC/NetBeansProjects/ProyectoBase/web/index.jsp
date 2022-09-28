@@ -1,7 +1,7 @@
 <%-- 
     Document   : index
-    Created on : 28-sep-2022, 10:52:08
-    Author     : alumno
+    Created on : 20-nov-2020, 8:23:22
+    Author     : Juan
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -19,12 +19,7 @@
             <title>JSP Page</title>
         </head>
         <body>
-            <h1><h:outputText value="Ejercio6 Hoja2 PHP!"/></h1>
-            <h:form>
-            <h:inputText value="#{datos.frase}"/><br>
-            <h:commandButton value="Transformar" action="proceso"/>
-            </h:form>
-            
+            <h1><h:outputText value="Hello World!"/></h1>
         </body>
     </html>
 </f:view>
