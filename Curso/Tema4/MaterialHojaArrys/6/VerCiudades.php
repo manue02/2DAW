@@ -3,20 +3,19 @@ include("arrays.php");
 
 $Nombre = $_POST['Ciudades'];
 
-
-echo "Seleccion: $Nombre <br>
-
- Ciudades Visitadas <br>";
-
+echo "<table border='1'>
+ <tr>
+ Seleccion: $Nombre 
+ <th> Ciudad Visitada </th><br>";
 
 foreach ($arraygeneral[$Nombre] as $Ciudad => $valorCiudad) {
+echo "<tr>
+      <td>  $valorCiudad </td>
 
-echo" $valorCiudad  <br>";
-
+    </tr>";
 
 }
 
-
-
-
+echo "</tr>
+    </table>";
 ?>

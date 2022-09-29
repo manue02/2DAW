@@ -15,10 +15,12 @@ foreach ($arraynombres as $Ciudades => $NombreCiudades) {
     echo "</select> <br>
     <input type='submit' value='Consultar'>
     </form>";
+
     
+
+
+
 ?>
-
-
 
 
 
