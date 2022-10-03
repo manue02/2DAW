@@ -3,7 +3,7 @@ include("arrays.php");
 
 
 
-echo "<form action='VerCiudades.php' method='POST'>
+echo "<form action='VerVisitantes.php' method='POST'>
 	  <select name='Ciudad'>;
 
       <option value ='0'> Todos </option>";  

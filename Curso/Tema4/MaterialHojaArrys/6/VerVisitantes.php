@@ -8,11 +8,17 @@ echo "<table border='1'>
  Seleccion: $Nombre 
  <th> Visitantes </th><br>";
 
-foreach ($arraygeneral[$Nombre] as $Ciudad => $valorCiudad) {
-echo "<tr>
-      <td>  $Ciudad </td>
+foreach ($arraygeneral as $Indice => $valorCiudad) {
+
+if (in_array($Nombre , $valorCiudad)) {
+
+
+    echo "<tr>
+      <td>  $Indice </td>
 
     </tr>";
+
+}
 
 }
 
