@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+
+    <p id="Nota"></p>
+
+
+
+    <form name="frmDatos" id="frmDatos">
+        <label>Nota</label>
+        <input type="text" name="txtNota" id="txtNota"/>
+        <br>
+        <input type="button" value="Aceptar" name="btnAceptar" id="btnAceptar" onclick="obtenerDatos();" />
+    </form>
+
+
+    <script>
+     // Realizar la carga de una nota de un alumno. Mostrar un mensaje que aprobó si tiene
+     // una nota mayor o igual a 4
+
+        function obtenerDatos(){
+                let sNota = "";
+          
+                
+                // Recuperar valores de los input
+                sNota = frmDatos.txtNota.value;
+
+
+            if (sNota>=4) {
+                 // Muestro los valores en los párrafos <p>
+                document.write("Has Aprobado");
+            }
+
+            else 
+
+            document.write("Has Suspendio");
+
+
+              
+                
+                
+            }
+
+
+    </script>
+  </body>
+</html>

@@ -9,16 +9,46 @@
     <link rel="stylesheet" href="" />
   </head>
   <body>
+
+    <p id="nombre"></p>
+    <p id="edad"></p>
+    <p id="estadoCivil"></p>
+
+    <form name="frmDatos" id="frmDatos">
+        <label>Nombre</label>
+        <input type="text" name="txtNombre" id="txtNombre"/>
+        <br>
+        <label>Edad</label>
+        <input type="text" name="txtEdad" id="txtEdad"/>
+        <br>
+        <label>Estado Civil</label>
+        <input type="text" name="txtEstado" id="txtEstado"/>
+        <br>
+        <input type="button" value="Aceptar" name="btnAceptar" id="btnAceptar" onclick="obtenerDatos();" />
+    </form>
+
+
     <script>
       //1. Cree un programa que almacene en variables el valor de la edad, el nombre y el
       //estado civil de una persona y a continuación lo muestre por pantalla.
 
-      let edad = prompt("¿Escribe la edad");
-      let nombre = prompt("¿Escribe el nombre");
-      let estadoCivil = prompt("¿Escribe el Estado Civil");
+        function obtenerDatos(){
+                let sNombre = "";
+                let sEdad = "";
+                let sEstado = "";
 
-      console.log(
-        `La edad es: ${edad} , El nombre es: ${nombre} , El estado Civil: ${estadoCivil}`);
+                // Recuperar valores de los input
+                sNombre = frmDatos.txtNombre.value;
+                sEdad = frmDatos.txtEdad.value;
+                sEstado = frmDatos.txtEstado.value;
+
+                // Muestro los valores en los párrafos <p>
+                document.getElementById("nombre").innerHTML = sNombre;
+                document.getElementById("edad").innerHTML = sEdad;
+                document.getElementById("estadoCivil").innerHTML = sEstado;
+            }
+
+
     </script>
   </body>
 </html>

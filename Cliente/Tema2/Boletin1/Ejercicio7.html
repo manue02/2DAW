@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+
+    <p id="Producto"></p>
+    <p id="Cantidad"></p>
+    <p id="PrecioTotal"></p>
+    <p id="Precio"></p>
+
+
+    <form name="frmDatos" id="frmDatos">
+        <label>Producto</label>
+        <input type="text" name="txtProducto" id="txtProducto"/>
+        <br>
+        <label>Precio</label>
+        <input type="text" name="txtPrecio" id="txtPrecio"/>
+        <br>
+        <label>Cantidad</label>
+        <input type="text" name="txtCantidad" id="txtCantidad"/>
+        <br>
+        <input type="button" value="Aceptar" name="btnAceptar" id="btnAceptar" onclick="obtenerDatos();" />
+    </form>
+
+
+    <script>
+     // Se debe desarrollar un programa que pida el ingreso del precio de un artículo y las
+     // unidades que lleva el cliente. Utilizar un formulario HTML. Mostrar lo que debe
+     // abonar el comprador.
+
+        function obtenerDatos(){
+                let sProducto = "";
+                let sPrecio = "";
+                let sCantidad = "";
+                let sResultado = "";
+                
+                // Recuperar valores de los input
+                sProducto = frmDatos.txtProducto.value;
+                sPrecio = frmDatos.txtPrecio.value;
+                sCantidad = frmDatos.txtCantidad.value;
+                sResultado = sPrecio * sCantidad;
+
+                // Muestro los valores en los párrafos <p>
+                document.getElementById("PrecioTotal").innerHTML = Number(sResultado);
+                
+            }
+
+
+    </script>
+  </body>
+</html>
