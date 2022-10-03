@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    <p id="Numero"></p>
+
+    <form name="frmDatos" id="frmDatos">
+      <label>Numero</label>
+      <input type="text" name="txtNumero" id="txtNumero" />
+      <br />
+      <input
+        type="button"
+        value="Aceptar"
+        name="btnAceptar"
+        id="btnAceptar"
+        onclick="obtenerDatos();"
+      />
+    </form>
+
+    <script>
+      // Desarrollar un programa que permita la carga de 5 valores por teclado utilizando
+      // una única variable para dichos valores y nos muestre posteriormente la suma
+
+      function obtenerDatos() {
+        let sNumero = "";
+        let Num = "";
+        let Par = "";
+
+
+        for (let i = 0; i < 5; i++) {
+            Num = Snumero / 2;
+            
+
+          if (Num == 0 ) {
+
+            document.write("Estos son pares");
+            document.write(Num);
+          }
+          else{
+
+            document.write("Estos son impares");
+            document.write(Num);
+          }
+        }
+        // Recuperar valores de los input
+        sNumero = frmDatos.txtNumero.value;
+
+        // Muestro los valores en los párrafos <p>
+        document.getElementById("Numero").innerHTML = Valores;
+      }
+    </script>
+  </body>
+</html>

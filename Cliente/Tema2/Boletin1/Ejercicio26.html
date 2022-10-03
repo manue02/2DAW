@@ -9,39 +9,42 @@
     <link rel="stylesheet" href="" />
   </head>
   <body>
-
     <p id="Numero"></p>
 
-
-
     <form name="frmDatos" id="frmDatos">
-        <label>Nota</label>
-        <input type="text" name="txtNumero" id="txtNumero"/>
-        <br>
-        <input type="button" value="Aceptar" name="btnAceptar" id="btnAceptar" onclick="obtenerDatos();" />
+      <label>Numero</label>
+      <input type="text" name="txtNumero" id="txtNumero" />
+      <br />
+      <input
+        type="button"
+        value="Aceptar"
+        name="btnAceptar"
+        id="btnAceptar"
+        onclick="obtenerDatos();"
+      />
     </form>
 
-
     <script>
-     // Desarrollar un programa que permita la carga de 5 valores por teclado utilizando
-     // una única variable para dichos valores y nos muestre posteriormente la suma 
+      // Desarrollar un programa que permita la carga de 5 valores por teclado utilizando
+      // una única variable para dichos valores y nos muestre posteriormente la suma
 
-        function obtenerDatos(){
-                let sNota = "";
+      function obtenerDatos() {
+        let sNumero = "";
+        let num2="";
+        const Valores = [];
+
+        for (let i = 0; i < array.length; i++) {
+        
+          num2 = sNumero;
+          Valores[i] = num2 + sNumero;
           
-                
-                // Recuperar valores de los input
-                sNota = frmDatos.txtNota.value;
+        }         
+          // Recuperar valores de los input
+          sNumero = frmDatos.txtNumero.value;
 
-
-            // Muestro los valores en los párrafos <p>
-                document.getElementById("PrecioTotal").innerHTML = sNota;
-              
-                
-                
-            }
-
-
+        // Muestro los valores en los párrafos <p>
+        document.getElementById("Numero").innerHTML = Valores;
+      }
     </script>
   </body>
 </html>
