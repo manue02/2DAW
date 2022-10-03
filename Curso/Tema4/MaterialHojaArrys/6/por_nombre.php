@@ -1,8 +1,6 @@
 <?php
 include("arrays.php");
 
-
-
 echo "<form action='VerCiudades.php' method='POST'>
 	  <select name='Ciudades'>;
 
