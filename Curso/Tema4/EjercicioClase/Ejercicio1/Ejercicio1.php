@@ -3,28 +3,23 @@
 include("arrays.php");
 
 echo "<table border='1'>
-<th>Clave</th>
-          <th colspan='2'>Valor</th>
- <tr>";
+        <th>Clave</th>
+        <th colspan='2'>Valor</th>
+        <tr>";
 foreach ($arrayNotas as $Nombres => $Asignatura) {
 	
     echo "
-
     <th rowspan='5'> $Nombres  </th><br> 
     <th>Clave</th>
-    <th>Valor</th>
- <tr>";
-
+    <th width = 190>Valor</th>
+    <tr>";
 
 	foreach ($Asignatura as $NombreAsig => $Notas) {
 
         echo "<tr>
-        <td>  $NombreAsig </td>
+        <td width = 130>  $NombreAsig </td>
         <td>  $Notas </td>
-  
-      </tr>";
-        
-
+        </tr>";
 }
 }
 
