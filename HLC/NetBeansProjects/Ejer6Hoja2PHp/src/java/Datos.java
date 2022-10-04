@@ -15,6 +15,7 @@ import javax.faces.model.SelectItem;
 public class Datos {
   
         private String frase;
+        private String Cadena;
         private int contador;
         private String resultado;
 
@@ -57,6 +58,8 @@ public class Datos {
      * @return the resultado
      */
     public String getResultado() {
+        
+        
         
         while (this.contador < 7){
         
