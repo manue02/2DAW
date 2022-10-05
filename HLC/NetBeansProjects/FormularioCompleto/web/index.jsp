@@ -19,7 +19,19 @@
             <title>JSP Page</title>
         </head>
         <body>
-            <h1><h:outputText value="Hello World!"/></h1>
+            <h:form>
+                <h1><h:outputText value="Cuestionario Alumnado D.A.W"/></h1>
+                <p>Teclea tu nombre:
+                    <h:inputText value = "#{datos.nombre}"/>
+                </p>
+                <p>Marca el motivo por el que te matriculastes en D.A.W:</p>
+                <h:selectOneRadio value = "#{datos.motivo}">
+
+                    <f:selectItem itemValue="trabajo" itemLabel="Encontrar trabajo"></f:selectItem>
+                    <f:selectItem itemValue="trabajo" itemLabel="Siempre me intereso el curso"></f:selectItem>
+
+                </h:selectOneRadio>
+            </h:form>
         </body>
     </html>
 </f:view>

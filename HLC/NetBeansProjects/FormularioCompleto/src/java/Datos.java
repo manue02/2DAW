@@ -14,11 +14,14 @@ import javax.faces.model.SelectItem;
  */
 public class Datos {
   
-        private String frase;
-        private String Cadena;
-        private int contador;
-        private String resultado;
+        private String nombre;
+        private String motivo;
+        private String sistema;
+        private String[] idiomas;
+         private String[] lenguajes;
 
+
+        
 
     /**
      * Creates a new instance of Datos
@@ -27,48 +30,78 @@ public class Datos {
     }
 
     /**
-     * @return the frase
+     * @return the nombre
      */
-    public String getFrase() {
-        return frase;
+    public String getNombre() {
+        return nombre;
     }
 
     /**
-     * @param frase the frase to set
+     * @param nombre the nombre to set
      */
-    public void setFrase(String frase) {
-        this.frase = frase;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     /**
-     * @return the contador
+     * @return the motivo
      */
-    public int getContador() {
-        return contador;
+    public String getMotivo() {
+        return motivo;
     }
 
     /**
-     * @param contador the contador to set
+     * @param motivo the motivo to set
      */
-    public void setContador(int contador) {
-        this.contador = contador;
+    public void setMotivo(String motivo) {
+        this.motivo = motivo;
     }
 
     /**
-     * @return the resultado
+     * @return the sistema
      */
-    public String getResultado() {
-        
-        
-        
-        while (this.contador < 7){
-        
-             System.out.print(this.frase);
-            this.contador++;
-        }
-        
-        return resultado;
+    public String getSistema() {
+        return sistema;
     }
+
+    /**
+     * @param sistema the sistema to set
+     */
+    public void setSistema(String sistema) {
+        this.sistema = sistema;
+    }
+
+    /**
+     * @return the idiomas
+     */
+    public String[] getIdiomas() {
+        return idiomas;
+    }
+
+    /**
+     * @param idiomas the idiomas to set
+     */
+    public void setIdiomas(String[] idiomas) {
+        this.idiomas = idiomas;
+    }
+
+    /**
+     * @return the lenguajes
+     */
+    public String[] getLenguajes() {
+        return lenguajes;
+    }
+
+    /**
+     * @param lenguajes the lenguajes to set
+     */
+    public void setLenguajes(String[] lenguajes) {
+        this.lenguajes = lenguajes;
+    }
+
+    
+    
+   
 
 
      }
