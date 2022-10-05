@@ -21,7 +21,7 @@ if ($nombre=='0'){
         foreach($arrayNotas as $TipoCalificacion=>$arrayDatos){
             foreach ($arrayDatos as $nombreClase=>$Suspensos){
 
-                $matriculados[$TipoCalificacion]["Suma"]= $matriculados[$TipoCalificacion]["Suma"] + $Suspensos;
+                $matriculados[$TipoCalificacion]["Suma"]+= $Suspensos;
 
                 
             }	
