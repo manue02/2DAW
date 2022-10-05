@@ -29,6 +29,3 @@ $arrayNotas = array
 		);
 
 ?>
-
-
-

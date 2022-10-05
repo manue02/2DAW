@@ -29,8 +29,15 @@
 
                     <f:selectItem itemValue="trabajo" itemLabel="Encontrar trabajo"></f:selectItem>
                     <f:selectItem itemValue="trabajo" itemLabel="Siempre me intereso el curso"></f:selectItem>
+                    <f:selectItem itemValue="trabajo" itemLabel="Es un sector donde se paga bien"></f:selectItem>
 
                 </h:selectOneRadio>
+            </p><p>¿Que sistema suele utilizar?
+
+                <h:selectOneMenu value ="#{datos.sistema}">
+                    <f:selectItems value="#{datos.listaSistemas}"/>     
+                
+            </p>
             </h:form>
         </body>
     </html>

@@ -4,54 +4,60 @@ include("arrays.php");
 
 
 $nombre=$_POST["Notas"];
-
+$Tipo= array();
+echo "<table border='1'>";
 if ($nombre=='0'){
-    /* En primer lugar creo un array asociativocuyo indice será
-    el nombres de la asignatura y el contenido cuantos alumnos hay, inicialmente 0 */
     
-        foreach($arrayNotas as $Notas=>$arrayDatos){
-            foreach ($arrayDatos as $nombreAsig=>$nota){
-                if (!isset ($matriculados[$nombreAsig]))
-                        $matriculados[$nombreAsig]["Aprobados"]=0;
-                        $matriculados[$nombreAsig]["Suspensos"]=0;
-                    }
-            }	
-        foreach($notas as $nombre=>$arrayDatos){
-            foreach ($arrayDatos as $nombreAsig=>$nota){
-               if ($nota<5)
-                $matriculados[$nombreAsig]["Suspensos"]++;
-               else
-                $matriculados[$nombreAsig]["Aprobados"]++;
+    echo "Seleccion: Todos";
+    foreach($arrayNotas as $TipoCalificacion=>$arrayDatos){
+		foreach ($arrayDatos as $nombreClase=>$Suspensos){
+
+			if (!isset ($matriculados[$TipoCalificacion]))
+					$matriculados[$TipoCalificacion]["Suma"]=0;
+					
+				}
+		}		
+ 
+        foreach($arrayNotas as $TipoCalificacion=>$arrayDatos){
+            foreach ($arrayDatos as $nombreClase=>$Suspensos){
+
+                $matriculados[$TipoCalificacion]["Suma"]= $matriculados[$TipoCalificacion]["Suma"] + $Suspensos;
+
                 
             }	
         }
-    
-        foreach ($matriculados as $asig=>$contadores){
-            $cadena= "<p>Asignatura:".$asig;
-            $cadena.=", Aprobados: ".$contadores["Aprobados"];
-            $cadena.=", Suspensos: ".$contadores["Suspensos"]."</p>";
+
+        foreach ($matriculados as $nombreDelaAsig=>$SumaDeSuspensos){
+            
+            $cadena="<tr>" .  "<td width = 130>" . $nombreDelaAsig . "</td>";
+            $cadena.= "<td>" . $SumaDeSuspensos["Suma"]."</td> </tr>";
             echo $cadena;
         }
     }
 
-    else{
+    else
+
+    {
         echo "Notas de ".$nombre;
-    /*
-    echo "<pre>";
-    print_r($notas[$nombre]);
-    echo "</pre>";
-    */
-    echo "<table border='1'>";
-    foreach($arrayNotas as $Notas=>$arrayDatos){
-        foreach ($arrayDatos[nombre] as $nombreAsig=>$nota){
+
+        
+        foreach($arrayNotas as $TipoCalificacion=>$arrayDatos){
+    
+        foreach ($arrayDatos as $nombreClase=>$Suspensos){
+             
+    if ($nombre == $nombreClase) {
+        
+        if ($Suspensos != 0) {
+            echo "<tr>
+            <td width = 130>  $TipoCalificacion </td>
+            <td>  $Suspensos </td>
+            </tr>";
+        }
+    }    
+}
          
-            echo "<tr><td>".$nombreAsignatura."</td><td>".$nota."</td></tr>";
-
-                }
-     
-            }
-
+}
             echo "</table>";
-    }
+}
 
 ?>
