@@ -13,9 +13,12 @@ foreach($arrayNombres as $Familia=>$ArrayTipo){
  
     echo " <ul> <li>$Familia";
 
+
     foreach ($ArrayTipo as $nombreTipo=>$Nombre){
-     
-    echo "<dl>
+        echo "<li>$nombreTipo</li>";
+
+     if(is_array($Nombre)){
+    echo "
         <dt>
     <ul>
     
@@ -23,16 +26,21 @@ foreach($arrayNombres as $Familia=>$ArrayTipo){
 
     </ul>
     </dt>";
-    }
+
+    
+   
+
+    
         foreach ($Nombre as $Indice=>$NombreHijos){
         
-        echo " <dd> $Indice" . "." . "$NombreHijos </dd> ";
+        echo " $Indice" . "." . "$NombreHijos";
 
         }
     }
+    }
+}
 
  echo "</ul> 
-    </li> 
- </dl>";
+    </li>";
 
 ?>
