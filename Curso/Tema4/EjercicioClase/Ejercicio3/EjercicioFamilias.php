@@ -1,6 +1,6 @@
 <?php
 
-include("arrayNombres.php");
+include("arrays.php");
 
 /*
 echo "<pre>";
@@ -14,7 +14,7 @@ foreach($arrayNombres as $Familia=>$ArrayTipo){
     echo " <ul> <li>$Familia";
 
     foreach ($ArrayTipo as $nombreTipo=>$Nombre){
-    if($Nombre != 1){
+     
     echo "<dl>
         <dt>
     <ul>
@@ -34,5 +34,5 @@ foreach($arrayNombres as $Familia=>$ArrayTipo){
  echo "</ul> 
     </li> 
  </dl>";
-}
+
 ?>
