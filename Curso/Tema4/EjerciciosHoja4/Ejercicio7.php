@@ -17,9 +17,12 @@ $Operacion["Resta"]= $a - $b;
 $Operacion["Prodcuto"] = $a / $b;
 $Operacion["Multiplicacion"] = $a * $b;
 
+
 if ($) {
     
 }
+
+return Operacion;
 
 }
 

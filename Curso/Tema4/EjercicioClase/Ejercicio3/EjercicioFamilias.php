@@ -11,36 +11,34 @@ echo "</pre>";
 foreach($arrayNombres as $Familia=>$ArrayTipo){
     
  
-    echo " <ul> <li>$Familia";
-
+    echo "<li>".$nombreFamilia;
+    echo "<ul type='circle'>";
 
     foreach ($ArrayTipo as $nombreTipo=>$Nombre){
-        echo "<li>$nombreTipo</li>";
 
-     if(is_array($Nombre)){
-    echo "
-        <dt>
-    <ul>
-    
-  		<li>$nombreTipo" .  ": " . "$Nombre</li>
+        if (is_array($Nombre))
+        {
 
-    </ul>
-    </dt>";
+            echo "<li>Hijos";
+            echo "<ol>";
 
-    
-   
-
-    
         foreach ($Nombre as $Indice=>$NombreHijos){
         
-        echo " $Indice" . "." . "$NombreHijos";
-
+            {
+             echo "<li>".$NombreHijos;
+            }       
+            echo "</ol>";
+            
+           }
         }
+           else
+           {
+           echo "<li>".$nombreTipo.": ".$Nombre;
+           }
+           
     }
-    }
+       echo "</ul>";
 }
-
- echo "</ul> 
-    </li>";
+   echo "</ul>"; 
 
 ?>

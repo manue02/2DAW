@@ -4,7 +4,6 @@ include("arrays.php");
 
 
 $nombre=$_POST["Notas"];
-$Tipo= array();
 echo "<table border='1'>";
 if ($nombre=='0'){
     
