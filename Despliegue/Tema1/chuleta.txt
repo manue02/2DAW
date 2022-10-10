@@ -1,0 +1,46 @@
+ 
+Clase a 0 a 127    10.0.0.0 --> rango privada
+Clase b 128 a 191  176.16-31.0.0 --> rango privada
+Clase c 192 a 223  192.168.*.0 --> rango privada
+
+
+
+Que clase tengo
+
+cuantas subredes hay
+
+cuantos bits necesito 
+
+la nueva masc
+
+host que tenemos 
+
+para saber de cuanto en cunato va la red es 256 - mascara = x
+
+
+2^1                       2^b>=numero de subred desde la izquierda
+2^2                       2^h>= numero de host-2 desde la derecha
+2^3
+2^4
+2^5
+2^6
+2^7
+2^8
+
+
+un octeto es 
+                   
+                   |
+2 4 8 16 32 64 128 |256
+                   |
+Si te dice que analices la red disponible de 192.168.20.0
+
+Se trata de la red 192.168.20.0
+1) IPv4
+2) Clase C
+3) Máscara predeterminada de /24
+4) Privada local
+5) 11000000.10101000.00010100.00000000
+6) Red: 192.168.20.0
+Rango: 192.168.20.0 – X.254
+Broadcast: 192.168.20.255
