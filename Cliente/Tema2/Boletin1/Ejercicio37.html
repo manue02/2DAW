@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+
+    <form name="frmNumero">
+        <label>Número: </label>
+        <input type="text" name="numero">
+        <br>
+        <input type="button" id="btn" value="ACEPTAR">
+    </form>
+
+    <p id="salida"></p>
+
+    <script>
+      
+//       Se realiza la carga de 10 valores enteros por teclado. Se desea conocer:
+//       a. La cantidad de valores negativos ingresados.
+//       b. La cantidad de valores positivos ingresados.
+//       c. La cantidad de múltiplos de 15.
+//       d. El valor acumulado de los números ingresados que son pares.
+
+let miarray = new Array(10);
+
+        document.getElementById("btn").onclick = function () {
+            let contador = 0;
+            if(contador <=5){
+            miarray = Number(frmNumero.numero.value);
+
+            document.getElementById("salida").innerHTML = miarray ;
+
+            contador++;
+        }
+
+
+    }
+
+    const comidas = ['Desayunar', 'Almorzar', 'Comer', 'Merendar', 'Cenar'];
+comidas.forEach(function(comida, index) {
+    console.log(`${index} : ${comida}`);
+});
+       
+	
+
+
+           
+            
+             
+
+
+      
+    </script>
+
+
+  </body>
+</html>
