@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+
+    <p id="Resultado"></p>
+    <p id="Resultado2"></p>
+    <p id="Resultado3"></p>
+    <p id="Resultado4"></p>
+
+
+    <form name="frmDatos" id="frmDatos">
+        <label>Nombre</label>
+        <input type="text" name="txtProducto" id="txtNombre"/>
+        <br>
+        <label>Apellidos</label>
+        <input type="text" name="txtPrecio" id="txtApellidos"/>
+   
+
+        <input type="button" value="Aceptar" name="btnAceptar" id="btnAceptar" onclick="obtenerDatos();" />
+    </form>
+
+
+    <script>
+    //  Crear un programa que solicite al usuario nombre y apellidos y devuelva:
+    //  El tamaño del nombre más los apellidos sin contar los espacios.
+    //  La cadena completa en minúsculas y mayúsculas.
+    //  La división del nombre, apellido1 y apellido2 en tres líneas distintas.
+    //  Una propuesta de nombre usuario de la siguiente forma: inicial del nombre, 
+    //  primeras tres letras del apellido1 y primeras tres letras del apellido2. Ejemplo: Juan Martín López  → jmarlop
+
+
+        function obtenerDatos(){
+               let sNombre = "";
+               let sApellidos = "";
+               let resultado = "";
+               let result ="";
+               let Contador=0;
+
+                // Recuperar valores de los input
+                sNombre = frmDatos.txtNombre.value;
+                sApellidos = frmDatos.txtApellidos.value;
+                resultado = (sNombre.length + sApellidos.length) - 1;
+                
+                NombreMinuscula = sNombre.toLowerCase();
+                ApellidoMinuscula = sApellidos.toLowerCase();
+
+                NombreMayuscula = sNombre.toUpperCase();
+                ApellidoMayuscula = sApellidos.toUpperCase();
+
+                PrimeraLetra = sNombre.charAt(0);
+                 
+
+                // Muestro los valores en los párrafos <p>
+                document.getElementById("Resultado").innerHTML = resultado;
+                document.getElementById("Resultado2").innerHTML = "Nombre en minuscula: " + NombreMinuscula + " " + ApellidoMinuscula+  "<br/>Nombre en mayuscula: " + NombreMayuscula + " " + ApellidoMayuscula ;
+                document.getElementById("Resultado3").innerHTML = sNombre + " " + sApellidos + " → " + PrimeraLetra + LetraApellidos;
+
+
+               
+                
+            }
+
+
+    </script>
+  </body>
+</html>
