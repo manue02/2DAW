@@ -1,7 +1,7 @@
 <%-- 
-    Document   : VerDatos
-    Created on : 05-oct-2022, 11:21:02
-    Author     : alumno
+    Document   : index
+    Created on : 20-nov-2020, 8:23:22
+    Author     : Juan
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -19,15 +19,7 @@
             <title>JSP Page</title>
         </head>
         <body>
-            <h3><h:outputText value="Estos son tus datos"/></h3>
-            <p>
-                Nombre
-                <h:outputText value ="#{datos.nombre}"/></p>
-            <p>
-                Esta en D.A.W porque:<br>
-                <h:outputText value ="#{datos.motivo}"/></p><p>
-                Nombre
-                <h:outputText value ="#{datos.sistema}"/></p>
+            <h1><h:outputText value="Hello World!"/></h1>
         </body>
     </html>
 </f:view>
