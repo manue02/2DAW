@@ -29,14 +29,22 @@
                 <h:inputText value="#{datos.correo}"/>
             </p><p>Te cosideras gamer?:<br>
                 <h:selectOneRadio value="#{datos.motivo}" layout="pageDirection">
-                    <f:selectItem itemValue="trabajo" itemLabel="Si" />
-                    <f:selectItem itemValue="friqui" itemLabel="No" />
+                    <f:selectItem itemValue="Si" itemLabel="Si" />
+                    <f:selectItem itemValue="NO" itemLabel="No" />
                    
                 </h:selectOneRadio>
             </p><p>Cual es tu plataforma favorita<br>
             <p>
                 <h:selectManyListbox value="#{datos.lenguajes}">
                     <f:selectItems value="#{datos.listaLenguajes}"/>
+                </h:selectManyListbox>
+                
+            </p>
+            
+              </p><p>Selecciona los vidiojuegos que conoces<br>
+            <p>
+                <h:selectManyListbox value="#{datos.sistema}">
+                    <f:selectItems value="#{datos.listaSistemas}"/>
                 </h:selectManyListbox>
                 
             </p>

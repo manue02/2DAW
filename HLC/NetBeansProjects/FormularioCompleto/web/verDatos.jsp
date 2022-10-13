@@ -20,16 +20,18 @@
         </head>
         <body>
             <h3>Estos son sus datos</h3>
-            <p>Nombre
+            <p>Nombre:<br>
                 <h:outputText value="#{datos.nombre}"/></p>
-            <p>Está en D.A.W. porque:<br>
+            <p>Correo:<br>
+                <h:outputText value="#{datos.correo}"/></p>
+            <p>¿Te consideras gamer?<br> 
                 <h:outputText value="#{datos.motivo}"/></p>
-            <p>S.O. 
-                <h:outputText value="#{datos.sistema}"/></p>
-             <p>Idiomas 
-                 <h:outputText value="#{datos.concadenaIdiomas()}"/></p>
-             <p>Lenguajes de Programación 
+             <p>Plataforma Favorita:<br> 
                  <h:outputText value="#{datos.concadenaLenguajes()}"/></p>
+             <p>Lista de juegos que conoces:<br> 
+                 <h:outputText value="#{datos.cadenaSistemas()}"/></p>
+             <p>Seleccion de genero Favorito:<br> 
+                 <h:outputText value="#{datos.concadenaIdiomas()}"/></p>
         </body>
     </html>
 </f:view>

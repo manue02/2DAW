@@ -15,7 +15,7 @@ import javax.faces.model.SelectItem;
 public class datos {
 
     private String nombre;
-    private String sistema;
+    private String[] sistema;
     private String correo;
     private String[] idiomas;
     private String[] lenguajes;
@@ -41,14 +41,14 @@ public class datos {
     /**
      * @return the sistema
      */
-    public String getSistema() {
+    public String[] getSistema() {
         return sistema;
     }
 
     /**
      * @param sistema the sistema to set
      */
-    public void setSistema(String sistema) {
+    public void setSistema(String[] sistema) {
         this.sistema = sistema;
     }
 
@@ -95,21 +95,27 @@ public class datos {
     }
   public ArrayList  getListaSistemas(){
     ArrayList lista=new ArrayList();
-    lista.add(new SelectItem("Win10","Windows 10"));
-    lista.add(new SelectItem("Win7","Windows 7"));
-    lista.add(new SelectItem("Linux","Linux"));
-    lista.add(new SelectItem("Ios","Ios"));
+    lista.add(new SelectItem("Age of Empires","Age of Empires"));
+    lista.add(new SelectItem("Battelfield","Battelfield"));
+    lista.add(new SelectItem("Counter Strike","Counter Strike"));
+    lista.add(new SelectItem("Dead Space","Dead Space"));
+    lista.add(new SelectItem("Doom","Doom"));
+    lista.add(new SelectItem("Half Life","Half Life"));
+    lista.add(new SelectItem("Metal Gear Solid","Metal Gear Solid"));
+    lista.add(new SelectItem("Resident Evil","Resident Evil"));
+    lista.add(new SelectItem("Shadow of the Colossus","Shadow of the Colossus"));
+    lista.add(new SelectItem("Super Mario","Super Mario"));
     return lista;
 
 }
   public ArrayList  getListaLenguajes(){
     ArrayList lista=new ArrayList();
-    lista.add(new SelectItem("Java","Java"));
-    lista.add(new SelectItem("Asp","ASP.NET"));
-    lista.add(new SelectItem("VisualBasic","Visual Basic"));
-    lista.add(new SelectItem("JavaScript","Javascript"));
-    lista.add(new SelectItem("PHP","PHP"));
-    lista.add(new SelectItem("PYTHON","Python"));
+    lista.add(new SelectItem("Xbox One","Xbox One"));
+    lista.add(new SelectItem("PlayStation 4","PlayStation 4"));
+    lista.add(new SelectItem("PC","PC"));
+    lista.add(new SelectItem("Wii u","Wii u"));
+    lista.add(new SelectItem("Xbox 360","Xbox 360"));
+    lista.add(new SelectItem("PlayStation 3","PlayStation 3"));
     return lista;
 
 }
@@ -120,6 +126,11 @@ public class datos {
   public String concadenaLenguajes()
   {
       return implode(lenguajes);
+  }
+  
+    public String cadenaSistemas()
+  {
+      return implode(sistema);
   }
   public String implode(String[] pArray){
       String devuelve="";
