@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Formularios</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+   
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Formularios</h1>
+
+        <h2>Básico</h2>
+
+        <form role="form">
+            <div class="mb-3">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+            <div class="mb-3 form-check">
+                <label>
+                    <input type="checkbox"> Remember me
+                </label>
+            </div>
+            <button type="submit" class="btn btn-outline-secondary">Sign in</button>
+        </form>
+
+        <h2>form-inline</h2>
+
+        <form class="row" role="form">
+            <div class="col-2">
+                <label class="" for="exampleInputEmail2"></label>
+                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
+            </div>
+            <div class="col-2">
+                <label class="" for="exampleInputPassword2"></label>
+                <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+            </div>
+            <div class="col-2 ">
+                <label>
+                    <input type="checkbox"> Remember me
+                </label>
+            </div>
+            <button type="submit" class="btn btn-outline-secondary col-2">Sign in</button>
+        </form>
+
+        <h2>form-horizontal</h2>
+
+
+        <form class="form-horizontal" role="form">
+            <div class="row mb-3">
+                <label for="inputEmail3" class="mb-3 col-sm-2 col-form-label">Email</label>
+                <div class="col-12 col-md-10">
+                    <input class="form-control" id="inputEmail3" placeholder="Enter Email" type="email">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-12 col-md-10">
+                    <input class="form-control" id="inputPassword3" placeholder="Password" type="password">
+                </div>
+            </div>
+            <div class="">
+                <div class="">
+                    <div class="">
+                        <label>
+                            <input type="checkbox"> Remember me
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-10">
+                    <button type="submit" class="btn btn-outline-secondary ">Sign in</button>
+                </div>
+            </div>
+        </form>
+
+        <h2>checkbox y radiobouttons</h2>
+
+        <div class="">
+            <label>
+                <input type="checkbox" value="check1" checked> checked
+            </label>
+        </div>
+        <div class="">
+            <label>
+                <input type="checkbox" value="check2" disabled> disabled
+            </label>
+        </div>
+
+        <div class="">
+            <label>
+                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> checked
+            </label>
+        </div>
+        <div class="">
+            <label>
+                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled> disabled
+            </label>
+        </div>
+
+        <h2>checkbox y radiobouttons inline</h2>
+
+        <div class="">
+            <label>
+                <input type="checkbox" value="check1" checked> checked
+            </label>
+        </div>
+        <div class="">
+            <label>
+                <input type="checkbox" value="check2" disabled> disabled
+            </label>
+        </div>
+        <br />
+        <div class="">
+            <label>
+                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> checked
+            </label>
+        </div>
+        <div class="">
+            <label>
+                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled> disabled
+            </label>
+        </div>
+
+        <h2>Validaciones</h2>
+
+        <div class="">
+            <label class="" for="inputSuccess2">Input with success</label>
+            <input type="text" class="" id="inputSuccess2">
+            <span class=""></span>
+        </div>
+        <div class="">
+            <label class="" for="inputSuccess2">Input with warning</label>
+            <input type="text" class="" id="inputSuccess2">
+            <span class=""></span>
+        </div>
+        <div class="">
+            <label class="" for="inputError2">Input with error</label>
+            <input type="text" class="" id="inputError2">
+            <span class=""></span>
+        </div>
+
+        <h2>Tamaños</h2>
+
+        <input class="" type="text" placeholder=".input-lg">
+        <input class="" type="text" placeholder="Default input">
+        <input class="" type="text" placeholder=".input-sm">
+
+        <br />
+
+        <form class="" role="form">
+            <div class="">
+                <label class="" for="formGroupInputLarge">Large label</label>
+                <div class="">
+                    <input class="" type="text" id="formGroupInputLarge" placeholder="Large input">
+                </div>
+            </div>
+            <div class="">
+                <label class="" for="formGroupInputSmall">Small label</label>
+                <div class="">
+                    <input class="" type="text" id="formGroupInputSmall" placeholder="Small input">
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+</body>
+
+</html>
