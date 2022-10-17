@@ -56,12 +56,14 @@
                 ApellidoMayuscula = sApellidos.toUpperCase();
 
                 PrimeraLetra = sNombre.charAt(0);
+                sApellidos
                  
 
                 // Muestro los valores en los párrafos <p>
                 document.getElementById("Resultado").innerHTML = resultado;
                 document.getElementById("Resultado2").innerHTML = "Nombre en minuscula: " + NombreMinuscula + " " + ApellidoMinuscula+  "<br/>Nombre en mayuscula: " + NombreMayuscula + " " + ApellidoMayuscula ;
-                document.getElementById("Resultado3").innerHTML = sNombre + " " + sApellidos + " → " + PrimeraLetra + LetraApellidos;
+                document.getElementById("Resultado3").innerHTML = sNombre + "<br>" + sApellidos;
+                document.getElementById("Resultado4").innerHTML = sNombre + " " + sApellidos + " → " + PrimeraLetra;
 
 
                

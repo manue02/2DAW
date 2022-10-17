@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+
+    <p id="Resultado"></p>
+    <p id="Resultado2"></p>
+    <p id="Resultado3"></p>
+    <p id="Resultado4"></p>
+
+
+    <form name="frmDatos" id="frmDatos">
+        <label>Nombre</label>
+        <input type="text" name="txtProducto" id="txtNombre"/>
+        <br>
+        <label>Contraseña</label>
+        <input type="text" name="txtPrecio" id="txtContraseña"/>
+   
+
+        <input type="button" value="Aceptar" name="btnAceptar" id="btnAceptar" onclick="obtenerDatos();" />
+    </form>
+
+
+    <script>
+    //   Crear un programa que solicite al usuario una propuesta de contraseña y compruebe si cumple con los siguientes requisitos:
+    //   Tiene entre 8 y 16 caracteres.
+    //   Tiene, al menos, una letra mayúscula.
+    //   Tiene, al menos, una letra minúscula.
+    //   Tiene, al menos, un dígito.
+    //   Tiene, al menos, uno de los siguientes caracteres especiales: guión alto, guión bajo, arroba, almohadilla, dólar, tanto por ciento o ampersand.
+
+
+
+        function obtenerDatos(){
+               let Nombre = "";
+               let Contraseña = "";
+               let res="";
+            
+
+                // Recuperar valores de los input
+                Nombre = frmDatos.txtNombre.value;
+                Contraseña = frmDatos.txtContraseña.value;
+                
+                if (Contraseña.length < 8  || Contraseña.length > 16) {
+
+                    document.getElementById("Resultado").innerHTML= " Tiene que tener entre 8 y 16 caracteres la contraseña";
+                    
+                }
+
+                else{
+
+                    document.getElementById("Resultado").innerHTML = "Contraseña Valida";
+
+                }
+
+                for (let i = 0; i < Contraseña.length; i++) {
+                    if(Contraseña[i].match(/[A-Z]/)) {
+                          
+
+                        document.getElementById("Resultado2").innerHTML = "Tiene, al menos, una letra mayúscula.";
+                        }
+                        else{
+
+                            document.getElementById("Resultado2").innerHTML = "Validacion Incorrecta no tiene mayusculas";
+                        }
+
+                        if(Contraseña[i].match(/[a-z]/)) {
+
+                            document.getElementById("Resultado3").innerHTML = "Tiene, al menos, una letra minúscula.";
+                        }
+
+                        else{
+
+                            document.getElementById("Resultado3").innerHTML = "Validacion Incorrecta no tiene minusculas";
+
+                        }
+                    
+                }
+
+            }
+
+
+    </script>
+  </body>
+</html>
