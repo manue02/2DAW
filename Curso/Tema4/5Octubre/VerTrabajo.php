@@ -103,13 +103,13 @@ if (isset($Contenido[$Trabajos])){
          }           
     }
 
-
+    
 if (!$cabeceraImpresa)
     echo "<br>sin datos";
 
-
-
-        break;
+   
+   
+    break;
 
 }
 
