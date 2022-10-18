@@ -1,6 +1,6 @@
 <?php 
 
-	echo '<form method="POST" >';
+	echo '<form action="TablasEj2.php" method="POST" >';
 	echo '<table  align=center >';
 	echo'<tr>';
 	echo '<td rowspan="4" align="left">Criterio: </td>';

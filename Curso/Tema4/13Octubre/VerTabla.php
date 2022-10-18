@@ -10,13 +10,15 @@ echo "<table border='1'>
 
 foreach ($a[$Nombre] as $Ciudad => $valorCiudad) {
 
+  if($Ciudad != $Nombre){
+
 echo "<tr>
       <td>  $Nombre </td>
       <td>  $Ciudad </td>
       <td>  $valorCiudad </td>
 
     </tr>";
-
+}
 }
 
 echo "</tr>
@@ -29,7 +31,7 @@ echo "<table border='1'>
 foreach ($a as $Tabla => $Contenido) {
     foreach ($Contenido as $Ciudad => $valor) {
 
-        if($Nombre == $Ciudad){
+        if($Nombre == $Ciudad && $Tabla != $Ciudad){
 
             echo "<tr>
       <td>  $Tabla </td>
@@ -42,6 +44,8 @@ foreach ($a as $Tabla => $Contenido) {
         }
     }
 }
+
+
 
 echo "</tr>
     </table>";
