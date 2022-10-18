@@ -1,0 +1,9 @@
+<?php
+$notas=array(
+"Luis"=>array("Biologia"=>7,"Geologia"=>5,"Matematicas"=>5),
+"Julia"=>array("Biologia"=>6,"Latin"=>6,"Fisica"=>5,"Tecnologia"=>8),
+"Marta"=>array("Quimica"=>8,"Tecnologia"=>6,"Fisica"=>6,"Ingles"=>5),
+"Andres"=>array("Biologia"=>4,"Geologia"=>4,"Fisica"=>3),
+"Pedro"=>array("Matematicas"=>5,"Latin"=>5,"Fisica"=>2,"Ingles"=>2)
+);
+?>

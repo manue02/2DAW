@@ -1,0 +1,16 @@
+﻿<html>
+<head></head>
+<body>
+<form action="proceso.php" method="post">
+	<h2>Notas del alumnado</h2>
+	<p><textarea name="texto" rows="20" cols="60">
+	</textarea></p>
+	<fieldset>
+	<legend>Opciones</legend>
+		<input type="radio" name="criterio" value="nombre" checked="checked"/> Ordenar por nombre <input type="radio" name="criterio" value="nota"/> Ordenar por nota media<br>
+		<input type="radio" name="orientacion" value="ascendente" checked="checked"/> Ascendente <input type="radio" name="orientacion" value="descendente"/> Descendente<br>
+	</fieldset>
+	<p><input type="submit" name="enviar" value="Enviar"/></p>
+</form>
+</body>
+</html>
