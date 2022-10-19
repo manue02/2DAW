@@ -48,41 +48,63 @@
                 Nombre = frmDatos.txtNombre.value;
                 Contraseña = frmDatos.txtContraseña.value;
                 
-                if (Contraseña.length < 8  || Contraseña.length > 16) {
-
-                    document.getElementById("Resultado").innerHTML= " Tiene que tener entre 8 y 16 caracteres la contraseña";
-                    
-                }
-
-                else{
-
-                    document.getElementById("Resultado").innerHTML = "Contraseña Valida";
-
-                }
+               
 
                 for (let i = 0; i < Contraseña.length; i++) {
-                    if(Contraseña[i].match(/[A-Z]/)) {
+
+                     if (Contraseña.length < 8  && Contraseña.length > 16) {
+
+                     document.getElementById("Resultado").innerHTML= "Contraseña Invalida";
+                }
+
+                if(Contraseña[i].match(/[A-Z]/) &&  Contraseña[i].match(/[a-z]/)){
+
+                            document.getElementById("Resultado2").innerHTML = " ";
+                            document.getElementById("Resultado3").innerHTML = " ";
+                        }
+
+                    if(!Contraseña[i].match(/[A-Z]/) ) {
                           
-
-                        document.getElementById("Resultado2").innerHTML = "Tiene, al menos, una letra mayúscula.";
-                        }
-                        else{
-
                             document.getElementById("Resultado2").innerHTML = "Validacion Incorrecta no tiene mayusculas";
-                        }
+                    }
 
-                        if(Contraseña[i].match(/[a-z]/)) {
+                    else
+                    {
+                        document.getElementById("Resultado2").innerHTML = " ";
 
-                            document.getElementById("Resultado3").innerHTML = "Tiene, al menos, una letra minúscula.";
-                        }
+                    }
 
-                        else{
+                        if(!Contraseña[i].match(/[a-z]/)) {
 
                             document.getElementById("Resultado3").innerHTML = "Validacion Incorrecta no tiene minusculas";
 
+                        
                         }
-                    
-                }
+
+                        else{
+
+                            document.getElementById("Resultado3").innerHTML = " ";
+ 
+                        }
+
+                        if(!Contraseña[i].match(/[0-10000000000]/)) {
+
+                            document.getElementById("Resultado3").innerHTML = "Validacion Incorrecta no tiene numeros";
+
+                        
+                        }
+
+                         if(!Contraseña[i].match(/-,_@#$/)) {
+
+                            document.getElementById("Resultado3").innerHTML = "Validacion Incorrecta no tiene caracteres especiales";
+
+                        
+                        }
+
+                        
+                
+
+            }
 
             }
 
