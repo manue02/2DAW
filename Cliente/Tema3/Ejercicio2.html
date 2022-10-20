@@ -13,6 +13,7 @@
 		<p id="Resultado2"></p>
 		<p id="Resultado3"></p>
 		<p id="Resultado4"></p>
+		<p id="Resultado5"></p>
 
 		<form name="frmDatos" id="frmDatos">
 			<label>Nombre</label>
@@ -41,35 +42,32 @@
 				Nombre = frmDatos.txtNombre.value;
 				Contraseña = frmDatos.txtContraseña.value;
 
-				if (Contraseña.length < 8 && Contraseña.length > 16) {
-					document.getElementById("Resultado").innerHTML = "Contraseña Invalida";
+				if (Contraseña.length < 8 || Contraseña.length > 16) {
+					document.getElementById("Resultado").innerHTML = "Caracteres Insuficiente";
+				} else {
+					document.getElementById("Resultado").innerHTML = " ";
 				}
 
-				for (let i = 0; i < Contraseña.length; i++) {
-					if (Contraseña[i].match(/[A-Z]/) && Contraseña[i].match(/[a-z]/)) {
-						document.getElementById("Resultado2").innerHTML = " ";
-						document.getElementById("Resultado3").innerHTML = " ";
-					}
+				if (Contraseña.match(/[A-Z]/)) {
+					document.getElementById("Resultado2").innerHTML = " ";
+				} else {
+					document.getElementById("Resultado2").innerHTML = "Necesita Mayusculas ";
+				}
 
-					if (!Contraseña[i].match(/[A-Z]/)) {
-						document.getElementById("Resultado2").innerHTML = "Validacion Incorrecta no tiene mayusculas";
-					} else {
-						document.getElementById("Resultado2").innerHTML = " ";
-					}
-
-					if (!Contraseña[i].match(/[a-z]/)) {
-						document.getElementById("Resultado3").innerHTML = "Validacion Incorrecta no tiene minusculas";
-					} else {
-						document.getElementById("Resultado3").innerHTML = " ";
-					}
-
-					if (!Contraseña[i].match(/[0-10000000000]/)) {
-						document.getElementById("Resultado3").innerHTML = "Validacion Incorrecta no tiene numeros";
-					}
-
-					if (!Contraseña[i].match(/-,_@#$/)) {
-						document.getElementById("Resultado3").innerHTML = "Validacion Incorrecta no tiene caracteres especiales";
-					}
+				if (Contraseña.match(/[a-z]/)) {
+					document.getElementById("Resultado3").innerHTML = " ";
+				} else {
+					document.getElementById("Resultado3").innerHTML = "Necesita Minusculas ";
+				}
+				if (Contraseña.match(/[0-4294967295]/)) {
+					document.getElementById("Resultado4").innerHTML = " ";
+				} else {
+					document.getElementById("Resultado4").innerHTML = "Necesita insertar un numero";
+				}
+				if (Contraseña.match(/[-_@#$%&]/)) {
+					document.getElementById("Resultado5").innerHTML = " ";
+				} else {
+					document.getElementById("Resultado5").innerHTML = "Necesita insertar Caracteres Especiales";
 				}
 			}
 		</script>

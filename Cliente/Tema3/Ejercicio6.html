@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="" />
 	</head>
 	<body>
-		<b id="Resultado"></b>
+		<p id="Resultado"></p>
 		<p id="Resultado2"></p>
 		<p id="Resultado3"></p>
 		<p id="Resultado4"></p>
@@ -24,24 +24,24 @@
 
 		<script>
 			//https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Regular_Expressions/Cheatsheet
-			//  Crear un script que ponga en negrita las letras mayúsculas que hay en una frase.
+			//  Crear un script que convierte las palabras mayúsculas de una frase en minúsculas y viceversa.
 
 			function obtenerDatos() {
 				let sNombre = "";
-				let contador = 0;
-				let result = "";
 
 				// Recuperar valores de los input
 				sNombre = frmDatos.txtNombre.value;
-				result = sNombre.match(/[A-Z]/g);
-
-				//result.bold; Es asi pero no funciona por que esta en des uso
 
 				// Muestro los valores en los párrafos <p>
-				if (sNombre.match(/[A-Z]/)) {
-					document.getElementById("Resultado2").innerHTML = result;
-				} else {
-					document.getElementById("Resultado2").innerHTML = "No hay Mayusculas en esta cadena";
+
+				for (let i = 0; i < sNombre.length; i++) {
+					if (sNombre.match(/[a-z]/)) {
+						document.getElementById("Resultado2").innerHTML = sNombre.toLowerCase();
+					}
+
+					if (sNombre.match(/[A-Z]/)) {
+						document.getElementById("Resultado").innerHTML = sNombre.toUpperCase();
+					}
 				}
 			}
 		</script>
