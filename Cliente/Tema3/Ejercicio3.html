@@ -20,8 +20,7 @@
         <label>Nombre</label>
         <input type="text" name="txtProducto" id="txtNombre"/>
         <br>
-        <label>Apellidos</label>
-        <input type="text" name="txtPrecio" id="txtApellidos"/>
+      
    
 
         <input type="button" value="Aceptar" name="btnAceptar" id="btnAceptar" onclick="obtenerDatos();" />
@@ -40,34 +39,23 @@
 
         function obtenerDatos(){
                let sNombre = "";
-               let sApellidos = "";
-               let resultado = "";
-               let result ="";
+               let contador = 0;
+             
+             
                
 
                 // Recuperar valores de los input
                 sNombre = frmDatos.txtNombre.value;
-                sApellidos = frmDatos.txtApellidos.value;
-                resultado = (sNombre.length + sApellidos.length) - 1;
+             
+                for (let i = 0; i < sNombre.length; i++) {
+
                 
-                NombreMinuscula = sNombre.toLowerCase();
-                ApellidoMinuscula = sApellidos.toLowerCase();
 
-                NombreMayuscula = sNombre.toUpperCase();
-                ApellidoMayuscula = sApellidos.toUpperCase();
-
-                PrimeraLetra = sNombre.charAt(0);
-                sApellidos
-
-               let res = sApellidos.replace(/ /g, "<br>");
-           
-           
+                }
            
                 // Muestro los valores en los párrafos <p>
-                document.getElementById("Resultado").innerHTML = resultado;
-                document.getElementById("Resultado2").innerHTML = "Nombre en minuscula: " + NombreMinuscula + " " + ApellidoMinuscula+  "<br/>Nombre en mayuscula: " + NombreMayuscula + " " + ApellidoMayuscula ;
-                document.getElementById("Resultado3").innerHTML = sNombre + "<br>" + res;
-                document.getElementById("Resultado4").innerHTML = sNombre + " " + sApellidos + " → " + PrimeraLetra;
+                document.getElementById("Resultado").innerHTML = sNombre.length;
+         
 
             }
 
