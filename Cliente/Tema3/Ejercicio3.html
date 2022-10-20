@@ -9,57 +9,44 @@
     <link rel="stylesheet" href="" />
   </head>
   <body>
-
     <p id="Resultado"></p>
     <p id="Resultado2"></p>
     <p id="Resultado3"></p>
     <p id="Resultado4"></p>
 
-
     <form name="frmDatos" id="frmDatos">
-        <label>Nombre</label>
-        <input type="text" name="txtProducto" id="txtNombre"/>
-        <br>
-      
-   
+      <label>Nombre</label>
+      <input type="text" name="txtProducto" id="txtNombre" />
+      <br />
 
-        <input type="button" value="Aceptar" name="btnAceptar" id="btnAceptar" onclick="obtenerDatos();" />
+      <input
+        type="button"
+        value="Aceptar"
+        name="btnAceptar"
+        id="btnAceptar"
+        onclick="obtenerDatos();"
+      />
     </form>
-
 
     <script>
       //https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Regular_Expressions/Cheatsheet
-    //  Crear un programa que solicite al usuario nombre y apellidos y devuelva:
-    //  El tamaño del nombre más los apellidos sin contar los espacios.
-    //  La cadena completa en minúsculas y mayúsculas.
-    //  La división del nombre, apellido1 y apellido2 en tres líneas distintas.
-    //  Una propuesta de nombre usuario de la siguiente forma: inicial del nombre, 
-    //  primeras tres letras del apellido1 y primeras tres letras del apellido2. Ejemplo: Juan Martín López  → jmarlop
+      //  Crear un script que muestre el número de palabras que contiene una frase introducida por el usuario.
 
+      function obtenerDatos() {
+        let sNombre = "";
+        let contador = 0;
 
-        function obtenerDatos(){
-               let sNombre = "";
-               let contador = 0;
-             
-             
-               
+        // Recuperar valores de los input
+        sNombre = frmDatos.txtNombre.value;
 
-                // Recuperar valores de los input
-                sNombre = frmDatos.txtNombre.value;
-             
-                for (let i = 0; i < sNombre.length; i++) {
-
-                
-
-                }
-           
-                // Muestro los valores en los párrafos <p>
-                document.getElementById("Resultado").innerHTML = sNombre.length;
-         
-
-            }
-
-
+        for (let i = 0; i < sNombre.length; i++) {
+          if (sNombre[i].match(/ /g)) {
+            contador++;
+          }
+        }
+        // Muestro los valores en los párrafos <p>
+        document.getElementById("Resultado").innerHTML = contador + 1;
+      }
     </script>
   </body>
 </html>

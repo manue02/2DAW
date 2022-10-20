@@ -1,114 +1,77 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title></title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="" />
-  </head>
-  <body>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title></title>
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="" />
+	</head>
+	<body>
+		<p id="Resultado"></p>
+		<p id="Resultado2"></p>
+		<p id="Resultado3"></p>
+		<p id="Resultado4"></p>
 
-    <p id="Resultado"></p>
-    <p id="Resultado2"></p>
-    <p id="Resultado3"></p>
-    <p id="Resultado4"></p>
+		<form name="frmDatos" id="frmDatos">
+			<label>Nombre</label>
+			<input type="text" name="txtProducto" id="txtNombre" />
+			<br />
+			<label>Contraseña</label>
+			<input type="text" name="txtPrecio" id="txtContraseña" />
 
+			<input type="button" value="Aceptar" name="btnAceptar" id="btnAceptar" onclick="obtenerDatos();" />
+		</form>
 
-    <form name="frmDatos" id="frmDatos">
-        <label>Nombre</label>
-        <input type="text" name="txtProducto" id="txtNombre"/>
-        <br>
-        <label>Contraseña</label>
-        <input type="text" name="txtPrecio" id="txtContraseña"/>
-   
+		<script>
+			//   Crear un programa que solicite al usuario una propuesta de contraseña y compruebe si cumple con los siguientes requisitos:
+			//   Tiene entre 8 y 16 caracteres.
+			//   Tiene, al menos, una letra mayúscula.
+			//   Tiene, al menos, una letra minúscula.
+			//   Tiene, al menos, un dígito.
+			//   Tiene, al menos, uno de los siguientes caracteres especiales: guión alto, guión bajo, arroba, almohadilla, dólar, tanto por ciento o ampersand.
 
-        <input type="button" value="Aceptar" name="btnAceptar" id="btnAceptar" onclick="obtenerDatos();" />
-    </form>
+			function obtenerDatos() {
+				let Nombre = "";
+				let Contraseña = "";
+				let res = "";
 
+				// Recuperar valores de los input
+				Nombre = frmDatos.txtNombre.value;
+				Contraseña = frmDatos.txtContraseña.value;
 
-    <script>
-    //   Crear un programa que solicite al usuario una propuesta de contraseña y compruebe si cumple con los siguientes requisitos:
-    //   Tiene entre 8 y 16 caracteres.
-    //   Tiene, al menos, una letra mayúscula.
-    //   Tiene, al menos, una letra minúscula.
-    //   Tiene, al menos, un dígito.
-    //   Tiene, al menos, uno de los siguientes caracteres especiales: guión alto, guión bajo, arroba, almohadilla, dólar, tanto por ciento o ampersand.
+				if (Contraseña.length < 8 && Contraseña.length > 16) {
+					document.getElementById("Resultado").innerHTML = "Contraseña Invalida";
+				}
 
+				for (let i = 0; i < Contraseña.length; i++) {
+					if (Contraseña[i].match(/[A-Z]/) && Contraseña[i].match(/[a-z]/)) {
+						document.getElementById("Resultado2").innerHTML = " ";
+						document.getElementById("Resultado3").innerHTML = " ";
+					}
 
+					if (!Contraseña[i].match(/[A-Z]/)) {
+						document.getElementById("Resultado2").innerHTML = "Validacion Incorrecta no tiene mayusculas";
+					} else {
+						document.getElementById("Resultado2").innerHTML = " ";
+					}
 
-        function obtenerDatos(){
-               let Nombre = "";
-               let Contraseña = "";
-               let res="";
-            
+					if (!Contraseña[i].match(/[a-z]/)) {
+						document.getElementById("Resultado3").innerHTML = "Validacion Incorrecta no tiene minusculas";
+					} else {
+						document.getElementById("Resultado3").innerHTML = " ";
+					}
 
-                // Recuperar valores de los input
-                Nombre = frmDatos.txtNombre.value;
-                Contraseña = frmDatos.txtContraseña.value;
-                
-               
+					if (!Contraseña[i].match(/[0-10000000000]/)) {
+						document.getElementById("Resultado3").innerHTML = "Validacion Incorrecta no tiene numeros";
+					}
 
-                for (let i = 0; i < Contraseña.length; i++) {
-
-                     if (Contraseña.length < 8  && Contraseña.length > 16) {
-
-                     document.getElementById("Resultado").innerHTML= "Contraseña Invalida";
-                }
-
-                if(Contraseña[i].match(/[A-Z]/) &&  Contraseña[i].match(/[a-z]/)){
-
-                            document.getElementById("Resultado2").innerHTML = " ";
-                            document.getElementById("Resultado3").innerHTML = " ";
-                        }
-
-                    if(!Contraseña[i].match(/[A-Z]/) ) {
-                          
-                            document.getElementById("Resultado2").innerHTML = "Validacion Incorrecta no tiene mayusculas";
-                    }
-
-                    else
-                    {
-                        document.getElementById("Resultado2").innerHTML = " ";
-
-                    }
-
-                        if(!Contraseña[i].match(/[a-z]/)) {
-
-                            document.getElementById("Resultado3").innerHTML = "Validacion Incorrecta no tiene minusculas";
-
-                        
-                        }
-
-                        else{
-
-                            document.getElementById("Resultado3").innerHTML = " ";
- 
-                        }
-
-                        if(!Contraseña[i].match(/[0-10000000000]/)) {
-
-                            document.getElementById("Resultado3").innerHTML = "Validacion Incorrecta no tiene numeros";
-
-                        
-                        }
-
-                         if(!Contraseña[i].match(/-,_@#$/)) {
-
-                            document.getElementById("Resultado3").innerHTML = "Validacion Incorrecta no tiene caracteres especiales";
-
-                        
-                        }
-
-                        
-                
-
-            }
-
-            }
-
-
-    </script>
-  </body>
+					if (!Contraseña[i].match(/-,_@#$/)) {
+						document.getElementById("Resultado3").innerHTML = "Validacion Incorrecta no tiene caracteres especiales";
+					}
+				}
+			}
+		</script>
+	</body>
 </html>
