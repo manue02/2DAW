@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title></title>
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="" />
+	</head>
+	<body>
+		<p id="Resultado"></p>
+		<p id="Resultado2"></p>
+		<p id="Resultado3"></p>
+		<p id="Resultado4"></p>
+
+		<script>
+			//https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Regular_Expressions/Cheatsheet
+			// Crear un script que muestre mediante un mensaje la fecha actual (día, mes en letra y año),
+			//la hora actual (hora y minutos), el día de la semana (en letra) o los tres anteriores a la vez, según elija el usuario.
+
+			let fecha = new Date();
+			let meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Deciembre"];
+			let semana = ["Sabado", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Domingo"];
+
+			let dia = fecha.getDate();
+			let mes = meses[fecha.getMonth()];
+			let DiaSemana = semana[fecha.getDay()];
+			let año = fecha.getFullYear();
+			let hora = fecha.getHours();
+			let minutos = fecha.getMinutes();
+
+			// Recuperar valores de los input
+
+			// Muestro los valores en los párrafos <p>
+
+			document.getElementById("Resultado").innerHTML = dia + "/" + mes + "/" + año;
+			document.getElementById("Resultado2").innerHTML = hora + ":" + minutos;
+			document.getElementById("Resultado3").innerHTML = DiaSemana;
+		</script>
+	</body>
+</html>

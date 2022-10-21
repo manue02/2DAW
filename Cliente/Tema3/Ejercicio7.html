@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title></title>
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="" />
+	</head>
+	<body>
+		<p id="Resultado"></p>
+		<p id="Resultado2"></p>
+		<p id="Resultado3"></p>
+		<p id="Resultado4"></p>
+
+		<form name="frmDatos" id="frmDatos">
+			<label>Nombre</label>
+			<input type="text" name="txtProducto" id="txtNombre" />
+			<br />
+
+			<input type="button" value="Aceptar" name="btnAceptar" id="btnAceptar" onclick="obtenerDatos();" />
+		</form>
+
+		<script>
+			//https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Regular_Expressions/Cheatsheet
+			// Realiza un programa que reciba una cadena con el siguiente formato: “nombre:apellidos:telefono:email:codigopostal”. Tras recibir la cadena, debe desglosar y mostrar la siguiente información:
+			//Código postal.
+			//Apellidos.
+			//Email.
+			//Suponiendo un formato de email “direccion@servidor” debe mostrar el nombre del servidor asociado.
+
+			function obtenerDatos() {
+				let Cadenena = "";
+				let res = "";
+
+				// Recuperar valores de los input
+				Cadenena = frmDatos.txtNombre.value;
+
+				res = Cadenena.replace(/:/g, "<br>");
+
+				// Muestro los valores en los párrafos <p>
+
+				document.getElementById("Resultado2").innerHTML = res;
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title></title>
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="" />
+	</head>
+	<body>
+		<p id="Resultado"></p>
+		<p id="Resultado2"></p>
+		<p id="Resultado3"></p>
+		<p id="Resultado4"></p>
+
+		<form name="frmDatos" id="frmDatos">
+			<label>Fecha1</label>
+			<input type="text" name="txtFechas1" id="txtFecha1" />
+			<br />
+			<label>Fecha2</label>
+			<input type="text" name="txtFechas2" id="txtFecha2" />
+			<br />
+
+			<input type="button" value="Aceptar" name="btnAceptar" id="btnAceptar" onclick="obtenerDatos();" />
+		</form>
+
+		<script>
+			//https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Regular_Expressions/Cheatsheet
+			// Crear un script que reciba dos fechas y diga cuál es anterior y el tiempo transcurrido entre
+			//ellas (en años, meses y días).
+
+			function obtenerDatos() {
+				let ValorFecha1 = "";
+				let ValorFecha2 = "";
+
+				// Recuperar valores de los input
+				ValorFecha1 = frmDatos.txtFecha1.value;
+				ValorFecha2 = frmDatos.txtFecha2.value;
+				let diaRes = 0;
+				let mesRes = 0;
+				let añoRes = 0;
+
+				let f1 = new Date(ValorFecha1);
+				let f2 = new Date(ValorFecha2);
+
+				let dia = f1.getDate();
+				let mes = f1.getMonth();
+				let año = f1.getFullYear();
+
+				let dia2 = f2.getDate();
+				let mes2 = f2.getMonth();
+				let año2 = f2.getFullYear();
+
+				// Muestro los valores en los párrafos <p>
+
+				if (f1 < f2) {
+					document.getElementById("Resultado").innerHTML = "La primera fecha es anterior a la segunda fecha";
+
+					diaRes2 = dia2 - dia;
+					mesRes2 = dia2 - mes;
+					añoRes2 = dia2 - año;
+
+					document.getElementById("Resultado3").innerHTML = "La diferencia de las fechas es: <br>" + "El año" + añoRes2 + "<br>" + "El mes" + mesRes2 + "<br>" + "El dia" + diaRes2;
+				} else {
+					document.getElementById("Resultado").innerHTML = "";
+				}
+
+				if (f1 > f2) {
+					document.getElementById("Resultado2").innerHTML = "La segunda fecha es anterior a la primera fecha";
+
+					diaRes = dia - dia2;
+					mesRes = mes - mes2;
+					añoRes = año - año2;
+
+					document.getElementById("Resultado3").innerHTML = "La diferencia de las fechas es: <br>" + "El año " + añoRes + "<br>" + "El mes " + mesRes + "<br>" + "El dia " + diaRes;
+				} else {
+					document.getElementById("Resultado2").innerHTML = "";
+				}
+			}
+		</script>
+	</body>
+</html>
