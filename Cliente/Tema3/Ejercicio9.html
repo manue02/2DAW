@@ -16,10 +16,10 @@
 
 		<form name="frmDatos" id="frmDatos">
 			<label>Fecha1</label>
-			<input type="text" name="txtFechas1" id="txtFecha1" />
+			<input type="date" name="txtFechas1" id="txtFecha1" />
 			<br />
 			<label>Fecha2</label>
-			<input type="text" name="txtFechas2" id="txtFecha2" />
+			<input type="date" name="txtFechas2" id="txtFecha2" />
 			<br />
 
 			<input type="button" value="Aceptar" name="btnAceptar" id="btnAceptar" onclick="obtenerDatos();" />
@@ -40,6 +40,9 @@
 				let diaRes = 0;
 				let mesRes = 0;
 				let añoRes = 0;
+				let diaRes2 = 0;
+				let mesRes2 = 0;
+				let añoRes2 = 0;
 
 				let f1 = new Date(ValorFecha1);
 				let f2 = new Date(ValorFecha2);
@@ -55,25 +58,27 @@
 				// Muestro los valores en los párrafos <p>
 
 				if (f1 < f2) {
-					document.getElementById("Resultado").innerHTML = "La primera fecha es anterior a la segunda fecha";
+					document.getElementById("Resultado").innerHTML = "La primera fecha es mas chica a la segunda fecha";
 
 					diaRes2 = dia2 - dia;
-					mesRes2 = dia2 - mes;
-					añoRes2 = dia2 - año;
+					mesRes2 = mes2 - mes;
+					añoRes2 = año2 - año;
 
-					document.getElementById("Resultado3").innerHTML = "La diferencia de las fechas es: <br>" + "El año" + añoRes2 + "<br>" + "El mes" + mesRes2 + "<br>" + "El dia" + diaRes2;
+					document.getElementById("Resultado3").innerHTML =
+						"La diferencia de las fechas es: <br>" + "El año " + Math.abs(añoRes2) + "<br>" + "El mes " + Math.abs(mesRes2) + "<br>" + "El dia " + Math.abs(diaRes2);
 				} else {
 					document.getElementById("Resultado").innerHTML = "";
 				}
 
-				if (f1 > f2) {
-					document.getElementById("Resultado2").innerHTML = "La segunda fecha es anterior a la primera fecha";
+				if (f2 < f1) {
+					document.getElementById("Resultado2").innerHTML = "La segunda fecha es mas chica a la primera fecha";
 
 					diaRes = dia - dia2;
 					mesRes = mes - mes2;
 					añoRes = año - año2;
 
-					document.getElementById("Resultado3").innerHTML = "La diferencia de las fechas es: <br>" + "El año " + añoRes + "<br>" + "El mes " + mesRes + "<br>" + "El dia " + diaRes;
+					document.getElementById("Resultado3").innerHTML =
+						"La diferencia de las fechas es: <br>" + "El año " + Math.abs(añoRes) + "<br>" + "El mes " + Math.abs(mesRes) + "<br>" + "El dia " + Math.abs(diaRes);
 				} else {
 					document.getElementById("Resultado2").innerHTML = "";
 				}

@@ -30,8 +30,4 @@ while ($fila=mysqli_fetch_assoc($resultado)){
 	
 }
 
-
-
-
-
 ?>
