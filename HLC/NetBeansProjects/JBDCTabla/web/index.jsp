@@ -19,7 +19,23 @@
             <title>JSP Page</title>
         </head>
         <body>
-            <h1><h:outputText value="Hello World!"/></h1>
+            <h1><h:outputText value="Tabla noticias"/></h1>
+            <h:outputText value="#{datosBD1.mensaje}"/>
+            <h:dataTable value="#{datosBD1.rset}" border= "1"  var = "fila">
+            
+            <h:column>
+                
+                <f:facet name = "header">
+                    
+                    <h:outputText value = "id"/>
+                    
+                        
+                </f:facet>
+                
+                <h:outputText value = "#{fila.id}"/>
+
+            </h:column>
+            </h:dataTable>
         </body>
     </html>
 </f:view>
