@@ -1,5 +1,3 @@
-
-
 <?php 
 /*
 Conectar con el servidor de bases de datos y
