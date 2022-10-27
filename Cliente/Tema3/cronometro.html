@@ -23,37 +23,66 @@
 		<script>
 			//https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Regular_Expressions/Cheatsheet
 			//  Crear un script que convierte las palabras mayúsculas de una frase en minúsculas y viceversa.
-			let num = 0;
-			let segundos = 0;
-			let minutos = 0;
-			let verdad = false;
+			let mili = 0;
+			let s = 0;
+			let m = 0;
+			let Inter = 0;
 
 			function tiempo() {
-				const date = new Date();
-				let milisegundos = date.getUTCMilliseconds();
-
-				document.getElementById("Resultado").innerHTML = segundos + ":" + milisegundos;
-
-				if (verdad == true) {
-					FuncionReiniciar();
+				let miliAux = 0;
+				let sAux = 0;
+				let mAux = 0;
+				mili++;
+				if (mili > 99) {
+					s++;
+					mili = 0;
 				}
+
+				if (s > 59) {
+					m++;
+					s = 0;
+				}
+
+				if (m > 59) {
+					m = 0;
+				}
+
+				if (mili < 10) {
+					miliAux = "0" + mili;
+				} else {
+					miliAux = mili;
+				}
+
+				if (s < 10) {
+					sAux = "0" + s;
+				} else {
+					sAux = s;
+				}
+
+				if (m < 10) {
+					mAux = "0" + m;
+				} else {
+					mAux = m;
+				}
+
+				document.getElementById("Resultado").innerHTML = mAux + ":" + sAux + ":" + miliAux;
 			}
 
 			function FuncionIniciar() {
-				verdad = false;
-				num = setInterval(tiempo, 10);
+				tiempo();
+				Inter = setInterval(tiempo, 10);
 			}
 
 			function FuncionParar() {
-				clearInterval(num);
+				clearInterval(Inter);
 			}
 
 			function FuncionReiniciar() {
-				let segundos = 0;
-				let minutos = 0;
-				let milisegundos = 0;
-				verdad = true;
-				document.getElementById("Resultado").innerHTML = "00:00:000";
+				clearInterval(Inter);
+				document.getElementById("Resultado").innerHTML = "00:00:00";
+				let mAux = 0;
+				let sAux = 0;
+				let miliAux = 0;
 			}
 		</script>
 	</body>
