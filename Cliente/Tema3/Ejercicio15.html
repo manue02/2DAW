@@ -14,6 +14,10 @@
 		<p id="Resultado3"></p>
 		<p id="Resultado4"></p>
 
+		<form name="frmDatos" id="frmDatos">
+			<input type="button" value="Pedir DNI" name="btnAceptar" id="btnAceptar" onclick="FuncionIniciar();" />
+		</form>
+
 		<script>
 			//https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Regular_Expressions/Cheatsheet
 			// Realiza un programa que cada 20 segundos (mediante setInterval) solicite un DNI hasta que alguien le escriba la cadena
@@ -23,6 +27,26 @@
 			// Recuperar valores de los input
 
 			// Muestro los valores en los párrafos <p>
+
+			let resto = 0;
+
+			function obtenerDatos() {
+				let numero = prompt("¿Escribe el dni");
+
+				resto = numero % 23;
+
+				let LetrasDnies = ["T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E"];
+
+				if (numero == -1) {
+					console.log(LetrasDnies[resto]);
+					clearInterval(Inter);
+				}
+			}
+
+			function FuncionIniciar() {
+				obtenerDatos();
+				Inter = setInterval(obtenerDatos, 20000);
+			}
 		</script>
 	</body>
 </html>
