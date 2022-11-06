@@ -1,4 +1,4 @@
-#navbar-color {
+.navbar-color {
 	color: #c778dd;
 }
 
@@ -6,6 +6,33 @@
 	background-color: #4b4453;
 }
 
-.body-custom {
+body {
 	background-color: #b0a8b9;
+}
+
+.navbar-letra {
+	font-size: 20px;
+}
+
+.size-img {
+	width: 95%;
+	height: 796px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	border-radius: 45px;
+}
+
+.H1-Custom {
+	font-size: 36px;
+	color: white;
+}
+
+.Form-Radio {
+	border-radius: 15px;
+}
+
+.btn-custom {
+	background-color: #6c6c6c;
+	color: white;
+	font-size: 20px;
 }

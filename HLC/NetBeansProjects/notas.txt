@@ -1,0 +1,5 @@
+para centrar cualquier cosa en css
+
+display: flex;
+justify-content: center;
+align-items: center;
