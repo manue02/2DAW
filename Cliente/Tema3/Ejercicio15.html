@@ -29,6 +29,7 @@
 			// Muestro los valores en los párrafos <p>
 
 			let resto = 0;
+			let Misletras = [];
 
 			function obtenerDatos() {
 				let numero = prompt("¿Escribe el dni");
@@ -36,11 +37,6 @@
 				resto = numero % 23;
 
 				let LetrasDnies = ["T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E"];
-
-				if (numero == -1) {
-					console.log(LetrasDnies[resto]);
-					clearInterval(Inter);
-				}
 			}
 
 			function FuncionIniciar() {
