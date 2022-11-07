@@ -8,10 +8,12 @@
 
 body {
 	background-color: #b0a8b9;
+	font-family: "Fira Code";
+	font-style: normal;
 }
 
 .navbar-letra {
-	font-size: 20px;
+	font-size: 16px;
 }
 
 .size-img {
@@ -35,4 +37,13 @@ body {
 	background-color: #6c6c6c;
 	color: white;
 	font-size: 20px;
+}
+
+.fondo-img {
+	background-image: url(img/2.jpeg);
+	border-radius: 20px 20px 20px 20px;
+}
+
+.letra-blanca {
+	color: white;
 }
