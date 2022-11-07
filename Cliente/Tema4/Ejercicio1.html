@@ -14,12 +14,73 @@
 		<p id="Resultado3"></p>
 		<p id="Resultado4"></p>
 
-		<form name="frmDatos" id="frmDatos">
-			<input type="button" value="Iniciar" name="btnIniciar" id="btnIniciar" onclick="FuncionIniciar();" />
-			<input type="button" value="Parar" name="btnParar" id="btnParar" onclick="FuncionParar();" />
-			<input type="button" value="Reiniciar" name="btnReiniciar" id="btnReiniciar" onclick="FuncionReiniciar();" />
-		</form>
+		<script>
+			// Crear una función constructora de objetos Producto. Dichos productos tendrán tres atributos,
+			// uno de tipo cadena de caracteres llamado nombre, otro de tipo entero llamado unidades y otro
+			// de tipo real llamado precio. Aparte de estos tres atributos también contendría los siguientes métodos:
 
-		<script></script>
+			// valorEnStock: que no recibe parámetros y devuelve el importe total de las unidades disponibles, es decir,
+			// la multiplicación de las unidades por el precio del producto.
+			// incrementarStock: que recibe un entero como parámetro y aumenta el número de unidades en la cantidad
+			// indicada en el parámetro.
+			// disminuirStock: que recibe un entero como parámetro y disminuye el número de unidades
+			// en la cantidad indicada en el parámetro.
+			// Todos los métodos consultores (getter) y modificadores (setter) de los tres atributos descritos
+			// anteriormente, teniendo en cuenta que si por error se intentara modificar el atributo precio con un valor
+			// negativo, este debería guardarse automáticamente como positivo.
+
+			class Productos {
+				constructor(nombre, unidades, precio) {
+					this.nombre = nombre;
+					this.precio = precio;
+					this.unidades = unidaddes;
+				}
+
+				valorEnStock() {
+					let importeTotal = this.precio * this.unidaddes;
+
+					return importeTotal;
+				}
+
+				incrementarStock(num) {
+					let incremento = incremento + this.num;
+
+					return incremento;
+				}
+
+				disminuirStock(num) {
+					let disminuir = disminuir - this.num;
+
+					return disminuir;
+				}
+
+				get nombre() {
+					return this.nombre;
+				}
+
+				set nombre(nombre) {
+					this.nombre = nombre;
+				}
+				get unidades() {
+					return this.unidades;
+				}
+
+				set unidades(unidades) {
+					this.unidades = unidades;
+				}
+				get precio() {
+					return this.precio;
+				}
+
+				set precio(precio) {
+					this.precio = precio;
+				}
+			}
+
+			Prodcuto1 = new Productos("Leche", 23, 2.7);
+			Prodcuto2 = new Productos("Galletas", 6, 2);
+			Prodcuto3 = new Productos("Pizza", 7, 5);
+		</script>
 	</body>
 </html>
+nombre
