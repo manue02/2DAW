@@ -18,7 +18,7 @@ body {
 
 .size-img {
 	width: 95%;
-	height: 796px;
+	height: 796%;
 	margin-top: 30px;
 	margin-bottom: 30px;
 	border-radius: 45px;
@@ -41,9 +41,42 @@ body {
 
 .fondo-img {
 	background-image: url(img/2.jpeg);
-	border-radius: 20px 20px 20px 20px;
+	border-radius: 0px 0px 20px 20px;
 }
 
 .letra-blanca {
 	color: white;
+}
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+	.custom-class-centrar {
+		text-align: center;
+	}
+}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+	.custom-class-izquierda {
+		text-align: left;
+	}
+
+	.custom-class-derecha {
+		text-align: right;
+	}
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+	.custom-class-Pantalla {
+		width: 60%;
+	}
+}
+
+/* // X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+}
+
+/* // XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
 }
