@@ -48,10 +48,20 @@ body {
 	color: white;
 }
 
+.custom-class-centrar-general {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 /* // Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) {
+@media (min-width: 356px) {
 	.custom-class-centrar {
 		text-align: center;
+	}
+
+	.Container-custom {
+		width: 70%;
 	}
 }
 
@@ -64,19 +74,27 @@ body {
 	.custom-class-derecha {
 		text-align: right;
 	}
+	.Container-custom-tablet {
+		width: 70%;
+	}
 }
 
 /* // Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-	.custom-class-Pantalla {
-		width: 60%;
+	.Container-custom-Escritorio {
+		width: 70%;
 	}
-}
 
-/* // X-Large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
-}
+	.custom-class-Derecha-general {
+		display: flex;
+		justify-content: right;
+		align-items: right;
+	}
 
-/* // XX-Large devices (larger desktops, 1400px and up) */
-@media (min-width: 1400px) {
+	.fondo-img-escriorio {
+		background-image: url(img/2.jpeg);
+		border-radius: 20px 20px 20px 20px;
+		margin-top: 2%;
+		margin-left: 2%;
+	}
 }
