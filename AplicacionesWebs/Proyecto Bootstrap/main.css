@@ -36,6 +36,12 @@ body {
 	color: white;
 }
 
+.linea {
+	border: 1px solid #000000;
+	margin-left: 20%;
+	margin-right: 20%;
+}
+
 .Form-Radio {
 	border-radius: 15px;
 }
@@ -52,11 +58,23 @@ body {
 
 .fondo-img {
 	background-image: url(img/2.jpeg);
-	border-radius: 0px 0px 20px 20px;
+	border-radius: 20px 20px 20px 20px;
+}
+
+.fondo-img2 {
+	height: 200px;
 }
 
 .letra-blanca {
 	color: white;
+}
+.muchoMargin {
+	margin-bottom: 25%;
+	padding-top: 9%;
+}
+
+.muhopadding {
+	padding-bottom: 9%;
 }
 
 .custom-class-centrar-general {
@@ -69,14 +87,31 @@ body {
 	background-color: rgba(0, 0, 0, 0.2);
 }
 
+.rectangulo-blanco {
+	background: #d9d9d9;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 23px;
+	width: 90%;
+}
+
 /* // Small devices (landscape phones, 576px and up) */
 @media (min-width: 356px) {
 	.custom-class-centrar {
 		text-align: center;
 	}
-
+	.rectangulo-gris {
+		background: #4b4453;
+		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+		border-radius: 61px;
+		width: 90%;
+	}
 	.Container-custom {
 		width: 70%;
+	}
+
+	.bacground-custom {
+		width: 95%;
+		height: 796px;
 	}
 }
 
@@ -91,6 +126,12 @@ body {
 	}
 	.Container-custom-tablet {
 		width: 70%;
+	}
+	.rectangulo-gris {
+		background: #4b4453;
+		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+		border-radius: 23px;
+		width: 90%;
 	}
 }
 
@@ -119,5 +160,23 @@ body {
 	}
 	.margenEscritorio2 {
 		margin-left: 25%;
+	}
+}
+
+@media (min-width: 1800px) {
+	.final-footer {
+		position: absolute;
+		bottom: 0;
+		background-color: #b0a8b9;
+		width: 100%;
+	}
+}
+
+@media (min-width: 1500px) {
+	.final-footer2 {
+		position: absolute;
+		bottom: 0;
+		background-color: #b0a8b9;
+		width: 100%;
 	}
 }
