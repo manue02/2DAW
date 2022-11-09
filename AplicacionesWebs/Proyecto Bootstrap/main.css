@@ -12,6 +12,13 @@ body {
 	font-style: normal;
 }
 
+.clase-iconos {
+	width: 40px;
+	height: 40px;
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
 .navbar-letra {
 	font-size: 16px;
 }
@@ -39,6 +46,10 @@ body {
 	font-size: 20px;
 }
 
+.btn.btn-custom:hover {
+	background-color: #bdb8b8;
+}
+
 .fondo-img {
 	background-image: url(img/2.jpeg);
 	border-radius: 0px 0px 20px 20px;
@@ -52,6 +63,10 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.footer-custom {
+	background-color: rgba(0, 0, 0, 0.2);
 }
 
 /* // Small devices (landscape phones, 576px and up) */
@@ -81,10 +96,6 @@ body {
 
 /* // Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-	.Container-custom-Escritorio {
-		width: 70%;
-	}
-
 	.custom-class-Derecha-general {
 		display: flex;
 		justify-content: right;
@@ -95,6 +106,18 @@ body {
 		background-image: url(img/2.jpeg);
 		border-radius: 20px 20px 20px 20px;
 		margin-top: 2%;
+		width: 96%;
 		margin-left: 2%;
+	}
+
+	.Desaparecer-Escritorio {
+		display: none;
+	}
+
+	.margenEscritorio {
+		margin-left: 7%;
+	}
+	.margenEscritorio2 {
+		margin-left: 25%;
 	}
 }
