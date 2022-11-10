@@ -19,6 +19,13 @@ body {
 	margin-right: 5%;
 }
 
+.clase-iconos2 {
+	width: 80px;
+	height: 80px;
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
 .navbar-letra {
 	font-size: 16px;
 }
@@ -29,11 +36,6 @@ body {
 	margin-top: 30px;
 	margin-bottom: 30px;
 	border-radius: 45px;
-}
-
-.H1-Custom {
-	font-size: 36px;
-	color: white;
 }
 
 .linea {
@@ -110,8 +112,42 @@ body {
 	}
 
 	.bacground-custom {
-		width: 95%;
-		height: 796px;
+		background-image: url(img/3.jpg);
+		border-radius: 20px 20px 20px 20px;
+		margin-top: 2%;
+		width: 96%;
+		margin-left: 2%;
+	}
+
+	.tamañoNombre {
+		font-size: 20px;
+
+		color: white;
+	}
+
+	.tamañoNombrePeque {
+		font-size: 25px;
+
+		color: white;
+	}
+
+	.unPcoMargin {
+		margin-bottom: 12%;
+	}
+
+	.otroMargin {
+		margin-top: 5%;
+	}
+
+	.H1-Custom {
+		font-size: 80px;
+		margin-bottom: 13%;
+		color: white;
+	}
+
+	.H2-Custom {
+		font-size: 50px;
+		color: white;
 	}
 }
 
@@ -133,6 +169,28 @@ body {
 		border-radius: 23px;
 		width: 90%;
 	}
+
+	.tamañoNombre {
+		font-size: 40px;
+
+		color: white;
+	}
+
+	.tamañoNombrePeque {
+		font-size: 45px;
+
+		color: white;
+	}
+
+	.unPcoMargin {
+		margin-bottom: 5%;
+	}
+
+	.H1-Custom {
+		font-size: 100px;
+		margin-bottom: 13%;
+		color: white;
+	}
 }
 
 /* // Large devices (desktops, 992px and up) */
@@ -141,6 +199,32 @@ body {
 		display: flex;
 		justify-content: right;
 		align-items: right;
+	}
+
+	.tamañoNombre {
+		font-size: 50px;
+
+		color: white;
+	}
+
+	.tamañoNombrePeque {
+		font-size: 45px;
+
+		color: white;
+	}
+
+	.unPcoMargin {
+		margin-bottom: 12%;
+	}
+
+	.otroMargin {
+		margin-top: 5%;
+	}
+
+	.H1-Custom {
+		font-size: 100px;
+		margin-bottom: 13%;
+		color: white;
 	}
 
 	.fondo-img-escriorio {
@@ -172,7 +256,7 @@ body {
 	}
 }
 
-@media (min-width: 1500px) {
+@media (min-width: 2500px) {
 	.final-footer2 {
 		position: absolute;
 		bottom: 0;
