@@ -1,0 +1,72 @@
+.img-custom1 {
+	max-width: 50%;
+}
+
+.MarginUnpoco {
+	margin-top: 15%;
+}
+
+.letra1 {
+	font-size: 50px;
+	color: red;
+	margin-left: 10%;
+}
+
+.letra2 {
+	font-size: 30px;
+	color: black;
+	margin-left: 10%;
+}
+
+.letra3 {
+	font-size: 15px;
+	color: black;
+	margin-left: 10%;
+}
+
+.centrarTodo {
+	display: flex;
+	align-items: center;
+	align-content: center;
+}
+
+.letraFooter {
+	font-size: 30px;
+}
+
+.linearoja {
+	color: red;
+	text-decoration-line: underline;
+}
+.margenRojo {
+	margin-left: 10%;
+	max-width: 85%;
+	margin-top: 10%;
+	margin-bottom: 10%;
+}
+.fondoRojoGeneral {
+	background-color: red;
+}
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 300px) {
+	.parafotosMovil {
+		margin-left: 20%;
+	}
+}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+	.fondoRojo {
+		background-color: red;
+		max-width: 47%;
+	}
+
+	.parafotos {
+		margin-left: 30%;
+	}
+}
