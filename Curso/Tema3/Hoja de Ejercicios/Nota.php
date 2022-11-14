@@ -5,65 +5,65 @@ $nota = $_POST['Notas'];
 
 switch ($nota) {
 
-case 0:
+    case 0:
 
-	echo "SUSPENSO";
+        echo "SUSPENSO";
 
-    break;
+        break;
 
-case 1:
+    case 1:
 
-	echo "SUSPENSO";
+        echo "SUSPENSO";
 
-    break;
-case 2:
+        break;
+    case 2:
 
-	echo "SUSPENSO";
+        echo "SUSPENSO";
 
-    break;
-case 3:
+        break;
+    case 3:
 
-	echo "SUSPENSO";
+        echo "SUSPENSO";
 
-    break;
-case 4:
+        break;
+    case 4:
 
-	echo "SUSPENSO";
+        echo "SUSPENSO";
 
-    break;
-case 5:
+        break;
+    case 5:
 
-	echo "APROBADO";
+        echo "APROBADO";
 
-    break;
-case 6:
+        break;
+    case 6:
 
-	echo "APROBADO";
+        echo "APROBADO";
 
-    break;
-case 7:
+        break;
+    case 7:
 
-	echo "NOTABLE";
+        echo "NOTABLE";
 
-    break;
-case 8:
+        break;
+    case 8:
 
-	echo "NOTABLE";
+        echo "NOTABLE";
 
-    break;
-case 9:
+        break;
+    case 9:
 
-	echo "SOBRESALIENTE";
+        echo "SOBRESALIENTE";
 
-    break;
-case 10:
+        break;
+    case 10:
 
-	echo "SOBRESALIENTE";
+        echo "SOBRESALIENTE";
 
-    break;
+        break;
 
-default:
-print "Valor incorrecto";
+    default:
+        print "Valor incorrecto";
 }
 
 ?>

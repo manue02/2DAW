@@ -1,8 +1,8 @@
 <?php
 
- $numero = $_POST['numero'];
+$numero = $_POST['numero'];
 
- $otro = 0;
+$otro = 0;
 $resultado = 0;
 
 while ($otro < 10) {
@@ -12,9 +12,9 @@ while ($otro < 10) {
 
 	$resultado = $numero * $otro;
 
-	echo  $numero  . "x" . $otro . "=" . $resultado .  "<br>";
+	echo $numero . "x" . $otro . "=" . $resultado . "<br>";
 
 }
 
 
-?> 
+?>
