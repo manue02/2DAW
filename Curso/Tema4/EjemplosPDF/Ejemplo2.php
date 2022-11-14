@@ -3,7 +3,6 @@ $a=array("a","b","c","d","e");
 $b=array(
  "uno" =>"Primer valor",
  "dos" =>"Segundo valor", 
-7
  "tres" =>"Tercer valor"
 );
 foreach($a as $indice=>$valor) {

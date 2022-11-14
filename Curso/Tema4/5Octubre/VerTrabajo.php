@@ -80,9 +80,9 @@ foreach ($capacidades as $Trabajador => $Contenido) {
 $tieneCapacidad=false;
  $tieneEstudios=false;
 
-if (isset( )){   
-      $tieneCapacidad=true;
-    }
+// //if (isset( )){   
+//       $tieneCapacidad=true;
+//     }
 
         if (isset($Contenido["Estudios"]))
           $tieneEstudios=false;

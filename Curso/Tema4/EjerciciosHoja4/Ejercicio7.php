@@ -18,9 +18,9 @@ $Operacion["Prodcuto"] = $a / $b;
 $Operacion["Multiplicacion"] = $a * $b;
 
 
-if ($) {
+// if ($) {
     
-}
+// }
 
 return Operacion;
 

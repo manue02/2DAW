@@ -39,7 +39,7 @@ unset($a[0]);
 echo "Nueva dimensión de a: ",count($a),"<br>";
 echo "La dimensión de b es: ",count($b),"<br>";
 unset($b);
-echo "Nueva dimensión de b: ",count($b),"<br>";
+//echo "Nueva dimensión de b: ",count($b),"<br>";
 echo " ¿Sigue definida la variable b ? ",isset($b),"<br>";
 ?>
 
