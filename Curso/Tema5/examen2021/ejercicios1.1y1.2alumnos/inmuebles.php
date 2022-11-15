@@ -33,8 +33,8 @@ $resultado = mysqli_query($conexion, $sql);
 
                     <?php
 
-                    $ResultadoConsulta = pintarCheckBox();
-
+                    $arrayViviendas = obtenerArrayOpciones("tipos_vivienda", "id", "nombre");
+                    pintarCheckBox($arrayViviendas, "checkViviendas");
 
                     ?>
                 </td>
@@ -45,6 +45,8 @@ $resultado = mysqli_query($conexion, $sql);
                 <td>
                     <?php
 
+                    $arrayLocalidad = obtenerArrayOpciones("localidades", "id", "nombre");
+                    pintarComboMensaje($arrayLocalidad, "ComboLocalidad", "Todas", 0);
 
                     ?>
                 </td>
