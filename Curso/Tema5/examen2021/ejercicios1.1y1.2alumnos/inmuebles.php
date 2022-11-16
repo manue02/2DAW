@@ -12,7 +12,7 @@ $sql = "SELECT  'nombre' FROM 'tipos_vivienda' WHERE 1";
 
 
 $resultado = mysqli_query($conexion, $sql);
-
+include("funcionesBD.php");
 ?>
 
 <html>
@@ -23,7 +23,7 @@ $resultado = mysqli_query($conexion, $sql);
 
 <body>
     <h1>Inmobiliaria</h1>
-    <form action="listado.php" method="post">
+    <fors interactivom action="listado.php" method="post">
         <p>Mostrar los inmuebles a la venta:
         <table cellpadding="10" cellspacing="8">
             <tr>
@@ -67,7 +67,7 @@ $resultado = mysqli_query($conexion, $sql);
             </tr>
 
         </table>
-    </form>
+        </form>
 
 
 

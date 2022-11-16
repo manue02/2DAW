@@ -1,5 +1,17 @@
 <!-- listado.php -->
-<?php header('Content-Type: text/html; charset=UTF-8'); ?>
+<?php header('Content-Type: text/html; charset=UTF-8');
+
+
+$conexion = mysqli_connect("localhost", "root", "", "ejercicio1")
+    or die("No conecta");
+
+
+$sql = "SELECT  'nombre' FROM 'tipos_vivienda' WHERE 1";
+
+
+$resultado = mysqli_query($conexion, $sql);
+
+?>
 <html>
 
 <head>
@@ -17,10 +29,15 @@
             <th>Precio</th>
         </tr>
         <tr>
+            <?php
+
+
+            echo "
             <td></td>
             <td></td>
             <td></td>
-            <td></td>
+            <td></td>";
+            ?>
         </tr>
     </table>
 </body>
