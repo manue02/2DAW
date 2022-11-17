@@ -6,7 +6,7 @@ header('Content-Type: text/html; charset=UTF-8');
 
 $conexion = mysqli_connect("localhost", "root", "", "ejercicio1")
     or die("No conecta");
-
+mysqli_set_charset($conexion, "utf8");
 
 $sql = "SELECT  'nombre' FROM 'tipos_vivienda' WHERE 1";
 
