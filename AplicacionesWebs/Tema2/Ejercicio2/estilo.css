@@ -1,0 +1,63 @@
+/* .btn {
+	background-color: #00a0d6;
+	color: white;
+	 transition: background-color 5s, color 5s;  si pones all se pone todo los estlos
+     transition: all 5s;  
+	transition: all 5s ease 0s;
+}
+
+.btn:hover {
+	background-color: red;
+	color: black;
+} */
+
+/* .btn {
+	position: relative;
+}
+
+.content {
+	position: absolute;
+}
+
+.btn:hover .top {
+	top: 0px;
+}
+
+.top {
+	top: 100;
+}
+
+.bottom {
+	top: 200px;
+}
+
+.btn:hover .bottom {
+	top: 100px;
+} */
+
+.top {
+	top: 0px;
+}
+
+.btn:hover .top {
+	top: -100px;
+}
+
+.bottom {
+	top: 100px;
+}
+
+.btn:hover .bottom {
+	top: 0px;
+}
+
+.content {
+	position: relative;
+	transition: 1s;
+}
+
+.btn {
+	position: absolute;
+	top: 100px;
+	overflow: hidden;
+}
