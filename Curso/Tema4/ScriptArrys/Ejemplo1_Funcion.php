@@ -9,11 +9,12 @@
 $a = 5;
 $b = 47;
 
-a1();
+//a1(); da error esta
 
 a2();
 
-a3();
+// a3(); da error esta esta echo asi para aprender las dos
+
 
 echo "El valor de $a HA CAMBIADO despues de ejecutar a3 es: ", $a, "<br>";
 echo "El valor de $b NO HA CAMBIADO despues de ejecutar a3 es: ", $b, "<br>";
@@ -26,11 +27,11 @@ a4();
 
 #declaración de funciones.
 
-function a1()
-{
-	echo "Este es el valor de " . '$a' . " en la función a1: ", $a, "<br>";
-	echo "Este es el valor de " . '$b' . " en la función a1: ", $b, "<br>";
-}
+// function a1()
+// {
+// 	echo "Este es el valor de " . '$a' . " en la función a1: ", $a, "<br>";
+// 	echo "Este es el valor de " . '$b' . " en la función a1: ", $b, "<br>";
+// }
 
 
 function a2()
