@@ -6,8 +6,11 @@ $conexion = mysqli_connect("localhost", "root", "", "ejercicio1")
     or die("No conecta");
 mysqli_set_charset($conexion, "utf8");
 
-$sql = "SELECT  'nombre' FROM 'tipos_vivienda' WHERE 1";
+$sql = "SELECT localidades.nombre , propiedades.domicilio , tipos_vivienda.nombre , propiedades.precio FROM propiedades 
+inner join localidades on propiedades.localidad=localidades.id 
+inner join tipos_vivienda on propiedades.tipo=tipos_vivienda.id AND propiedades.vendida LIKE \'%NO%\'";
 
+echo $sql;
 
 $resultado = mysqli_query($conexion, $sql);
 

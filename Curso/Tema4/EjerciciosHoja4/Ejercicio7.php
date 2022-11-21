@@ -1,5 +1,3 @@
-
-
 <?php
 
 #7. Cree una función que reciba un par de números a y b como argumento y devuelva como resultado un
@@ -10,21 +8,21 @@
 #Haga uso de esta función para crear una página web en que se muestren los resultados de las distintas
 #operaciones indicadas para las combinaciones de los número de 5 al 9, tal y como se muestra a continuación: 
 
-function($a , $b){
+function ($a, $b) {
 
-$Operacion["Suma"]= $a + $b;
-$Operacion["Resta"]= $a - $b;
-$Operacion["Prodcuto"] = $a / $b;
-$Operacion["Multiplicacion"] = $a * $b;
+    $Operacion["Suma"] = $a + $b;
+    $Operacion["Resta"] = $a - $b;
+    $Operacion["Prodcuto"] = $a / $b;
+    $Operacion["Multiplicacion"] = $a * $b;
 
 
-// if ($) {
-    
-// }
+    // if ($) {
 
-return Operacion;
+    // }
+
+    return $Operacion;
 
 }
 
 
-?>
+    ?>

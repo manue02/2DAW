@@ -8,10 +8,10 @@ $conexion = mysqli_connect("localhost", "root", "", "ejercicio1")
     or die("No conecta");
 mysqli_set_charset($conexion, "utf8");
 
-$sql = "SELECT  'nombre' FROM 'tipos_vivienda' WHERE 1";
-
+$sql = "SELECT DISTINCT  localidades.nombre as Nombre FROM propiedades inner join localidades on propiedades.localidad=localidades.id";
 
 $resultado = mysqli_query($conexion, $sql);
+
 include("funcionesBD.php");
 ?>
 
@@ -23,7 +23,7 @@ include("funcionesBD.php");
 
 <body>
     <h1>Inmobiliaria</h1>
-    <fors interactivom action="listado.php" method="post">
+    <form interactivom action="listado.php" method="post">
         <p>Mostrar los inmuebles a la venta:
         <table cellpadding="10" cellspacing="8">
             <tr>
@@ -44,9 +44,16 @@ include("funcionesBD.php");
                 <td>Localidad:</td>
                 <td>
                     <?php
+                    echo "<p><select name='" . 'comboLocalidades' . "'>";
+                    echo "<option value='" . 0 . "'>" . 'Todas' . "</option>";
+                    while ($fila = mysqli_fetch_assoc($resultado)) {
+                        extract($fila);
 
-                    $arrayLocalidad = obtenerArrayOpciones("localidades", "id", "nombre");
-                    pintarComboMensaje($arrayLocalidad, "ComboLocalidad", "Todas", 0);
+                        echo "<option>" . $Nombre . "</option>";
+
+                    }
+
+                    echo "</select></p>";
 
                     ?>
                 </td>
@@ -67,7 +74,7 @@ include("funcionesBD.php");
             </tr>
 
         </table>
-        </form>
+    </form>
 
 
 
