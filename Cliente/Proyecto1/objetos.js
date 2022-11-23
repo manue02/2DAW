@@ -113,7 +113,7 @@ class Reserva {
 	constructor(idReserva, cliente, alojamientos, fechaInicio, fechaFin) {
 		this.#idReserva = idReserva;
 		this.#cliente = cliente;
-		this.#alojamientos = alojamientos;
+		this.#alojamientos = [];
 		this.#fechaInicio = fechaInicio;
 		this.#fechaFin = fechaFin;
 	}

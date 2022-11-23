@@ -1,0 +1,11 @@
+.modal-close {
+	font-size: 200%;
+	right: 15px;
+	top: 0;
+	position: absolute;
+	transition: transform 4s;
+}
+
+.modal-close:hover {
+	transform: rotate(360deg) scale(4) translateX(-10);
+}
