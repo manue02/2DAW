@@ -1,4 +1,4 @@
-<?php 
+<?php
 /*
 Diseña una página que contenga un formulario y un script que permitan añadir datos a la
 tabla1. Se
@@ -10,8 +10,8 @@ controlará antes de realizar la inserción si el DNI introducido existe en la t
 
 
 
-$conexion=mysqli_connect("localhost","root","","Practicas")
-or die ("No conecta");
+$conexion = mysqli_connect("localhost", "root", "", "Practicas")
+    or die("No conecta");
 
 $sql = "SELECT Apellido1, Apellido2\n"
 
@@ -36,43 +36,38 @@ echo '<form action=" " method="POST">
 		 <input type="submit" value="Consultar">
     </form>';
 
-     
-        $vapellidos = $_POST['txtApellido1'];
-        $vapellidos2 = $_POST['txtApellido2'];
-        
 
- mysqli_query($conexion,$sql); 
+$vapellidos = $_POST['txtApellido1'];
+$vapellidos2 = $_POST['txtApellido2'];
 
 
- if (mysqli_errno($conexion)==0){echo "<h2>Consulta echa</b></H2>"; 
-
- }else{ 
-
-if (mysqli_errno($conexion)==1062){echo "<h2>No se a podido hacer la cosulta</h2>"; 
-
-}else{ 
-
-$numerror=mysqli_errno($conexion); 
-
-$descrerror=mysqli_error($conexion); 
-
-echo "Se ha producido un error  $numerror que corresponde a: $descrerror  <br>"; 
-
-} 
+mysqli_query($conexion, $sql);
 
 
+if (mysqli_errno($conexion) == 0) {
+    echo "<h2>Consulta echa</b></H2>";
 
-} 
+} else {
+
+    if (mysqli_errno($conexion) == 1062) {
+        echo "<h2>No se a podido hacer la cosulta</h2>";
+
+    } else {
+
+        $numerror = mysqli_errno($conexion);
+
+        $descrerror = mysqli_error($conexion);
+
+        echo "Se ha producido un error  $numerror que corresponde a: $descrerror  <br>";
+
+    }
 
 
-mysqli_close($conexion); 
+
+}
+
+
+mysqli_close($conexion);
 
 
 ?>
-
-
-
-
-
-
-

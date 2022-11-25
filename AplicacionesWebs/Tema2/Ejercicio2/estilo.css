@@ -61,3 +61,36 @@
 	top: 100px;
 	overflow: hidden;
 }
+
+/* estado inicial */
+#outerspace {
+	position: relative;
+	height: 400px;
+	width: 800px;
+	background: #0c0440 url("../imagenes/outerspace.jpg") repeat scroll left bottom;
+	color: #fff;
+
+	transition: background-position 10s linear 0s;
+}
+
+#sol {
+	border-radius: 50%;
+	width: 20px;
+	height: 20px;
+	background-color: yellow;
+}
+
+#outerspace #sol {
+	transition: transform 10s linear 0s, background-color 5s ease 5s;
+}
+
+#outerspace:hover #sol {
+	background-color: red;
+	transform: translate(760px, 360px) scale(2, 2);
+	transition: transform 5s linear 0s, background-color 5s ease 1s;
+}
+
+#outerspace:hover {
+	background-position: -100% 0%;
+	transition: background-position 5s linear 0s;
+}
