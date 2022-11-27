@@ -9,15 +9,13 @@ $conexion = mysqli_connect("localhost", "root", "", "ejercicio1")
 mysqli_set_charset($conexion, "utf8");
 
 
-
+//AND localidades.nombre LIKE '%$comboLocalidades%'
 
 $select = "SELECT localidades.nombre as nombre, propiedades.domicilio as domicilio, tipos_vivienda.nombre as vivienda , propiedades.precio as precio ";
 $from = " FROM propiedades inner join localidades on propiedades.localidad=localidades.id inner join tipos_vivienda on propiedades.tipo=tipos_vivienda.id";
-$where = " WHERE true  ";
+$where = " WHERE true   ";
 
-if ($comboLocalidades != 0) {
-    $where .= " AND localidades.nombre LIKE '%$comboLocalidades%'";
-}
+
 
 echo $select . $from . $where;
 

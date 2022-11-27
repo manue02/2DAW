@@ -9,7 +9,7 @@ $conexion = mysqli_connect("localhost", "root", "", "ejercicio1")
 mysqli_set_charset($conexion, "utf8");
 
 $sql = "SELECT DISTINCT  localidades.nombre as Nombre FROM propiedades inner join localidades on propiedades.localidad=localidades.id";
-
+echo $sql;
 $resultado = mysqli_query($conexion, $sql);
 
 include("funcionesBD.php");
