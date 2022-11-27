@@ -45,7 +45,7 @@ include("funcionesBD.php");
                 <td>
                     <?php
                     echo "<p><select name='" . 'comboLocalidades' . "'>";
-                    echo "<option value='" . 0 . "'>" . 'Todas' . "</option>";
+                    echo "<option value='" . 0 . "' name='" . 'cero' . "'>" . 'Todas' . "</option>";
                     while ($fila = mysqli_fetch_assoc($resultado)) {
                         extract($fila);
 
