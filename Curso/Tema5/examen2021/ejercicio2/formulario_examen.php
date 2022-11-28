@@ -5,6 +5,11 @@
 </head>
 
 <body>
+    <?php
+    $conexion = new mysqli("localhost", "root", "", "candidatos");
+    $conexion->set_charset("utf8");
+    include("funcionesBD.php");
+    ?>
     <center>
         <h4>Formulario de altas</h4>
     </center>
@@ -43,6 +48,12 @@
                         cada uno de ellos con la tecla<br>
                         <b>Ctrl</b> presionada</i>)</td>
                 <td align="left">
+                    <?php
+
+                    $array = obtenerArrayOpciones("tecnos", "id", "nombre");
+                    pintarComboMultiple($array, "idiomas");
+
+                    ?>
                 </td>
             <tr>
 

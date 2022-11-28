@@ -1,13 +1,13 @@
 <!-- listado.php -->
 <?php header('Content-Type: text/html; charset=UTF-8');
-extract($_POST);
 
 include('funcionesBd.php');
 
 $conexion = mysqli_connect("localhost", "root", "", "ejercicio1")
     or die("No conecta");
 mysqli_set_charset($conexion, "utf8");
-
+extract($_POST);
+$cero = $_POST['comboLocalidades'];
 
 //AND localidades.nombre LIKE '%$comboLocalidades%'
 
@@ -22,8 +22,19 @@ echo $select . $from . $where;
 $orderby = "  AND propiedades.vendida LIKE '%NO%' ORDER BY precio ASC";
 $sql = $select . $from . $where . $orderby;
 
-//echo $sql;
+//echo $contador;
 
+
+if ($cero == 0) {
+    echo "esto es la opcion todas ";
+}
+
+if ($cero == "") {
+
+
+    echo "es mayor a 0";
+
+}
 $resultado = mysqli_query($conexion, $sql);
 
 
