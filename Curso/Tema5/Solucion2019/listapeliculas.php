@@ -24,11 +24,7 @@
   $from = " FROM peliculas inner join personas  on peliculas.id_autor=personas.id";
   $from .= " INNER JOIN idiomas ON peliculas.id_idioma=idiomas.id INNER JOIN company on peliculas.id_company=company.id";
   $where = " WHERE true  ";
-  // echo $select . $from . $where;
-  
-  // La única razón por la que haré algo así es si tengo una lista de posibles condiciones que puedo agregar a la consulta y 
-  // quiero asegurarme de que haya al menos una condición para que todo lo demás pueda tener AND antes. El uso de esas condiciones 
-  // no tiene ningún otro efecto en una consulta, solo le dicen que devuelva todas las filas.
+  //echo $select.$from.$where;
   if ($aid != 0) {
     $where .= " AND peliculas.id_autor=$aid";
   }
@@ -52,7 +48,7 @@
   $resultSet = mysqli_query($conexion, $cadenasql);
   $hay = mysqli_num_rows($resultSet);
   echo mostrarSelect($resultSet);
-  echo $select . $from . $where;
+  //echo $select . $from . $where;
   ?>
 </body>
 

@@ -1,4 +1,12 @@
-<?php header('Content-Type: text/html; charset=UTF-8'); ?>
+<?php header('Content-Type: text/html; charset=UTF-8');
+include('funcionesBd.php');
+
+$conexion = mysqli_connect("localhost", "root", "", "ejercicio1")
+    or die("No conecta");
+mysqli_set_charset($conexion, "utf8");
+$condicion = " AND propiedades.vendida LIKE '%NO%'";
+
+?>
 <html>
 
 <head>
@@ -13,7 +21,15 @@
             <tr>
                 <td>
                     Vivienda:</td>
-                <td></td>
+                <td>
+
+                    <?php
+
+                    $arrayViviendas = obtenerArrayOpcionesFiltrado("propiedades", "numpropiedad", "domicilio", $condicion);
+                    pintarCombo($arrayViviendas, "checkViviendas");
+
+                    ?>
+                </td>
             </tr>
             <tr>
                 <td>Cliente:</td>

@@ -1,18 +1,42 @@
 <!-- listado.php -->
 <?php header('Content-Type: text/html; charset=UTF-8');
 
+include('funcionesBd.php');
 
 $conexion = mysqli_connect("localhost", "root", "", "ejercicio1")
     or die("No conecta");
 mysqli_set_charset($conexion, "utf8");
+extract($_POST);
+$cero = $_POST['comboLocalidades'];
 
-$sql = "SELECT localidades.nombre , propiedades.domicilio , tipos_vivienda.nombre , propiedades.precio FROM propiedades 
-inner join localidades on propiedades.localidad=localidades.id 
-inner join tipos_vivienda on propiedades.tipo=tipos_vivienda.id AND propiedades.vendida LIKE \'%NO%\'";
+//AND localidades.nombre LIKE '%$comboLocalidades%'
 
-echo $sql;
+$select = "SELECT localidades.nombre as nombre, propiedades.domicilio as domicilio, tipos_vivienda.nombre as vivienda , propiedades.precio as precio ";
+$from = " FROM propiedades inner join localidades on propiedades.localidad=localidades.id inner join tipos_vivienda on propiedades.tipo=tipos_vivienda.id";
+$where = " WHERE true   ";
 
+
+
+echo $select . $from . $where;
+
+$orderby = "  AND propiedades.vendida LIKE '%NO%' ORDER BY precio ASC";
+$sql = $select . $from . $where . $orderby;
+
+//echo $contador;
+
+
+if ($cero == 0) {
+    echo "esto es la opcion todas ";
+}
+
+if ($cero == "") {
+
+
+    echo "es mayor a 0";
+
+}
 $resultado = mysqli_query($conexion, $sql);
+
 
 ?>
 <html>
@@ -31,18 +55,29 @@ $resultado = mysqli_query($conexion, $sql);
             <th>Tipo de Vivienda</th>
             <th>Precio</th>
         </tr>
-        <tr>
-            <?php
+        <?php
+
+        while ($fila = mysqli_fetch_assoc($resultado)) {
+            extract($fila);
 
 
-            echo "
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>";
-            ?>
-        </tr>
+            echo ' <tr>
+            <td>' . $nombre . '</td>
+            <td> ' . $domicilio . '</td>
+            <td> ' . $vivienda . '</td>
+            <td> ' . $precio . '</td>
+        </tr>';
+        }
+
+
+
+
+
+        ?>
     </table>
+
+
 </body>
+
 
 </html>
