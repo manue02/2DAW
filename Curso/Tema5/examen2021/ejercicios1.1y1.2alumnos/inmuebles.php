@@ -9,8 +9,17 @@ $conexion = mysqli_connect("localhost", "root", "", "ejercicio1")
 mysqli_set_charset($conexion, "utf8");
 
 $sql = "SELECT DISTINCT  localidades.nombre as Nombre FROM propiedades inner join localidades on propiedades.localidad=localidades.id";
+$sqlMaxPre = "SELECT precio FROM propiedades WHERE propiedades.vendida LIKE '%NO%' ORDER BY precio LIMIT 1";
+$sqlMinPre = "SELECT precio FROM propiedades WHERE propiedades.vendida LIKE '%NO%' ORDER BY precio DESC LIMIT 1";
+
+
+
 echo $sql;
+
 $resultado = mysqli_query($conexion, $sql);
+$Max = mysqli_query($conexion, $sqlMaxPre);
+$Min = mysqli_query($conexion, $sqlMinPre);
+
 
 include("funcionesBD.php");
 ?>
@@ -47,7 +56,7 @@ include("funcionesBD.php");
 
                     echo "<p><select name='" . 'comboLocalidades' . "'>";
 
-                    echo "<option value='" . 0 . "' name='" . 'cero' . "'>" . 'Todas' . "</option>";
+                    echo "<option value='" . 1 . "' name='" . 'cero' . "'>" . 'Todas' . "</option>";
                     while ($fila = mysqli_fetch_assoc($resultado)) {
 
                         extract($fila);
@@ -64,7 +73,26 @@ include("funcionesBD.php");
 
             <tr>
                 <td>Precio entre</td>
-                <td> <input type="text" name="minimo" /> y <input type="text" name="maximo" /></td>
+                <?php
+                while ($fila = mysqli_fetch_assoc($Max)) {
+
+                    extract($fila);
+
+
+                }
+                echo "<td> <input type='text' name='minimo' value=" . $precio . " /> ";
+                ?>
+
+                <?php
+                while ($fila = mysqli_fetch_assoc($Min)) {
+
+                    extract($fila);
+
+
+                }
+                echo "y <input type='text' name='maximo'  value=" . $precio . " /></td>";
+
+                ?>
             </tr>
             <tr>
                 <td>Ordenar precios </td>

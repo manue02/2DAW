@@ -4,7 +4,7 @@ include('funcionesBd.php');
 $conexion = mysqli_connect("localhost", "root", "", "ejercicio1")
     or die("No conecta");
 mysqli_set_charset($conexion, "utf8");
-$condicion = " AND propiedades.vendida LIKE '%NO%'";
+$condicion = "propiedades.vendida LIKE '%NO%'";
 
 ?>
 <html>
@@ -35,6 +35,12 @@ $condicion = " AND propiedades.vendida LIKE '%NO%'";
                 <td>Cliente:</td>
                 <td>
 
+                    <?php
+
+                    $arrayViviendas = obtenerArrayOpcionesFiltrado("propiedades", "numpropiedad", "domicilio", $condicion);
+                    pintarCombo($arrayViviendas, "checkViviendas");
+
+                    ?>
                 </td>
             </tr>
             <tr>

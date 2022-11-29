@@ -7,34 +7,49 @@ $conexion = mysqli_connect("localhost", "root", "", "ejercicio1")
     or die("No conecta");
 mysqli_set_charset($conexion, "utf8");
 extract($_POST);
-$cero = $_POST['comboLocalidades'];
 
-//AND localidades.nombre LIKE '%$comboLocalidades%'
+
+//
 
 $select = "SELECT localidades.nombre as nombre, propiedades.domicilio as domicilio, tipos_vivienda.nombre as vivienda , propiedades.precio as precio ";
 $from = " FROM propiedades inner join localidades on propiedades.localidad=localidades.id inner join tipos_vivienda on propiedades.tipo=tipos_vivienda.id";
-$where = " WHERE true   ";
+$where = " WHERE true ";
+$orderby = "  AND propiedades.vendida LIKE '%NO%'";
 
 
-
-echo $select . $from . $where;
-
-$orderby = "  AND propiedades.vendida LIKE '%NO%' ORDER BY precio ASC";
-$sql = $select . $from . $where . $orderby;
 
 //echo $contador;
 
+if ($orden == 1) {
 
-if ($cero == 0) {
+
+    $orderby .= "  ORDER BY precio ASC";
+
+} else {
+
+    $orderby .= "  ORDER BY precio DESC";
+
+}
+
+if ($comboLocalidades != 1) {
+    echo "NO ES TODAS ";
+
+    $where = " WHERE true AND localidades.nombre LIKE '%$comboLocalidades%'";
+
+
+} else {
     echo "esto es la opcion todas ";
+
+    $where = " WHERE true ";
 }
 
-if ($cero == "") {
-
-
-    echo "es mayor a 0";
-
+foreach ($checkViviendas as $valor => $idPro) {
+    $where .= " AND tipos_vivienda.id=$idPro";
 }
+echo $select . $from . $where . $orderby;
+$sql = $select . $from . $where . $orderby;
+
+
 $resultado = mysqli_query($conexion, $sql);
 
 
@@ -71,7 +86,7 @@ $resultado = mysqli_query($conexion, $sql);
 
 
 
-
+        var_dump($checkViviendas);
 
         ?>
     </table>
