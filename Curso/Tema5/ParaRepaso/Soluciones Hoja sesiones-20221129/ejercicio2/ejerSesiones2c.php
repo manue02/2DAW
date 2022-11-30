@@ -1,0 +1,1 @@
+<?php 	session_start();		if (isset($_SESSION["nombreCorrecto"]))		echo "Bienvenido".$_SESSION["nombreCorrecto"];	else		echo "Acceso no autorizado";	?><html><body><a href="ejerSesiones2a.php">Ir a la primerá página</a></body></html>

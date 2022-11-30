@@ -1,0 +1,1 @@
+<?php 	session_start();?><html><head> <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Formulario de entrada del dato</title></head><body><form method="post" action="ejerSesiones2b.php">Ingrese su email:<input type="text" name="email" value=''><br><input type="submit" value="confirmar"></form></body></html>

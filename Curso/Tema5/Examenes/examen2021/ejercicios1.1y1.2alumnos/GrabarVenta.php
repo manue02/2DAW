@@ -93,29 +93,24 @@ echo $sql1;
 		<tr>
 			<td colspan="2"><input type="submit" name="submit" value="Grabar" />
 			<td colspan="2"><input type="submit" name="cancelar" value="Cancelar" /></td>
-			<?php
 
-            $sql4 = "UPDATE propiedades\n"
-
-            	. "SET domicilio = 'Avenida de España 24', vendida = 'SI' , precio = '1265000'\n"
-
-            	. "WHERE propiedades.domicilio = 'Avenida de España 23'";
-            $resultado3 = mysqli_query($conexion, $sql4);
-            echo $sql4;
-
-
-            ?>
 		</tr>
-
-
-
 </table>
 </form>
+
 <?php
-//para grabar la fecha en mysql 
-$hoy = date('Y-m-d');
-/* si se pulsa cancelar
-header("Location:DatosVenta.php");
-*/
+
+if (isset($_POST["submit"])) {
+	$hoy = date('Y-m-d');
+	$cadInsert = "INSERT INTO ventas VALUES('" . $_POST["dniCliente"] . "'," . $_POST["numpropiedad"] . "," . $_POST["precio"] . ",'" . $hoy . "')";
+	$accion1 = $conexion->query($cadInsert);
+	$cadUpdate = "UPDATE propiedades SET VENDIDA='SI' WHERE numpropiedad=" . $_POST["numpropiedad"];
+	$accion2 = $conexion->query($cadUpdate);
+	echo "Venta Grabada";
+
+}
+if (isset($_POST['cancelar'])) {
+	header("Location:DatosVenta.php");
+}
 
 ?>
