@@ -20,6 +20,13 @@ class Alojamineto {
 	set numPersonas(value) {
 		this.#numPersonas = value;
 	}
+
+	toHTMLRow() {
+		let fila = "<tr>";
+		fila += "<td>" + this.idAlojamiento + "</td>";
+		fila += "<td>" + this.numPersonas + "</td></tr>";
+		return fila;
+	}
 }
 
 class Habitacion extends Alojamineto {
@@ -34,6 +41,12 @@ class Habitacion extends Alojamineto {
 	}
 	set desayuno(value) {
 		this.#desayuno = value;
+	}
+	toHTMLRow() {
+		let fila = super.toHTMLRow();
+		fila = fila.slice(0, fila.length - 5); // Para quitar el </tr>
+		fila += "<td>" + this.desayuno + "</td></tr>";
+		return fila;
 	}
 }
 
@@ -160,9 +173,9 @@ class Agencia {
 	#alojamientos;
 
 	constructor(clientes, reservas, alojamientos) {
-		this.#clientes = clientes;
-		this.#reservas = reservas;
-		this.#alojamientos = alojamientos;
+		this.#clientes = [];
+		this.#reservas = [];
+		this.#alojamientos = [];
 	}
 
 	get clientes() {
@@ -184,5 +197,32 @@ class Agencia {
 	}
 	set alojamientos(value) {
 		this.#alojamientos = value;
+	}
+}
+
+function AltaUsuario(ClienteP) {
+	if (this.clientes.some((ClienteP) => Cliente.idCliente == Cliente.ClienteP)) {
+		alert("El usuario ya existe");
+	} else {
+		this.Cliente.push(this.ClienteP);
+		alert("El usuario se a añadido");
+	}
+}
+
+function AltaAlojamiento(alojamientosP) {
+	if (this.Alojamineto.some((AlojaminetoP) => Alojamineto.idAlojamiento == Alojamineto.alojamientosP)) {
+		alert("El alojamiento ya existe");
+	} else {
+		this.Alojamineto.push(this.alojamientosP);
+		alert("El alojamiento se a añadido");
+	}
+}
+
+function AltaReserva(reservasP) {
+	if (this.Reserva.some((ReservaP) => Reserva.idReserva == Reserva.reservasP)) {
+		alert("La reserva ya exite");
+	} else {
+		this.Reserva.push(this.reservasP);
+		alert("La reserva se a añadido");
 	}
 }
