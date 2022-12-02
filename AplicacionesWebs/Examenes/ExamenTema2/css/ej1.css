@@ -1,0 +1,33 @@
+#ej1 {
+	background-image: url("/AplicacionesWebs/Examenes/ExamenTema2/imagenes/nubes.jpg");
+}
+
+#ej1:hover {
+	transition: background-position 4s;
+	background-position: -100% 0%;
+}
+
+#ironman {
+	animation: ironman;
+	animation-duration: 10s;
+	animation-direction: initial;
+	animation-iteration-count: infinite;
+}
+
+@keyframes ironman {
+	0% {
+		transform: rotate(135deg);
+	}
+
+	30% {
+		transform: translate(1200px) translateY(220px);
+	}
+
+	60% {
+		transform: translateX(1200px) translateY(260px);
+	}
+
+	100% {
+		transform: translateX(1200px) translateY(-260px) scale(3);
+	}
+}

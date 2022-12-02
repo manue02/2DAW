@@ -5,7 +5,7 @@
 	width: 800px;
 	background: #0c0440 url("../imagenes/outerspace.jpg") repeat scroll left bottom;
 	color: #fff;
-	transition: 4s;
+	transition: background-position 4s;
 }
 
 #sol {
@@ -16,16 +16,14 @@
 }
 
 #outerspace #sol {
-	transition: transform 10s, background-color 5s;
+	transition: transform 5s, background-color 5s;
 }
 
 #outerspace:hover #sol {
 	background-color: red;
 	transform: translate(770px, 370px) scale(2);
-	transition: 4s;
 }
 
 #outerspace:hover {
 	background-position: -100% 0%;
-	transition: background-position 4s;
 }
