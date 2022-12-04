@@ -17,8 +17,73 @@
 	align-items: center;
 }
 
-.foto {
-	vertical-align: middle;
+.fondo {
+	background-color: #4031ed;
+}
+
+.fondo .color {
+	transition: background-color 4s;
+	background-color: #4031ed;
+}
+.fondo .imgen_custom {
+	transition: transform 4s;
+}
+
+.fondo:hover .color {
+	transition: background-color 4s;
+	background-color: #891fe5;
+}
+
+.fondo:hover .frase {
+	transition: transform 4s;
+	transform: translateX(1800px);
+}
+
+.fondo .frase {
+	transition: transform 4s;
+}
+.fondo:hover .imgen_custom {
+	transition: transform 4s;
+	transform: translateY(-60px) scale(3);
+}
+
+.contenedor:hover {
+	transition: transform 3s;
+	transform: translateY(-40px);
+}
+
+.contenedor {
+	transition: transform 3s;
+}
+
+.vueltas .figura {
+	animation: objetos linear;
+	animation-duration: 5s;
+	animation-iteration-count: infinite;
+}
+
+.vueltas .figura2 {
+	animation: objetos2 linear;
+	animation-duration: 5s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes objetos {
+	from {
+		transform: rotate(0deg) translate(-160px) rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg) translate(-160px) rotate(-360deg);
+	}
+}
+
+@keyframes objetos2 {
+	from {
+		transform: rotate(360deg) translate(200px) rotate(360deg);
+	}
+	to {
+		transform: rotate(0deg) translate(200px) rotate(0deg);
+	}
 }
 
 :root {
