@@ -6,14 +6,14 @@ function gestionFormularios(sFormularioVisible) {
 
 	// Hacemos visible el formulario que llega como parámetro
 	switch (sFormularioVisible) {
-		case "frmAltaCliente":
-			frmAltaCliente.style.display = "block";
+		case "frmAltaMascota":
+			frmAltaMascota.style.display = "block";
 			break;
-		case "frmAltaAlojamiento":
-			frmAltaAlojamiento.style.display = "block";
+		case "frmAltaColaborador":
+			frmAltaColaborador.style.display = "block";
 			break;
-		case "frmAltaReserva":
-			frmAltaReserva.style.display = "block";
+		case "frmMovimientoMascota":
+			frmMovimientoMascota.style.display = "block";
 			break;
 	}
 }

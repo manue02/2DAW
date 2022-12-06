@@ -7,7 +7,6 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
 		<link
 			href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
 			rel="stylesheet"
@@ -26,40 +25,35 @@
 			#formularios {
 				margin-top: 60px;
 			}
-
-			.letraGrande {
-				font-size: 60px;
-			}
 		</style>
 	</head>
 
 	<body>
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<a class="navbar-brand" href="#">Proyecto Cliente</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarNavDropdown">
-				<ul class="navbar-nav letraGrandre">
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">Proyecto</a>
+				</div>
+				<ul class="nav navbar-nav">
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Altas </a>
+						<a class="nav-link dropdown-toggle letraGrande margenes" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Altas </a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" href="#">Alta Cliente</a>
-							<a class="dropdown-item" href="#">Alta Alojamiento</a>
-							<a class="dropdown-item" href="#">Alta Reserva</a>
+							<a class="dropdown-item letraGrande" href="#" onclick="gestionFormularios('frmAltaColaborador');">Alta Cliente</a>
+							<a class="dropdown-item letraGrande" href="#" onclick="gestionFormularios('frmAltaAlojamiento');">Alta Alojamiento</a>
+							<a class="dropdown-item letraGrande" href="#" onclick="gestionFormularios('frmAltaReserva');">Alta Reserva</a>
 						</div>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Baja Reservas</a>
+					<li>
+						<a href="#" onclick="gestionFormularios('frmAltaColaborador');">Bajas Reservas</a>
 					</li>
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Listados </a>
+						<a class="nav-link dropdown-toggle letraGrande margenes" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Listados </a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" href="#">Listado Cliente</a>
-							<a class="dropdown-item" href="#">Listado Alojamiento</a>
-							<a class="dropdown-item" href="#">Listado Reservas</a>
-							<a class="dropdown-item" href="#">Listado Reservas Cliente</a>
-							<a class="dropdown-item" href="#">Listado Habitaciones con Desayuno</a>
+							<a class="dropdown-item letraGrande" href="#" onclick="gestionFormularios('frmAltaColaborador');">Listados Cliente</a>
+							<a class="dropdown-item letraGrande" href="#" onclick="gestionFormularios('frmAltaAlojamiento');">Listado Alojamiento</a>
+							<a class="dropdown-item letraGrande" href="#" onclick="gestionFormularios('frmAltaReserva');">Listado Reserva</a>
+							<a class="dropdown-item letraGrande" href="#" onclick="gestionFormularios('frmAltaReserva');">Listado Reserva Clientes</a>
+							<a class="dropdown-item letraGrande" href="#" onclick="gestionFormularios('frmAltaReserva');">Listado Habitaciones con Desayuno</a>
 						</div>
 					</li>
 				</ul>
@@ -199,16 +193,5 @@
 		</div>
 		<script src="js/objetos.js"></script>
 		<script src="js/codigo.js"></script>
-		<script
-			src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-			integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-			crossorigin="anonymous"
-		></script>
-
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-			integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
-			crossorigin="anonymous"
-		></script>
 	</body>
 </html>
