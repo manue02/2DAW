@@ -63,7 +63,7 @@
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle letraGrande margenes" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Listados </a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-								<a class="dropdown-item letraGrande" href="#" onclick="gestionFormularios('frmAltaColaborador');">Listados Cliente</a>
+								<a class="dropdown-item letraGrande" href="#" onclick="mostrarListadoClientes();">Listados Cliente</a>
 								<a class="dropdown-item letraGrande" href="#" onclick="gestionFormularios('frmAltaAlojamiento');">Listado Alojamiento</a>
 								<a class="dropdown-item letraGrande" href="#" onclick="gestionFormularios('frmAltaReserva');">Listado Reserva</a>
 								<a class="dropdown-item letraGrande" href="#" onclick="gestionFormularios('frmAltaReserva');">Listado Reserva Clientes</a>
@@ -76,45 +76,39 @@
 		</nav>
 
 		<div class="container-fluid" id="formularios">
-			<form class="form-horizontal" name="frmAltaMascota" id="frmAltaCliente">
+			<form class="form-horizontal" name="frmAltaCliente" id="frmAltaCliente">
 				<fieldset>
 					<!-- Form Name -->
 					<legend>Alta de Cliente</legend>
-					<!-- Multiple Radios -->
 
 					<!-- Text input-->
 					<div class="form-group">
-						<label class="col-xs-4 control-label" for="txtPeso">DNI</label>
+						<label class="col-xs-4 control-label" for="txtDNI">DNI</label>
 						<div class="col-xs-4">
-							<input id="txtPeso" name="txtPeso" placeholder="Escribe el dni" class="form-control input-md" type="text" />
+							<input id="txtDNI" name="txtDNI" placeholder="Escribe el dni" class="form-control input-md" type="text" />
 						</div>
 					</div>
 
 					<!-- Text input-->
 					<div class="form-group">
-						<label class="col-xs-4 control-label" for="txtAltura">Nombre</label>
+						<label class="col-xs-4 control-label" for="txtNombre">Nombre</label>
 						<div class="col-xs-4">
-							<input id="txtAltura" name="txtAltura" placeholder="Escribe el Nombre" class="form-control input-md" type="text" />
+							<input id="txtNombre" name="txtNombre" placeholder="Escribe el Nombre" class="form-control input-md" type="text" />
 						</div>
 					</div>
 					<!-- Text input-->
 					<div class="form-group">
-						<label class="col-xs-4 control-label" for="txtRaza">Apellidos</label>
+						<label class="col-xs-4 control-label" for="txtApellidos">Apellidos</label>
 						<div class="col-xs-4">
-							<input id="txtRaza" name="txtRaza" placeholder="Escribe el Apellidos" class="form-control input-md" type="text" />
+							<input id="txtApellidos" name="txtApellidos" placeholder="Escribe el Apellidos" class="form-control input-md" type="text" />
 						</div>
 					</div>
-					<div class="form-group">
-						<label class="col-xs-4 control-label" for="txtRaza">Usuario</label>
-						<div class="col-xs-4">
-							<input id="txtRaza" name="txtRaza" placeholder="Escribe el Usuario" class="form-control input-md" type="text" />
-						</div>
-					</div>
+
 					<!-- Button -->
 					<div class="form-group">
-						<label class="col-xs-4 control-label" for="btnAceptarAltaMascosta"></label>
+						<label class="col-xs-4 control-label" for="btnAceptarAltaCLiente"></label>
 						<div class="col-xs-4">
-							<button id="btnAceptarAltaMascosta" name="btnAceptarAltaMascosta" class="btn btn-primary" onclick="aceptarAltaMascota();">Aceptar</button>
+							<button id="btnAceptarAltaCLiente" name="btnAceptarAltaCLiente" class="btn btn-primary" onclick="aceptarAltaCliente();">Aceptar</button>
 						</div>
 					</div>
 				</fieldset>

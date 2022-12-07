@@ -63,6 +63,24 @@
 				document.getElementById("Resultado3").innerHTML = sNombre + "<br>" + res;
 				document.getElementById("Resultado4").innerHTML = sNombre + " " + sApellidos + " → " + PrimeraLetra + Apellido3Letras;
 			}
+
+			function procesarDatos() {
+				let nombre = frmDatos.nombre.value;
+				let apellidos = frmDatos.apellidos.value;
+				let temp, salida;
+
+				temp = nombre.replace(" ", "");
+				temp += apellidos.replace(" ", "");
+				salida = temp.length + " caracteres sin contar los espacios<br>";
+				salida += nombre.toUpperCase() + " " + apellidos.toUpperCase() + "<br>";
+				salida += nombre.toLowerCase() + " " + apellidos.toLowerCase() + "<br>";
+				salida += nombre + "<br>" + apellidos.slice(0, apellidos.indexOf(" ")) + "<br>" + apellidos.slice(apellidos.indexOf(" ")) + "<br>";
+				temp = nombre.charAt(0);
+				temp += apellidos.slice(0, 3) + apellidos.slice(apellidos.indexOf(" ") + 1).slice(0, 3);
+				salida += "Nombre de Usuario: " + temp.toLowerCase();
+
+				document.getElementById("salida").innerHTML = salida;
+			}
 		</script>
 	</body>
 </html>

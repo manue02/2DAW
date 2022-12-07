@@ -76,44 +76,47 @@ class Apartamento extends Alojamineto {
 }
 
 class Cliente {
+	#dni;
 	#nombre;
-	#DniCliente;
-	#Apellidos;
+	#apellidos;
 	#usuario;
-
-	constructor(nombre, DniCliente, Apellidos, usuario) {
+	constructor(dni, nombre, apellidos, usuario) {
+		this.#dni = dni;
 		this.#nombre = nombre;
-		this.#DniCliente = DniCliente;
-		this.#Apellidos = Apellidos;
+		this.#apellidos = apellidos;
 		this.#usuario = usuario;
 	}
-
-	get DniCliente() {
-		return this.#DniCliente;
+	get apellidos() {
+		return this.#apellidos;
 	}
-	set DniCliente(value) {
-		this.#DniCliente = value;
+	set apellidos(value) {
+		this.#apellidos = value;
 	}
-
 	get nombre() {
 		return this.#nombre;
 	}
 	set nombre(value) {
 		this.#nombre = value;
 	}
-
-	get Apellidos() {
-		return this.#Apellidos;
+	get dni() {
+		return this.#dni;
 	}
-	set Apellidos(value) {
-		this.#Apellidos = value;
+	set dni(value) {
+		this.#dni = value;
 	}
-
 	get usuario() {
 		return this.#usuario;
 	}
 	set usuario(value) {
 		this.#usuario = value;
+	}
+	toHTMLRow() {
+		let fila = "<tr>";
+		fila += "<td>" + this.dni + "</td>";
+		fila += "<td>" + this.apellidos + "</td>";
+		fila += "<td>" + this.nombre + "</td>";
+		fila += "<td>" + this.usuario + "</td></tr>";
+		return fila;
 	}
 }
 
@@ -173,7 +176,7 @@ class Agencia {
 	#reservas;
 	#alojamientos;
 
-	constructor(clientes, reservas, alojamientos) {
+	constructor() {
 		this.#clientes = [];
 		this.#reservas = [];
 		this.#alojamientos = [];
@@ -202,13 +205,22 @@ class Agencia {
 
 	AltaCliente(Cliente) {
 		let mensajeSalida = "";
-		if (this.clientes.filter((elem) => elem.idCliente == Cliente.idCliente).length != 0) {
+		if (this.clientes.filter((elem) => elem.dni == Cliente.dni).length != 0) {
 			mensajeSalida = "Cliente registrada previamente";
 		} else {
 			this.clientes.push(Cliente);
 			mensajeSalida = "Alta Cliente OK";
 		}
 		return mensajeSalida;
+	}
+
+	listadoClientes() {
+		let salida = "<table border='1'><thead><tr><th>DNI</th><th>Apellidos</th><th>Nombre</th><th>Usuario</th></thead><tbody>";
+		for (let Cliente of this.clientes) {
+			salida += Cliente.toHTMLRow();
+		}
+
+		return salida + "</tbody></table>";
 	}
 
 	AltaAlojamiento(Alojamineto) {
@@ -242,15 +254,6 @@ class Agencia {
 			mensajeSalida = "No se a encontrado la reserva";
 		}
 		return mensajeSalida;
-	}
-
-	listadoClientes() {
-		let salida = "<table border='1'><thead><tr><th>Nombre</th><th>ID Cliente</th><th>Apellido</th><th>Usuario</th></thead><tbody>";
-
-		for (let Cliente of this.clientes) {
-			salida += Cliente.toHTMLRow();
-		}
-		return salida + "</tbody></table>";
 	}
 
 	listadoAlojamiento() {}

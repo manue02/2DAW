@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Albergue de mascotas</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<style type="text/css">
+			body {
+				margin-left: 10px;
+			}
+
+			form {
+				display: none;
+			}
+
+			#formularios {
+				margin-top: 60px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">Albergue Mascotas</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li>
+						<a href="#" onclick="gestionFormularios('frmAltaColaborador');">Alta colaborador</a>
+					</li>
+
+					<li>
+						<a href="#" onclick="mostrarListadoColaboradores();">Listado colaboradores</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<div class="container-fluid" id="formularios">
+			<form class="form-horizontal" name="frmAltaColaborador" id="frmAltaColaborador">
+				<fieldset>
+					<!-- Form Name -->
+					<legend>Alta de colaborador</legend>
+
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-xs-4 control-label" for="txtDNI">DNI</label>
+						<div class="col-xs-4">
+							<input id="txtDNI" name="txtDNI" placeholder="DNI" class="form-control input-md" type="text" />
+						</div>
+					</div>
+
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-xs-4 control-label" for="txtNombre">Nombre</label>
+						<div class="col-xs-4">
+							<input id="txtNombre" name="txtNombre" placeholder="Nombre" class="form-control input-md" type="text" />
+						</div>
+					</div>
+
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-xs-4 control-label" for="txtApellidos">Apellidos</label>
+						<div class="col-xs-4">
+							<input id="txtApellidos" name="txtApellidos" placeholder="Apellidos" class="form-control input-md" type="text" />
+						</div>
+					</div>
+					<!-- Button -->
+					<div class="form-group">
+						<label class="col-xs-4 control-label" for="btnAceptarAltaColaborador"></label>
+						<div class="col-xs-4">
+							<input type="button" id="btnAceptarAltaColaborador" name="btnAceptarAltaColaborador" class="btn btn-primary" onclick="aceptarAltaColaborador();" value="Aceptar" />
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+		<script src="js/objetos.js"></script>
+		<script src="js/codigo.js"></script>
+	</body>
+</html>
