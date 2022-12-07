@@ -28,11 +28,11 @@ class Alojamineto {
 		return fila;
 	}
 }
-
 class Habitacion extends Alojamineto {
 	#desayuno;
 
 	constructor(desayuno) {
+		super(idAlojamiento, numPersonas);
 		this.#desayuno = desayuno;
 	}
 
@@ -55,6 +55,7 @@ class Apartamento extends Alojamineto {
 	#dormitorios;
 
 	constructor(parking, dormitorios) {
+		super(idAlojamiento, numPersonas);
 		this.#dormitorios = dormitorios;
 		this.#parking = parking;
 	}
@@ -76,22 +77,22 @@ class Apartamento extends Alojamineto {
 
 class Cliente {
 	#nombre;
-	#idCliente;
+	#DniCliente;
 	#Apellidos;
 	#usuario;
 
-	constructor(nombre, idCliente, Apellidos, usuario) {
+	constructor(nombre, DniCliente, Apellidos, usuario) {
 		this.#nombre = nombre;
-		this.#idCliente = idCliente;
+		this.#DniCliente = DniCliente;
 		this.#Apellidos = Apellidos;
 		this.#usuario = usuario;
 	}
 
-	get idCliente() {
-		return this.#idCliente;
+	get DniCliente() {
+		return this.#DniCliente;
 	}
-	set idCliente(value) {
-		this.#idCliente = value;
+	set DniCliente(value) {
+		this.#DniCliente = value;
 	}
 
 	get nombre() {
@@ -198,31 +199,86 @@ class Agencia {
 	set alojamientos(value) {
 		this.#alojamientos = value;
 	}
-}
 
-function AltaUsuario(ClienteP) {
-	if (this.clientes.some((ClienteP) => Cliente.idCliente == Cliente.ClienteP)) {
-		alert("El usuario ya existe");
-	} else {
-		this.Cliente.push(this.ClienteP);
-		alert("El usuario se a añadido");
+	AltaCliente(Cliente) {
+		let mensajeSalida = "";
+		if (this.clientes.filter((elem) => elem.idCliente == Cliente.idCliente).length != 0) {
+			mensajeSalida = "Cliente registrada previamente";
+		} else {
+			this.clientes.push(Cliente);
+			mensajeSalida = "Alta Cliente OK";
+		}
+		return mensajeSalida;
 	}
-}
 
-function AltaAlojamiento(alojamientosP) {
-	if (this.Alojamineto.some((AlojaminetoP) => Alojamineto.idAlojamiento == Alojamineto.alojamientosP)) {
-		alert("El alojamiento ya existe");
-	} else {
-		this.Alojamineto.push(this.alojamientosP);
-		alert("El alojamiento se a añadido");
+	AltaAlojamiento(Alojamineto) {
+		let mensajeSalida = "";
+		if (this.alojamientos.filter((elem) => elem.idAlojamiento == Alojamineto.idAlojamiento).length != 0) {
+			mensajeSalida = "Alojamiento registrado previamente";
+		} else {
+			this.alojamientos.push(Alojamineto);
+			mensajeSalida = "Alta Alojamiento OK";
+		}
+		return mensajeSalida;
 	}
-}
 
-function AltaReserva(reservasP) {
-	if (this.Reserva.some((ReservaP) => Reserva.idReserva == Reserva.reservasP)) {
-		alert("La reserva ya exite");
-	} else {
-		this.Reserva.push(this.reservasP);
-		alert("La reserva se a añadido");
+	AltaReserva(Reserva) {
+		let mensajeSalida = "";
+		if (this.reservas.filter((elem) => elem.idReserva == Reserva.idReserva).length != 0) {
+			mensajeSalida = "Alojamiento registrado previamente";
+		} else {
+			this.reservas.push(Reserva);
+			mensajeSalida = "Alta Alojamiento OK";
+		}
+		return mensajeSalida;
 	}
+
+	BajaReserva(idReserva) {
+		let mensajeSalida = "";
+		if (this.reservas.filter((elem) => elem.idReserva == Reserva.idReserva).length != 0) {
+			this.reservas.remove(idReserva);
+			mensajeSalida = "Reserva encontrada y eliminada";
+		} else {
+			mensajeSalida = "No se a encontrado la reserva";
+		}
+		return mensajeSalida;
+	}
+
+	listadoClientes() {
+		let salida = "<table border='1'><thead><tr><th>Nombre</th><th>ID Cliente</th><th>Apellido</th><th>Usuario</th></thead><tbody>";
+
+		for (let Cliente of this.clientes) {
+			salida += Cliente.toHTMLRow();
+		}
+		return salida + "</tbody></table>";
+	}
+
+	listadoAlojamiento() {}
+
+	ListadoReservas(fechaInicio, fechaFin) {
+		let salida = "<table border='1'><thead><tr><th>idReserva</th><th>Cliente</th><th>Alojamientos</th><th>fechaInicio</th><th>fechaFin</th></thead><tbody>";
+		fechaInicioGlobal = date.parse(fechaInicio);
+		fechaFinGlobal = date.parse(fechaFin);
+
+		for (let Reserva of this.reservas) {
+			fechafinConcreta = date.parse(this.reservas.fechaFin);
+			fechaInicioConcreta = date.parse(this.reservas.fechaInicio);
+			if (fechaInicioGlobal > fechaInicioConcreta && fechaFinGlobal < fechafinConcreta) {
+				salida += Reserva.toHTMLRow();
+			}
+		}
+		return salida + "</tbody></table>";
+	}
+
+	ListadoReservasClientes(idCliente) {
+		for (let Reserva of this.reservas) {
+			for (let Cliente of this.clientes) {
+				if (idCliente == Cliente.DniCliente) {
+					salida += Reserva.toHTMLRow();
+				}
+			}
+		}
+	}
+
+	listadoHabitacionesConDesayuno() {}
 }

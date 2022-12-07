@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
 	<head>
-		<title>Viveros Naranjito</title>
+		<title>Albergue de mascotas</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
-		<script src="bootstrap/js/jquery.min.js"></script>
-		<script src="bootstrap/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+			crossorigin="anonymous"
+		/>
 		<style type="text/css">
 			body {
 				margin-left: 10px;
@@ -26,171 +32,166 @@
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="#">Proyecto Cliente</a>
+					<a class="navbar-brand" href="#">Proyecto</a>
 				</div>
 				<ul class="nav navbar-nav">
-					<li>
-						<a href="#" onclick="gestionFormularios('frmAltaArbol');">Altas</a>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle letraGrande margenes" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Altas </a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item letraGrande" href="#" onclick="gestionFormularios('frmAltaColaborador');">Alta Cliente</a>
+							<a class="dropdown-item letraGrande" href="#" onclick="gestionFormularios('frmAltaAlojamiento');">Alta Alojamiento</a>
+							<a class="dropdown-item letraGrande" href="#" onclick="gestionFormularios('frmAltaReserva');">Alta Reserva</a>
+						</div>
 					</li>
 					<li>
-						<a href="#" onclick="gestionFormularios('frmTallaje');">Baja</a>
+						<a href="#" onclick="gestionFormularios('frmAltaColaborador');">Bajas Reservas</a>
 					</li>
-					<li>
-						<a href="#" onclick="gestionFormularios('frmListadoPerennes');">Listados </a>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle letraGrande margenes" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Listados </a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item letraGrande" href="#" onclick="gestionFormularios('frmAltaColaborador');">Listados Cliente</a>
+							<a class="dropdown-item letraGrande" href="#" onclick="gestionFormularios('frmAltaAlojamiento');">Listado Alojamiento</a>
+							<a class="dropdown-item letraGrande" href="#" onclick="gestionFormularios('frmAltaReserva');">Listado Reserva</a>
+							<a class="dropdown-item letraGrande" href="#" onclick="gestionFormularios('frmAltaReserva');">Listado Reserva Clientes</a>
+							<a class="dropdown-item letraGrande" href="#" onclick="gestionFormularios('frmAltaReserva');">Listado Habitaciones con Desayuno</a>
+						</div>
 					</li>
 				</ul>
 			</div>
 		</nav>
-
 		<div class="container-fluid" id="formularios">
-			<form class="form-horizontal" name="frmAltaArbol" id="frmAltaArbol">
+			<form class="form-horizontal" name="frmAltaMascota" id="frmAltaMascota">
 				<fieldset>
 					<!-- Form Name -->
-					<legend>Alta de árbol</legend>
-					<!-- Text input-->
-					<div class="form-group">
-						<label class="col-xs-4 control-label" for="txtCodigo">Código</label>
-						<div class="col-xs-4">
-							<input id="txtCodigo" name="txtCodigo" placeholder="Codigo" class="form-control input-md" type="text" />
-						</div>
-					</div>
-					<!-- Text input-->
-					<div class="form-group">
-						<label class="col-xs-4 control-label" for="txtTallaje">Tallaje</label>
-						<div class="col-xs-4">
-							<input id="txtTallaje" name="txtTallaje" placeholder="Tallaje" class="form-control input-md" type="text" />
-						</div>
-					</div>
-					<!-- Text input-->
-					<div class="form-group">
-						<label class="col-xs-4 control-label" for="txtEspecie">Especie</label>
-						<div class="col-xs-4">
-							<input id="txtEspecie" name="txtEspecie" placeholder="Especie" class="form-control input-md" type="text" />
-						</div>
-					</div>
+					<legend>Alta de mascota</legend>
 					<!-- Multiple Radios -->
 					<div class="form-group">
-						<label class="col-xs-4 control-label" for="rbtTipoArbol">Tipo de árbol</label>
+						<label class="col-xs-4 control-label" for="rbtTipoMascota">Tipo mascota</label>
 						<div class="col-xs-4">
 							<div class="radio">
-								<input name="rbtTipoArbol" id="rbtTipoArbol-C" value="caduco" checked="checked" type="radio" />
-								<label for="rbtTipoArbol-C">Caduco</label>
+								<input name="rbtTipoMascota" id="rbtTipoMascota-G" value="gato" checked="checked" type="radio" />
+								<label for="rbtTipoMascota-G">Gato</label>
 							</div>
 							<div class="radio">
-								Listado perennes
-								<input name="rbtTipoArbol" id="rbtTipoArbol-P" value="perenne" type="radio" />
-								<label for="rbtTipoArbol-P">Perenne</label>
+								<input name="rbtTipoMascota" id="rbtTipoMascota-P" value="perro" type="radio" />
+								<label for="rbtTipoMascota-P">Perro </label>
 							</div>
 						</div>
 					</div>
 
-					<!-- Multiple Radios -->
+					<!-- Text input-->
 					<div class="form-group">
-						<label class="col-xs-4 control-label" for="rbtFrutal">Frutal</label>
+						<label class="col-xs-4 control-label" for="txtPeso">Peso</label>
 						<div class="col-xs-4">
-							<div class="radio">
-								<input name="rbtFrutal" id="rbtFrutal-S" value="S" checked="checked" type="radio" />
-								<label for="rbtFrutal-S">Sí</label>
-							</div>
-							<div class="radio">
-								<input name="rbtFrutal" id="rbtFrutal-N" value="N" checked="checked" type="radio" />
-								<label for="rbtFrutal-N">No</label>
-							</div>
+							<input id="txtPeso" name="txtPeso" placeholder="Peso" class="form-control input-md" type="text" />
+						</div>
+					</div>
+
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-xs-4 control-label" for="txtAltura">Altura perro</label>
+						<div class="col-xs-4">
+							<input id="txtAltura" name="txtAltura" placeholder="Altura perro" class="form-control input-md" type="text" />
 						</div>
 					</div>
 					<!-- Text input-->
 					<div class="form-group">
-						<label class="col-xs-4 control-label" for="txtMesFloracion">Mes de floración </label>
+						<label class="col-xs-4 control-label" for="txtRaza">Raza gato</label>
 						<div class="col-xs-4">
-							<input id="txtMesFloracion" name="txtMesFloracion" placeholder="Mes de floración" class="form-control input-md" type="text" />
+							<input id="txtRaza" name="txtRaza" placeholder="Raza gato" class="form-control input-md" type="text" />
 						</div>
 					</div>
-
-					<!-- Input Button -->
+					<!-- Button -->
 					<div class="form-group">
-						<label class="col-xs-4 control-label" for="btnAceptarAltaArbol"></label>
+						<label class="col-xs-4 control-label" for="btnAceptarAltaMascosta"></label>
 						<div class="col-xs-4">
-							<input type="button" id="btnAceptarAltaArbol" name="btnAceptarAltaArbol" class="btn btn-primary" value="Aceptar" onclick="aceptarAltaArbol();" />
+							<button id="btnAceptarAltaMascosta" name="btnAceptarAltaMascosta" class="btn btn-primary" onclick="aceptarAltaMascota();">Aceptar</button>
 						</div>
 					</div>
 				</fieldset>
 			</form>
-			<form class="form-horizontal" name="frmTallaje" id="frmTallaje">
+			<form class="form-horizontal" name="frmAltaColaborador" id="frmAltaColaborador">
 				<fieldset>
 					<!-- Form Name -->
-					<legend>Tallaje de árbol</legend>
+					<legend>Alta de colaborador</legend>
 
 					<!-- Text input-->
 					<div class="form-group">
-						<label class="col-xs-4 control-label" for="txtCodigoArbol">Codigo</label>
+						<label class="col-xs-4 control-label" for="txtDNI">DNI</label>
 						<div class="col-xs-4">
-							<input id="txtCodigoArbol" name="txtCodigoArbol" placeholder="Codigo" class="form-control input-md" type="text" />
+							<input id="txtDNI" name="txtDNI" placeholder="DNI" class="form-control input-md" type="text" />
 						</div>
 					</div>
 
 					<!-- Text input-->
 					<div class="form-group">
-						<label class="col-xs-4 control-label" for="txtTallajeArbol">Tallaje</label>
+						<label class="col-xs-4 control-label" for="txtNombre">Nombre</label>
 						<div class="col-xs-4">
-							<input id="txtTallajeArbol" name="txtTallajeArbol" placeholder="Tallaje" class="form-control input-md" type="text" />
+							<input id="txtNombre" name="txtNombre" placeholder="Nombre" class="form-control input-md" type="text" />
 						</div>
 					</div>
 
-					<!-- Input Button -->
+					<!-- Text input-->
 					<div class="form-group">
-						<label class="col-xs-4 control-label" for="btnAceptarAltaRevision"></label>
+						<label class="col-xs-4 control-label" for="txtApellidos">Apellidos</label>
 						<div class="col-xs-4">
-							<input type="button" id="btnAceptarTallaje" name="btnAceptarTallaje" class="btn btn-primary" value="Aceptar" onclick="aceptarTallaje();" />
+							<input id="txtApellidos" name="txtApellidos" placeholder="Apellidos" class="form-control input-md" type="text" />
+						</div>
+					</div>
+					<!-- Button -->
+					<div class="form-group">
+						<label class="col-xs-4 control-label" for="btnAceptarAltaColaborador"></label>
+						<div class="col-xs-4">
+							<input type="button" id="btnAceptarAltaColaborador" name="btnAceptarAltaColaborador" class="btn btn-primary" onclick="aceptarAltaColaborador();" value="Aceptar" />
 						</div>
 					</div>
 				</fieldset>
 			</form>
-			<form class="form-horizontal" name="frmListadoPerennes" id="frmListadoPerennes">
+
+			<form class="form-horizontal" name="frmMovimientoMascota" id="frmMovimientoMascota">
 				<fieldset>
 					<!-- Form Name -->
-					<legend>Listado de árboles perennes</legend>
-
+					<legend>Movimiento de mascota</legend>
+					<!-- Multiple Radios -->
+					<div class="form-group">
+						<label class="col-xs-4 control-label" for="rbtTipoMovimiento">Tipo movimiento</label>
+						<div class="col-xs-4">
+							<div class="radio">
+								<input name="rbtTipoMovimiento" id="rbtTipoMovimiento-E" value="E" checked="checked" type="radio" />
+								<label for="rbtTipoMovimiento-E">Entrega</label>
+							</div>
+							<div class="radio">
+								<input name="rbtTipoMovimiento" id="rbtTipoMovimiento-R" value="R" type="radio" />
+								<label for="rbtTipoMovimiento-R">Recogida</label>
+							</div>
+						</div>
+					</div>
 					<!-- Text input-->
 					<div class="form-group">
-						<label class="col-xs-4 control-label" for="txtAlturaMinima">Altura mínima</label>
+						<label class="col-xs-4 control-label" for="txtIdMascotaMovimiento">IdMascota</label>
 						<div class="col-xs-4">
-							<input id="txtAlturaMinima" name="txtAlturaMinima" placeholder="Altura mínima" class="form-control input-md" type="text" />
+							<input id="txtIdMascotaMovimiento" name="txtIdMascotaMovimiento" placeholder="IdMascota" class="form-control input-md" type="text" />
+						</div>
+					</div>
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-xs-4 control-label" for="txtDNIMovimiento">DNI</label>
+						<div class="col-xs-4">
+							<input id="txtDNIMovimiento" name="txtDNIMovimiento" placeholder="DNI" class="form-control input-md" type="text" />
 						</div>
 					</div>
 
 					<!-- Button -->
 					<div class="form-group">
-						<label class="col-xs-4 control-label" for="btnAceptarListadoPerenne"></label>
+						<label class="col-xs-4 control-label" for="btnAceptarMovimiento"></label>
 						<div class="col-xs-4">
-							<input type="button" id="btnAceptarListadoPerenne" name="btnAceptarListadoPerenne" class="btn btn-primary" value="Aceptar" onclick="aceptarListadoPerennes();" />
-						</div>
-					</div>
-				</fieldset>
-			</form>
-			<form class="form-horizontal" name="frmListadoCaducos" id="frmListadoCaducos">
-				<fieldset>
-					<!-- Form Name -->
-					<legend>Listado de árboles caducos</legend>
-
-					<!-- Text input-->
-					<div class="form-group">
-						<label class="col-xs-4 control-label" for="txtMesListado">Mes de floración</label>
-						<div class="col-xs-4">
-							<input id="txtMesListado" name="txtMesListado" placeholder="Mes de floración" class="form-control input-md" type="text" />
-						</div>
-					</div>
-
-					<!-- Input Button -->
-					<div class="form-group">
-						<label class="col-xs-4 control-label" for="btnAceptarListadoCaduco"></label>
-						<div class="col-xs-4">
-							<input type="button" id="btnAceptarListadoCaduco" name="btnAceptarListadoCaduco" class="btn btn-primary" value="Aceptar" onclick="aceptarListadoCaducos();" />
+							<input type="button" id="btnAceptarMovimiento" name="btnAceptarMovimiento" class="btn btn-primary" onclick="aceptarAltaMovimiento();" value="Aceptar" />
 						</div>
 					</div>
 				</fieldset>
 			</form>
 		</div>
-		<script type="text/javascript" src="js/objetos.js"></script>
-		<script type="text/javascript" src="js/codigo.js"></script>
+		<script src="js/objetos.js"></script>
+		<script src="js/codigo.js"></script>
 	</body>
 </html>
