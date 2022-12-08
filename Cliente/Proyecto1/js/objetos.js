@@ -22,7 +22,8 @@ class Alojamineto {
 	}
 
 	toHTMLRow() {
-		let fila = "<tr>";
+		let fila = "<table border='1'><thead><tr><th>id Alojamiento</th><th>Numero de personas</th></thead><tbody>";
+
 		fila += "<td>" + this.idAlojamiento + "</td>";
 		fila += "<td>" + this.numPersonas + "</td></tr>";
 		return fila;
@@ -31,21 +32,21 @@ class Alojamineto {
 class Habitacion extends Alojamineto {
 	#desayuno;
 
-	constructor(desayuno) {
+	constructor(idAlojamiento, numPersonas, desayuno) {
 		super(idAlojamiento, numPersonas);
 		this.#desayuno = desayuno;
 	}
-
 	get desayuno() {
 		return this.#desayuno;
 	}
 	set desayuno(value) {
 		this.#desayuno = value;
 	}
+
 	toHTMLRow() {
 		let fila = super.toHTMLRow();
-		fila = fila.slice(0, fila.length - 5); // Para quitar el </tr>
-		fila += "<td>" + this.desayuno + "</td></tr>";
+		fila = fila.slice(0, fila.length - 5);
+		fila += "<td>" + " Desayuno " + this.desayuno + "</td></tr>";
 		return fila;
 	}
 }
@@ -54,10 +55,10 @@ class Apartamento extends Alojamineto {
 	#parking;
 	#dormitorios;
 
-	constructor(parking, dormitorios) {
+	constructor(idAlojamiento, numPersonas, dormitorios, parking) {
 		super(idAlojamiento, numPersonas);
-		this.#dormitorios = dormitorios;
 		this.#parking = parking;
+		this.#dormitorios = dormitorios;
 	}
 
 	get parking() {
@@ -72,6 +73,14 @@ class Apartamento extends Alojamineto {
 	}
 	set dormitorios(value) {
 		this.#dormitorios = value;
+	}
+
+	toHTMLRow() {
+		let fila = super.toHTMLRow();
+		fila = fila.slice(0, fila.length - 5);
+		fila += "<td>" + this.dormitorios + "</td>";
+		fila += "<td>" + this.parking + "</td></tr>";
+		return fila;
 	}
 }
 
@@ -234,6 +243,34 @@ class Agencia {
 		return mensajeSalida;
 	}
 
+	siguienteCodigoAlojamiento() {
+		if (this.alojamientos.length == 0) {
+			return 1;
+		} else {
+			return this.alojamientos[this.alojamientos.length - 1].idAlojamiento + 1;
+		}
+	}
+
+	ListadoAlojamiento() {
+		let salida = "<table border='1'><thead><tr><th>Tipo de alojamiento</th><th>id Alojamiento</th><th>Numero de personas</th><th>Desayuno</th><th>Parking</th><th>Dormitorios</th></thead><tbody>";
+
+		for (let alo of this.alojamientos) {
+			salida += this.addFilaListaAlojamiento(alo);
+		}
+
+		return salida + "</tbody></table>";
+	}
+
+	addFilaListaAlojamiento(alo) {
+		let fila = "<tr>";
+		fila += "<td>" + alo.constructor.name + "</td>";
+		fila += "<td>" + alo.idAlojamiento + "</td>";
+		fila += "<td>" + alo.numPersonas + "</td>";
+		fila += "<td>" + (alo instanceof Habitacion ? alo.desayuno + "" : "") + "</td>";
+		fila += "<td>" + (alo instanceof Apartamento ? alo.parking + "" : "") + "</td>";
+		fila += "<td>" + (alo instanceof Apartamento ? alo.dormitorios + "" : "") + "</td>";
+		return fila;
+	}
 	AltaReserva(Reserva) {
 		let mensajeSalida = "";
 		if (this.reservas.filter((elem) => elem.idReserva == Reserva.idReserva).length != 0) {
@@ -255,8 +292,6 @@ class Agencia {
 		}
 		return mensajeSalida;
 	}
-
-	listadoAlojamiento() {}
 
 	ListadoReservas(fechaInicio, fechaFin) {
 		let salida = "<table border='1'><thead><tr><th>idReserva</th><th>Cliente</th><th>Alojamientos</th><th>fechaInicio</th><th>fechaFin</th></thead><tbody>";
@@ -283,5 +318,15 @@ class Agencia {
 		}
 	}
 
-	listadoHabitacionesConDesayuno() {}
+	ListadoHabitacionesDesayuno() {
+		let salida = "";
+
+		for (let Alojamiento of this.alojamientos) {
+			let sDesayuno = frmAltaAlojamiento.rbtTipoDesayuno.value;
+			if (sDesayuno == "Si") {
+				salida += Alojamiento.toHTMLRow() + "<br>";
+			}
+		}
+		return salida;
+	}
 }

@@ -64,10 +64,10 @@
 							<a class="nav-link dropdown-toggle letraGrande margenes" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Listados </a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 								<a class="dropdown-item letraGrande" href="#" onclick="mostrarListadoClientes();">Listados Cliente</a>
-								<a class="dropdown-item letraGrande" href="#" onclick="gestionFormularios('frmAltaAlojamiento');">Listado Alojamiento</a>
-								<a class="dropdown-item letraGrande" href="#" onclick="gestionFormularios('frmAltaReserva');">Listado Reserva</a>
-								<a class="dropdown-item letraGrande" href="#" onclick="gestionFormularios('frmAltaReserva');">Listado Reserva Clientes</a>
-								<a class="dropdown-item letraGrande" href="#" onclick="gestionFormularios('frmAltaReserva');">Listado Habitaciones con Desayuno</a>
+								<a class="dropdown-item letraGrande" href="#" onclick="mostrarListadoAlojamientos();">Listado Alojamiento</a>
+								<a class="dropdown-item letraGrande" href="#">Listado de reservas de un determinado cliente</a>
+								<a class="dropdown-item letraGrande" href="#">Listados de reservas entre dos fechas</a>
+								<a class="dropdown-item letraGrande" href="#" onclick="mostrarListadoHabitacionesDesayuno();">Listado Habitaciones con Desayuno</a>
 							</div>
 						</li>
 					</ul>
@@ -113,67 +113,76 @@
 					</div>
 				</fieldset>
 			</form>
-			<form class="form-horizontal" name="frmAltaColaborador" id="frmAltaAlojamiento">
+			<form class="form-horizontal" name="frmAltaAlojamiento" id="frmAltaAlojamiento">
 				<fieldset>
 					<!-- Form Name -->
 					<legend>Alta de Alojamiento</legend>
 
 					<!-- Text input-->
+
+					<!-- Text input-->
 					<div class="form-group">
-						<label class="col-xs-4 control-label" for="txtDNI">ID Alojamiento</label>
+						<label class="col-xs-4 control-label" for="rbtTipoAlojamiento">Tipo de alojamiento</label>
 						<div class="col-xs-4">
-							<input id="txtDNI" name="txtDNI" placeholder="Escribe el ID" class="form-control input-md" type="text" />
+							<div class="radio">
+								<input name="rbtTipoAlojamiento" id="rbtTipoAlojamiento-Habitacion" value="Habitacion" checked="checked" type="radio" />
+								<label for="rbtTipoAlojamiento-Habitacion">Habitación</label>
+							</div>
+							<div class="radio">
+								<input name="rbtTipoAlojamiento" id="rbtTipoAlojamiento-Apartamento" value="Apartamento" type="radio" />
+								<label for="rbtTipoAlojamiento-Apartamento">Apartamento</label>
+							</div>
 						</div>
 					</div>
 
 					<!-- Text input-->
 					<div class="form-group">
-						<label class="col-xs-4 control-label" for="txtNombre">Dormitorio</label>
+						<label class="col-xs-4 control-label" for="txtnumPersona">Número de Personas</label>
 						<div class="col-xs-4">
-							<input id="txtNombre" name="txtNombre" placeholder="Numero de dormitorios" class="form-control input-md" type="text" />
-						</div>
-					</div>
-
-					<!-- Text input-->
-					<div class="form-group">
-						<label class="col-xs-4 control-label" for="txtNombre">Numero De personas</label>
-						<div class="col-xs-4">
-							<input id="txtNombre" name="txtNombre" placeholder="Escribe el numero de personas" class="form-control input-md" type="text" />
+							<input id="txtnumPersona" name="txtnumPersona" placeholder="Número de Personas" class="form-control input-md" type="number" />
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label class="col-xs-4 control-label" for="rbtTipoMovimiento">Desayuno</label>
+						<label class="col-xs-4 control-label" for="txtDormitorios">Numero de dormitorios</label>
+						<div class="col-xs-4">
+							<input id="txtDormitorios" name="txtDormitorios" placeholder="Numero de dormitorios" class="form-control input-md" type="number" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-xs-4 control-label" for="rbtTipoDesayuno">Desayuno</label>
 						<div class="col-xs-4">
 							<div class="radio">
-								<input name="rbtTipoMovimiento" id="rbtTipoMovimiento-E" value="E" checked="checked" type="radio" />
-								<label for="rbtTipoMovimiento-E">Si</label>
+								<input name="rbtTipoDesayuno" id="rbtTipoDesayuno-Si" value="Si" checked="checked" type="radio" />
+								<label for="rbtTipoDesayuno-Si">Si</label>
 							</div>
 							<div class="radio">
-								<input name="rbtTipoMovimiento" id="rbtTipoMovimiento-R" value="R" type="radio" />
-								<label for="rbtTipoMovimiento-R">No</label>
+								<input name="rbtTipoDesayuno" id="rbtTipoDesayuno-No" value="No" type="radio" />
+								<label for="rbtTipoDesayuno-No">No</label>
 							</div>
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label class="col-xs-4 control-label" for="rbtTipoMovimiento">Parking</label>
+						<label class="col-xs-4 control-label" for="rbtTipoParking">Parking</label>
 						<div class="col-xs-4">
 							<div class="radio">
-								<input name="rbtTipoMovimiento" id="rbtTipoMovimiento-E" value="E" checked="checked" type="radio" />
-								<label for="rbtTipoMovimiento-E">Si</label>
+								<input name="rbtTipoParking" id="rbtTipoParking-Si" value="Si" checked="checked" type="radio" />
+								<label for="rbtTipoParking-Si">Si</label>
 							</div>
 							<div class="radio">
-								<input name="rbtTipoMovimiento" id="rbtTipoMovimiento-R" value="R" type="radio" />
-								<label for="rbtTipoMovimiento-R">No</label>
+								<input name="rbtTipoParking" id="rbtTipoParking-No" value="No" type="radio" />
+								<label for="rbtTipoParking-No">No</label>
 							</div>
 						</div>
 					</div>
+
 					<!-- Button -->
 					<div class="form-group">
-						<label class="col-xs-4 control-label" for="btnAceptarAltaColaborador"></label>
+						<label class="col-xs-4 control-label" for="btnAceptarAltaAlojamiento"></label>
 						<div class="col-xs-4">
-							<input type="button" id="btnAceptarAltaColaborador" name="btnAceptarAltaColaborador" class="btn btn-primary" onclick="aceptarAltaColaborador();" value="Aceptar" />
+							<input type="button" id="btnAceptarAltaAlojamiento" name="btnAceptarAltaAlojamiento" class="btn btn-primary" onclick="aceptarAltaAlojamiento();" value="Aceptar" />
 						</div>
 					</div>
 				</fieldset>
