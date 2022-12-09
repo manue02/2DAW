@@ -17,6 +17,7 @@ class Alojamineto {
 	get numPersonas() {
 		return this.#numPersonas;
 	}
+
 	set numPersonas(value) {
 		this.#numPersonas = value;
 	}
