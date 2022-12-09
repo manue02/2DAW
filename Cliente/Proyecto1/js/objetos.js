@@ -30,6 +30,7 @@ class Alojamineto {
 		return fila;
 	}
 }
+
 class Habitacion extends Alojamineto {
 	#desayuno;
 
