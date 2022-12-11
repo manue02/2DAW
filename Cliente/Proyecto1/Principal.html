@@ -58,14 +58,14 @@
 							</div>
 						</li>
 						<li class="nav-item active">
-							<a class="nav-link letraGrande margenes" href="#">Baja Reserva <span class="sr-only">(current)</span></a>
+							<a class="nav-link letraGrande margenes" href="#" onclick="gestionFormularios('frmBajaReserva');">Baja Reserva <span class="sr-only">(current)</span></a>
 						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle letraGrande margenes" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Listados </a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 								<a class="dropdown-item letraGrande" href="#" onclick="mostrarListadoClientes();">Listados Cliente</a>
 								<a class="dropdown-item letraGrande" href="#" onclick="mostrarListadoAlojamientos();">Listado Alojamiento</a>
-								<a class="dropdown-item letraGrande" href="#">Listado de reservas de un determinado cliente</a>
+								<a class="dropdown-item letraGrande" href="#" onclick="gestionFormularios('frmListadoUnCliente');">Listado de reservas de un determinado cliente</a>
 								<a class="dropdown-item letraGrande" href="#">Listados de reservas entre dos fechas</a>
 								<a class="dropdown-item letraGrande" href="#" onclick="mostrarListadoHabitacionesDesayuno();">Listado Habitaciones con Desayuno</a>
 							</div>
@@ -188,48 +188,88 @@
 				</fieldset>
 			</form>
 
-			<form class="form-horizontal" name="frmMovimientoMascota" id="frmAltaReserva">
+			<form class="form-horizontal" name="frmAltaReserva" id="frmAltaReserva">
 				<fieldset>
 					<!-- Form Name -->
 					<legend>Altas de Reservas</legend>
 					<!-- Multiple Radios -->
 					<!-- Text input-->
-					<div class="form-group">
-						<label class="col-xs-4 control-label" for="txtIdMascotaMovimiento">Id Reserva</label>
-						<div class="col-xs-4">
-							<input id="txtIdMascotaMovimiento" name="txtIdMascotaMovimiento" placeholder="Escribe el ID" class="form-control input-md" type="text" />
-						</div>
-					</div>
+
 					<!-- Text input-->
 					<div class="form-group">
-						<label class="col-xs-4 control-label" for="txtDNIMovimiento">Cliente</label>
+						<label class="col-xs-4 control-label" for="txtCliente">Cliente</label>
 						<div class="col-xs-4">
-							<input id="txtDNIMovimiento" name="txtDNIMovimiento" placeholder="Escribe el Cliente" class="form-control input-md" type="text" />
+							<input id="txtCliente" name="txtCliente" placeholder="Escribe el Cliente" class="form-control input-md" type="text" />
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-xs-4 control-label" for="txtDNIMovimiento">Alojamientos</label>
+						<label class="col-xs-4 control-label" for="txtAlojamientos">Alojamientos</label>
 						<div class="col-xs-4">
-							<input id="txtDNIMovimiento" name="txtDNIMovimiento" placeholder="Escribe los Alojamientos" class="form-control input-md" type="text" />
+							<input id="txtAlojamientos" name="txtAlojamientos" placeholder="Escribe los Alojamientos" class="form-control input-md" type="number" />
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-xs-4 control-label" for="txtDNIMovimiento">Fecha Inicio</label>
+						<label class="col-xs-4 control-label" for="txtFechaInicio">Fecha Inicio</label>
 						<div class="col-xs-4">
-							<input id="txtDNIMovimiento" name="txtDNIMovimiento" placeholder="DNI" class="form-control input-md" type="date" />
+							<input id="txtFechaInicio" name="txtFechaInicio" placeholder="DNI" class="form-control input-md" type="date" />
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-xs-4 control-label" for="txtDNIMovimiento">Fecha Fin</label>
+						<label class="col-xs-4 control-label" for="txtFechaFin">Fecha Fin</label>
 						<div class="col-xs-4">
-							<input id="txtDNIMovimiento" name="txtDNIMovimiento" placeholder="DNI" class="form-control input-md" type="date" />
+							<input id="txtFechaFin" name="txtFechaFin" placeholder="DNI" class="form-control input-md" type="date" />
 						</div>
 					</div>
 					<!-- Button -->
 					<div class="form-group">
 						<label class="col-xs-4 control-label" for="btnAceptarMovimiento"></label>
 						<div class="col-xs-4">
-							<input type="button" id="btnAceptarMovimiento" name="btnAceptarMovimiento" class="btn btn-primary" onclick="aceptarAltaMovimiento();" value="Aceptar" />
+							<input type="button" id="btnAceptarMovimiento" name="btnAceptarMovimiento" class="btn btn-primary" onclick="aceptarAltaReserva();" value="Aceptar" />
+						</div>
+					</div>
+				</fieldset>
+			</form>
+
+			<form class="form-horizontal" name="frmBajaReserva" id="frmBajaReserva">
+				<fieldset>
+					<!-- Form Name -->
+					<legend>Baja de la reserva</legend>
+
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-xs-4 control-label" for="txtIdReserva">ID Reserva</label>
+						<div class="col-xs-4">
+							<input id="txtIdReserva" name="txtIdReserva" placeholder="Nombre" class="form-control input-md" type="number" />
+						</div>
+					</div>
+
+					<!-- Input Button -->
+					<div class="form-group">
+						<label class="col-xs-4 control-label" for="btnAceptarSalidaStock"></label>
+						<div class="col-xs-4">
+							<input type="button" id="btnAceptarSalidaStock" name="btnAceptarSalidaStock" class="btn btn-primary" value="Aceptar" onclick="aceptarBajaReserva();" />
+						</div>
+					</div>
+				</fieldset>
+			</form>
+			<form class="form-horizontal" name="frmListadoUnCliente" id="frmListadoUnCliente">
+				<fieldset>
+					<!-- Form Name -->
+					<legend>Listado de un cliente</legend>
+
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-xs-4 control-label" for="txtIdReserva">Dni Cliente</label>
+						<div class="col-xs-4">
+							<input id="txtDniCliente" name="txtDniCliente" placeholder="Dni del cliente" class="form-control input-md" type="number" />
+						</div>
+					</div>
+
+					<!-- Input Button -->
+					<div class="form-group">
+						<label class="col-xs-4 control-label" for="btnAceptarSalidaStock"></label>
+						<div class="col-xs-4">
+							<input type="button" id="btnAceptarDni" name="btnAceptarDni" class="btn btn-primary" value="Aceptar" onclick="mostrarListadoClientesConFiltro();" />
 						</div>
 					</div>
 				</fieldset>

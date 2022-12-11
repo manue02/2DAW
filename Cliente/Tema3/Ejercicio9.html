@@ -37,14 +37,8 @@
 				// Recuperar valores de los input
 				ValorFecha1 = frmDatos.txtFecha1.value;
 				ValorFecha2 = frmDatos.txtFecha2.value;
-				let diaRes = 0;
-				let mesRes = 0;
-				let añoRes = 0;
-				let diaRes2 = 0;
-				let mesRes2 = 0;
-				let añoRes2 = 0;
 
-				let f1 = new Date(ValorFecha1);
+				let f1 = new Date();
 				let f2 = new Date(ValorFecha2);
 
 				let dia = f1.getDate();
@@ -55,33 +49,14 @@
 				let mes2 = f2.getMonth();
 				let año2 = f2.getFullYear();
 
+				var timestamp = 1670772429059;
+				var date = new Date(timestamp);
+
+				console.log("Date: " + date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds());
+
 				// Muestro los valores en los párrafos <p>
 
-				if (f1 < f2) {
-					document.getElementById("Resultado").innerHTML = "La primera fecha es mas chica a la segunda fecha";
-
-					diaRes2 = dia2 - dia;
-					mesRes2 = mes2 - mes;
-					añoRes2 = año2 - año;
-
-					document.getElementById("Resultado3").innerHTML =
-						"La diferencia de las fechas es: <br>" + "El año " + Math.abs(añoRes2) + "<br>" + "El mes " + Math.abs(mesRes2) + "<br>" + "El dia " + Math.abs(diaRes2);
-				} else {
-					document.getElementById("Resultado").innerHTML = "";
-				}
-
-				if (f2 < f1) {
-					document.getElementById("Resultado2").innerHTML = "La segunda fecha es mas chica a la primera fecha";
-
-					diaRes = dia - dia2;
-					mesRes = mes - mes2;
-					añoRes = año - año2;
-
-					document.getElementById("Resultado3").innerHTML =
-						"La diferencia de las fechas es: <br>" + "El año " + Math.abs(añoRes) + "<br>" + "El mes " + Math.abs(mesRes) + "<br>" + "El dia " + Math.abs(diaRes);
-				} else {
-					document.getElementById("Resultado2").innerHTML = "";
-				}
+				document.getElementById("Resultado").innerHTML = f1.getTime();
 			}
 		</script>
 	</body>

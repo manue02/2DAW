@@ -18,6 +18,12 @@ function gestionFormularios(sFormularioVisible) {
 		case "frmAltaReserva":
 			frmAltaReserva.style.display = "block";
 			break;
+		case "frmBajaReserva":
+			frmBajaReserva.style.display = "block";
+			break;
+		case "frmListadoUnCliente":
+			frmListadoUnCliente.style.display = "block";
+			break;
 	}
 }
 
@@ -45,6 +51,15 @@ function mostrarListadoAlojamientos() {
 	oVentana.document.write(cliente.ListadoAlojamiento());
 	oVentana.document.close();
 	oVentana.document.title = "Listado de alojamientos";
+}
+
+function mostrarListadoClientesConFiltro() {
+	let oVentana = open("", "_blank", "");
+	oVentana.document.open();
+	oVentana.document.write("<h1>Listado de un cliente</h1>");
+	oVentana.document.write(cliente.listadoFiltroClientes());
+	oVentana.document.close();
+	oVentana.document.title = "Listado de un cliente";
 }
 
 function mostrarListadoHabitacionesDesayuno() {
@@ -103,5 +118,47 @@ function aceptarAltaAlojamiento() {
 		} else {
 			alert("Alojamiento registrado previamente");
 		}
+	}
+}
+
+function aceptarAltaReserva() {
+	let sCliente = frmAltaReserva.txtCliente.value.trim();
+	let numAlojamiento = parseInt(frmAltaReserva.txtAlojamientos.value.trim());
+	let sFechaInicio = frmAltaReserva.txtFechaInicio.value.trim();
+	let sFechaFin = frmAltaReserva.txtFechaFin.value.trim();
+	let iCodigo = cliente.siguienteCodigoReservas();
+
+	// let f1 = new Date();
+	// let f2 = new Date(sFechaInicio);
+	// let f3 = new Date(sFechaFin);
+
+	// let dia = f1.getDate();
+	// let mes = f1.getMonth();
+	// let año = f1.getFullYear();
+
+	// let diaActual = f1.getTime();
+	// let DiaReservaInicio = f2.getTime();
+	// let DiaReservaFin = f3.getTime();
+
+	let oReserva = new Reserva(iCodigo, sCliente, numAlojamiento, sFechaInicio, sFechaFin);
+
+	if (sCliente.length == 0 || isNaN(numAlojamiento)) {
+		alert("Faltan datos por rellenar");
+	} else {
+		alert(cliente.AltaReserva(oReserva));
+		frmAltaReserva.reset();
+		frmAltaReserva.style.display = "none";
+	}
+}
+
+function aceptarBajaReserva() {
+	let sId = parseInt(frmBajaReserva.txtIdReserva.value.trim());
+
+	if (isNaN(sId)) {
+		alert("El id tiene que ser mayor a 0");
+	} else {
+		alert(cliente.BajaReserva(oReserva));
+		frmBajaReserva.reset();
+		frmBajaReserva.style.display = "none";
 	}
 }

@@ -295,6 +295,14 @@ class Agencia {
 		return mensajeSalida;
 	}
 
+	siguienteCodigoReservas() {
+		if (this.reservas.length == 0) {
+			return 1;
+		} else {
+			return this.reservas[this.reservas.length - 1].idReserva + 1;
+		}
+	}
+
 	ListadoReservas(fechaInicio, fechaFin) {
 		let salida = "<table border='1'><thead><tr><th>idReserva</th><th>Cliente</th><th>Alojamientos</th><th>fechaInicio</th><th>fechaFin</th></thead><tbody>";
 		fechaInicioGlobal = date.parse(fechaInicio);
@@ -330,5 +338,33 @@ class Agencia {
 			}
 		}
 		return salida;
+	}
+
+	buscarCliente(DniCliente) {
+		let i = 0,
+			encontrado = false;
+		while (i < this.clientes.length && !encontrado) {
+			if (this.clientes[i].dni == DniCliente) {
+				encontrado = true;
+			} else {
+				i++;
+			}
+		}
+		if (encontrado) {
+			return i;
+		} else {
+			return -1;
+		}
+	}
+
+	listadoFiltroClientes(dniCliente) {
+		let salida = "<table border='1'><thead><tr><th>DNI</th><th>Apellidos</th><th>Nombre</th><th>Usuario</th></thead><tbody>";
+		for (let Cliente of this.clientes) {
+			if (this.clientes.dni == this.buscarCliente(dniCliente)) {
+				salida += Cliente.toHTMLRow();
+			}
+		}
+
+		return salida + "</tbody></table>";
 	}
 }
