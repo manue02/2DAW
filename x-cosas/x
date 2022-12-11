@@ -1,0 +1,80 @@
+Las funciones del servidor FTP son:
+• Proporcionar una estructura de directorios y archivos.
+• Proporcionar ficheros y directorios al cliente.
+• Almacenar ficheros y directorios del cliente.
+• Gestionar los permisos de cada usuario.
+
+---
+
+El Protocolo de transferencia de archivos (en
+inglés File Transfer Protocol o FTP) es un protocolo
+de red para la transferencia de archivos entre
+sistemas conectados a una red TCP (Transmission
+Control Protocol), basado en la arquitectura cliente-
+servidor.
+
+---
+
+El servicio FTP es ofrecido por la capa de
+aplicación del modelo de capas de red TCP/IP al
+usuario, utilizando normalmente el puerto de red
+20 y el 21.
+
+---
+
+el problema básico de FTP es que está pensado para ofrecer la máxima velocidad en la
+conexión, pero no la máxima seguridad,
+
+---
+
+Hoy en día existen extensiones sobre el protocolo FTP que aseguran el cifrado en la
+transferencia, como FTPS, empleando el cifrado SSL/TLS
+
+---
+
+Existen múltiples tipos de clientes ftp, desde clientes en terminal de comandos (como ftp o lftp),
+clientes gráficos (como gftp o FileZilla client), hasta un cliente ftp en los navegadores mediante
+“ftp://”.
+
+---
+
+Las funciones de un cliente FTP son:
+• Navegar por el árbol de directorios del servidor.
+• Descargar ficheros del servidor.
+• Subir ficheros al servidor.
+• Identificarse como usuario anónimo
+(anonymous) o como otro usuario
+previamente registrado.
+
+---
+
+MODO ACTIVO
+
+1. El cliente envía una petición (comando PORT) desde cualquier puerto superior al 1024, por ejemplo el 1051, al puerto de
+   control 21 del servidor.
+   La solicitud contiene el puerto que el cliente empleará para recibir datos; en el ejemplo de la figura es el 1052.
+2. El servidor responde con un paquete de aceptación ACK. El canal de control queda activo y configurado.
+3. El servidor inicia la conexión de datos desde el puerto 20 al puerto de datos del cliente (en la figura el 1052).
+4. El cliente responde con un paquete de aceptación ACK y el canal de datos queda configurado.
+5. El servidor y el cliente proceden al envío y/o la recepción de datos y su posterior confirmación si llegan correctamente.
+6. Por último, se libera el canal de datos.
+
+MODO PASIVO
+
+1. El cliente envía una petición (comando PASV) desde cualquier puerto superior al 1024, por ejemplo el 1051, al puerto 21 del
+   servidor.
+2. El servidor responde con un mensaje que incluye el puerto de datos al que el cliente debe dirigirse para crear una conexión de
+   datos (en la figura el 5002). El canal de control queda activo y configurado.
+3. El cliente inicia la conexión de datos desde su puerto de datos (en la figura el 1052) al puerto de datos del servidor (5002).
+4. El servidor responde con un paquete de aceptación ACK y el canal de datos queda configurado.
+5. El servidor y el cliente proceden al envío y/o recepción de datos y su posterior confirmación si llegan correctamente.
+   Por último, se libera el canal de datos.
+
+Diferencias entre el modo activo y el modo pasivo son:
+1º Mientras que en el modo activo envía el comando “PORT”, en el modo pasivo envía el comando “PASV”
+2º En el modo pasivo, después de que el cliente envíe el comando PASV, el servidor envía el paquete de confirmación ACK y el puerto por el que se va a
+realizar la transferencia.
+3º En el modo activo, la conexión de datos la inicia el servidor mientras que en el modo pasivo, el que la inicia es el cliente.
+4º En el modo pasivo, el cliente es quien inicia siempre las conexiones, con lo cual es más seguro ya que traslada al servidor el problema de
+seguridad/puertos abiertos etc.
+5º en el modo activo, el puerto de conexión de datos del servidor es siempre el 20 mientras que en el modo pasivo, el servidor es quien elige el puerto.
