@@ -180,6 +180,16 @@ class Reserva {
 	set fechaFin(value) {
 		this.#fechaFin = value;
 	}
+
+	toHTMLRow() {
+		let fila = "<tr>";
+		fila += "<td>" + this.idReserva + "</td>";
+		fila += "<td>" + this.cliente + "</td>";
+		fila += "<td>" + this.alojamientos + "</td>";
+		fila += "<td>" + this.fechaInicio + "</td></tr>";
+		fila += "<td>" + this.fechaFin + "</td></tr>";
+		return fila;
+	}
 }
 
 class Agencia {
@@ -287,10 +297,10 @@ class Agencia {
 	BajaReserva(Reserva) {
 		let mensajeSalida = "";
 		if (this.reservas.filter((elem) => elem.idReserva == Reserva.idReserva).length != 0) {
+			mensajeSalida = "Reserva registrada previamente";
+		} else {
 			this.reservas.remove(Reserva);
 			mensajeSalida = "Reserva encontrada y eliminada";
-		} else {
-			mensajeSalida = "No se a encontrado la reserva";
 		}
 		return mensajeSalida;
 	}

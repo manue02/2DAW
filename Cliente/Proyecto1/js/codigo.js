@@ -98,7 +98,7 @@ function aceptarAltaCliente() {
 	}
 }
 
-// aceptarAltaArbol
+// aceptarAltaAlojamiento
 function aceptarAltaAlojamiento() {
 	let numPersonas = parseInt(frmAltaAlojamiento.txtnumPersona.value.trim());
 

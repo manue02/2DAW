@@ -78,3 +78,72 @@ realizar la transferencia.
 4º En el modo pasivo, el cliente es quien inicia siempre las conexiones, con lo cual es más seguro ya que traslada al servidor el problema de
 seguridad/puertos abiertos etc.
 5º en el modo activo, el puerto de conexión de datos del servidor es siempre el 20 mientras que en el modo pasivo, el servidor es quien elige el puerto.
+
+---
+
+/etc/bind# nano named.conf.local para la creacion de zonas
+
+//
+// Do any local configuration here
+//
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+//include "/etc/bind/zones.rfc1918";
+
+zone "despliegue.com"{
+type master;
+file "/var/lib/bind/master/manuelIS.local";
+};
+//zona Inversa
+zone "0.168.192.in-addr.arpa"{
+type master;
+file "/var/lib/bind/master/manuelIS.192";
+};
+
+/var/lib/bind/master#
+
+zona normal
+
+$ORIGIN despliegue.com.
+$TTL 86400;
+
+@ IN SOA despliegue.com despliegue.despliegue.com(
+
+        1;
+        6H;
+        1H;
+        2W;
+        3H;
+
+)
+
+        NS      despliegue.com
+
+despliegue.com IN A 192.168.0.10
+cliente.despliegue.com IN A 192.168.0.20
+Cliente IN CNAME cliente.despliegue.com
+
+zona inversa ejemplo
+
+GNU nano 2.5.3 File: manuelIS.192
+
+$ORIGIN 0.168.192.in-addr.arpa.
+$TTL 86400;
+
+@ IN SOA manuelIS manuel.manuelIS.org(
+
+        1;
+        6H;
+        1H;
+        2W;
+        3H;
+
+)
+
+        NS      manuelIS.org.
+
+10 PTR manuelIS.org.
+20 PTR UbuntuClienteDNS.
+
+named-checkzone 0.168.192.in-addr.arpa manuelIS.192 chekear zona inversa
