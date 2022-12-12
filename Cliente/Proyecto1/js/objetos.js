@@ -284,10 +284,10 @@ class Agencia {
 		return mensajeSalida;
 	}
 
-	BajaReserva(idReserva) {
+	BajaReserva(Reserva) {
 		let mensajeSalida = "";
 		if (this.reservas.filter((elem) => elem.idReserva == Reserva.idReserva).length != 0) {
-			this.reservas.remove(idReserva);
+			this.reservas.remove(Reserva);
 			mensajeSalida = "Reserva encontrada y eliminada";
 		} else {
 			mensajeSalida = "No se a encontrado la reserva";

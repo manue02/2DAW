@@ -169,7 +169,7 @@ function aceptarBajaReserva() {
 	if (isNaN(sId)) {
 		alert("El id tiene que ser mayor a 0");
 	} else {
-		alert(cliente.BajaReserva(oReserva));
+		alert(cliente.BajaReserva(sId));
 		frmBajaReserva.reset();
 		frmBajaReserva.style.display = "none";
 	}
