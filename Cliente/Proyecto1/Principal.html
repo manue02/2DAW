@@ -66,7 +66,7 @@
 								<a class="dropdown-item letraGrande" href="#" onclick="mostrarListadoClientes();">Listados Cliente</a>
 								<a class="dropdown-item letraGrande" href="#" onclick="mostrarListadoAlojamientos();">Listado Alojamiento</a>
 								<a class="dropdown-item letraGrande" href="#" onclick="gestionFormularios('frmListadoUnCliente');">Listado de reservas de un determinado cliente</a>
-								<a class="dropdown-item letraGrande" href="#">Listados de reservas entre dos fechas</a>
+								<a class="dropdown-item letraGrande" href="#" onclick="gestionFormularios('frmEntreDosFechas');">Listados de reservas entre dos fechas</a>
 								<a class="dropdown-item letraGrande" href="#" onclick="mostrarListadoHabitacionesDesayuno();">Listado Habitaciones con Desayuno</a>
 							</div>
 						</li>
@@ -270,6 +270,33 @@
 						<label class="col-xs-4 control-label" for="btnAceptarSalidaStock"></label>
 						<div class="col-xs-4">
 							<input type="button" id="btnAceptarDni" name="btnAceptarDni" class="btn btn-primary" value="Aceptar" onclick="mostrarListadoClientesConFiltro();" />
+						</div>
+					</div>
+				</fieldset>
+			</form>
+
+			<form class="form-horizontal" name="frmEntreDosFechas" id="frmEntreDosFechas">
+				<fieldset>
+					<!-- Form Name -->
+					<legend>Listado entre dos fechas</legend>
+
+					<div class="form-group">
+						<label class="col-xs-4 control-label" for="txtFechaInicio">Fecha Inicio</label>
+						<div class="col-xs-4">
+							<input id="txtFechaInicio" name="txtFechaInicio" placeholder="DNI" class="form-control input-md" type="date" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-4 control-label" for="txtFechaFin">Fecha Fin</label>
+						<div class="col-xs-4">
+							<input id="txtFechaFin" name="txtFechaFin" placeholder="DNI" class="form-control input-md" type="date" />
+						</div>
+					</div>
+					<!-- Button -->
+					<div class="form-group">
+						<label class="col-xs-4 control-label" for="btnAceptarMovimiento"></label>
+						<div class="col-xs-4">
+							<input type="button" id="btnAceptarMovimiento" name="btnAceptarMovimiento" class="btn btn-primary" onclick="mostrarListadoEntreDosFechas();" value="Aceptar" />
 						</div>
 					</div>
 				</fieldset>

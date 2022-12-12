@@ -24,6 +24,9 @@ function gestionFormularios(sFormularioVisible) {
 		case "frmListadoUnCliente":
 			frmListadoUnCliente.style.display = "block";
 			break;
+		case "frmEntreDosFechas":
+			frmEntreDosFechas.style.display = "block";
+			break;
 	}
 }
 
@@ -60,6 +63,15 @@ function mostrarListadoClientesConFiltro() {
 	oVentana.document.write(cliente.listadoFiltroClientes());
 	oVentana.document.close();
 	oVentana.document.title = "Listado de un cliente";
+}
+
+function mostrarListadoEntreDosFechas() {
+	let oVentana = open("", "_blank", "");
+	oVentana.document.open();
+	oVentana.document.write("<h1>Listado de Entre dos fechas</h1>");
+	oVentana.document.write(cliente.listadoEntreDosFechas());
+	oVentana.document.close();
+	oVentana.document.title = "Listado de un Entre dos fechas";
 }
 
 function mostrarListadoHabitacionesDesayuno() {
@@ -124,26 +136,26 @@ function aceptarAltaAlojamiento() {
 function aceptarAltaReserva() {
 	let sCliente = frmAltaReserva.txtCliente.value.trim();
 	let numAlojamiento = parseInt(frmAltaReserva.txtAlojamientos.value.trim());
-	let sFechaInicio = frmAltaReserva.txtFechaInicio.value.trim();
-	let sFechaFin = frmAltaReserva.txtFechaFin.value.trim();
+	let sFechaInicio = Date.parse(frmAltaReserva.txtFechaInicio.value.trim());
+	let sFechaFin = Date.parse(frmAltaReserva.txtFechaFin.value.trim());
 	let iCodigo = cliente.siguienteCodigoReservas();
 
-	// let f1 = new Date();
-	// let f2 = new Date(sFechaInicio);
-	// let f3 = new Date(sFechaFin);
+	let f1 = new Date();
+	let f2 = new Date(sFechaInicio);
+	let f3 = new Date(sFechaFin);
 
-	// let dia = f1.getDate();
-	// let mes = f1.getMonth();
-	// let año = f1.getFullYear();
+	let dia = f1.getDate();
+	let mes = f1.getMonth();
+	let año = f1.getFullYear();
 
-	// let diaActual = f1.getTime();
-	// let DiaReservaInicio = f2.getTime();
-	// let DiaReservaFin = f3.getTime();
+	let diaActual = f1.getTime();
+	let DiaReservaInicio = f2.getTime();
+	let DiaReservaFin = f3.getTime();
 
 	let oReserva = new Reserva(iCodigo, sCliente, numAlojamiento, sFechaInicio, sFechaFin);
 
-	if (sCliente.length == 0 || isNaN(numAlojamiento)) {
-		alert("Faltan datos por rellenar");
+	if (sCliente.length == 0 || isNaN(numAlojamiento) || diaActual > DiaReservaInicio || diaActual > DiaReservaFin) {
+		alert("Faltan datos por rellenar o las fechas es incorreco");
 	} else {
 		alert(cliente.AltaReserva(oReserva));
 		frmAltaReserva.reset();

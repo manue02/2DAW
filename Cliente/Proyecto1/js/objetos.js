@@ -303,21 +303,6 @@ class Agencia {
 		}
 	}
 
-	ListadoReservas(fechaInicio, fechaFin) {
-		let salida = "<table border='1'><thead><tr><th>idReserva</th><th>Cliente</th><th>Alojamientos</th><th>fechaInicio</th><th>fechaFin</th></thead><tbody>";
-		fechaInicioGlobal = date.parse(fechaInicio);
-		fechaFinGlobal = date.parse(fechaFin);
-
-		for (let Reserva of this.reservas) {
-			fechafinConcreta = date.parse(this.reservas.fechaFin);
-			fechaInicioConcreta = date.parse(this.reservas.fechaInicio);
-			if (fechaInicioGlobal > fechaInicioConcreta && fechaFinGlobal < fechafinConcreta) {
-				salida += Reserva.toHTMLRow();
-			}
-		}
-		return salida + "</tbody></table>";
-	}
-
 	ListadoReservasClientes(idCliente) {
 		for (let Reserva of this.reservas) {
 			for (let Cliente of this.clientes) {
@@ -365,6 +350,28 @@ class Agencia {
 			}
 		}
 
+		return salida + "</tbody></table>";
+	}
+
+	listadoEntreDosFechas(fechaInicio, fechaFin) {
+		let salida = "<table border='1'><thead><tr><th>idReserva</th><th>Cliente</th><th>Alojamientos</th><th>fechaInicio</th><th>fechaFin</th></thead><tbody>";
+		let sFechaInicio = Date.parse(frmEntreDosFechas.txtFechaInicio.value.trim());
+		let sFechaFin = Date.parse(frmEntreDosFechas.txtFechaFin.value.trim());
+
+		let f2 = new Date(sFechaInicio);
+		let f3 = new Date(sFechaFin);
+
+		let DiaReservaInicio = f2.getTime();
+		let DiaReservaFin = f3.getTime();
+
+		for (let Reserva of this.reservas) {
+			let fechafinConcreta = Reserva.DiaReservaFin;
+			let fechaInicioConcreta = Reserva.DiaReservaInicio;
+
+			if (DiaReservaInicio >= fechaInicioConcreta && DiaReservaFin <= fechafinConcreta) {
+				salida += Reserva.toHTMLRow();
+			}
+		}
 		return salida + "</tbody></table>";
 	}
 }
