@@ -20,18 +20,15 @@
         </head>
         <body>
             <h:form>
-            <h3><h:outputText value="Consulta Empleados"/></h3>
-            <h:outputText value="Nº Departamento"/>
+            <h3><h:outputText value="Consulta De Personas"/></h3>
+            <h:outputText value="Personas"/>
      
-            <h:selectOneMenu value="#{empleados.ndep}" >
+            <h:selectOneMenu value="#{empleados.Indice}" >
                 <f:selectItems value="#{empleados.listaDepartamentos}"/>
             </h:selectOneMenu>
                  <br>
-            <h:selectOneRadio value="#{empleados.orden}">
-                <f:selectItem itemValue="ename" itemLabel="Alfabético"/>
-                <f:selectItem itemValue="sal" itemLabel="Salario"/>
-            </h:selectOneRadio>
-            <h:commandButton value="Envio" action="verDatos"/>
+            
+            <h:commandButton value="Seleccionar" action="verDatos"/>
             </h:form>            
         </body>
     </html>

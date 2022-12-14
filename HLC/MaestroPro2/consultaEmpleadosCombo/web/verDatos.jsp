@@ -20,27 +20,17 @@
         </head>
         <body>
            
-            <h:dataTable value="#{empleados.rsEmpleados}" border="1" var="fila">
-                 <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Nº Empleado"/>
-                    </f:facet>
-                    <h:outputText value="#{fila.empno}"/>
-                </h:column>
-                 <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Nombre"/>
-                    </f:facet>
-                    <h:outputText value="#{fila.ename}"/>
-                </h:column> 
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Sueldo"/>
-                    </f:facet>
-                    <h:outputText value="#{fila.sal}"/>
-                </h:column>
-            </h:dataTable>        
-   
+             <h:form>
+            <h3><h:outputText value="Consulta De Platos"/></h3>
+            <h:outputText value="Platos"/>
+     
+            <h:selectOneMenu value="#{empleados.Indice}" >
+                <f:selectItems value="#{empleados.listaPlatos}"/>
+            </h:selectOneMenu>
+                 <br>
+            
+            <h:commandButton value="Modificar" action="verDatos"/>
+            </h:form>         
         </body>
     </html>
 </f:view>

@@ -8,4 +8,11 @@
         <managed-bean-class>Empleados</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <navigation-rule>
+        <from-view-id>/index.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>case1</from-outcome>
+            <to-view-id>/verDatos.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>
