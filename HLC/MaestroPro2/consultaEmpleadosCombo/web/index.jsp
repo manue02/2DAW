@@ -31,7 +31,7 @@
                 <f:selectItem itemValue="ename" itemLabel="Alfabético"/>
                 <f:selectItem itemValue="sal" itemLabel="Salario"/>
             </h:selectOneRadio>
-            <h:commandButton value="Envio" action="verDatos"/>
+            <h:commandButton value="Envio" action="Listas"/>
             </h:form>            
         </body>
     </html>
