@@ -26,7 +26,7 @@
             
                  <br>
                  <h:selectOneMenu value="#{empleados.ndep}" >
-                     
+                     <f:selectItems value="#{empleados.listaOficios}"/>
             </h:selectOneMenu>
                  <br>
             
