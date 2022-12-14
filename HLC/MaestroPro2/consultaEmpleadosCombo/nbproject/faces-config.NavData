@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scene Scope="Project" version="2">
     <Scope Scope="Faces Configuration Only"/>
-    <Scope Scope="Project">
-        <Node id="verDatos.jsp" x="373" y="181" zoom="true"/>
-        <Node id="index.jsp" x="709" y="181" zoom="false"/>
-    </Scope>
+    <Scope Scope="Project"/>
     <Scope Scope="All Faces Configurations"/>
 </Scene>

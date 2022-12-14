@@ -27,8 +27,11 @@
                 <f:selectItems value="#{empleados.listaDepartamentos}"/>
             </h:selectOneMenu>
                  <br>
-            
-            <h:commandButton value="Seleccionar" action="verDatos"/>
+            <h:selectOneRadio value="#{empleados.orden}">
+                <f:selectItem itemValue="ename" itemLabel="Alfabético"/>
+                <f:selectItem itemValue="sal" itemLabel="Salario"/>
+            </h:selectOneRadio>
+            <h:commandButton value="Envio" action="verDatos"/>
             </h:form>            
         </body>
     </html>
