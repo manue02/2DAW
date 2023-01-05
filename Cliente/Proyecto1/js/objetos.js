@@ -382,6 +382,7 @@ class Agencia {
 				salida += Reserva.toHTMLRow();
 			}
 		}
+
 		return salida + "</tbody></table>";
 	}
 }
