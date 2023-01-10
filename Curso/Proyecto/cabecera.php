@@ -1,5 +1,5 @@
 <header>
-	Usuario: <?php echo $_SESSION['usuario']['correo'] ?>
+	Usuario: <?php //echo $_SESSION['usuario']['nombre'] ?>
 
 	<a href="categorias.php">Seguir Comprando</a>
 	<a href="carrito.php">Ver carrito</a>
