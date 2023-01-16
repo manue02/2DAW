@@ -1,149 +1,103 @@
-Las funciones del servidor FTP son:
-• Proporcionar una estructura de directorios y archivos.
-• Proporcionar ficheros y directorios al cliente.
-• Almacenar ficheros y directorios del cliente.
-• Gestionar los permisos de cada usuario.
+2.1 objetivos
 
----
+La accesibilidad web no se centra sólo en las personas con discapacidad, tiene como objetivo lograr que las páginas web sean utilizables por el máximo número de personas, da igual sus conocimientos o capacidades personales e independientemente del equipo que se use para entrar en la web.
 
-El Protocolo de transferencia de archivos (en
-inglés File Transfer Protocol o FTP) es un protocolo
-de red para la transferencia de archivos entre
-sistemas conectados a una red TCP (Transmission
-Control Protocol), basado en la arquitectura cliente-
-servidor.
+2.2 Oportunidades
+ofrecen oprtunidades para acceder a la web para lo sordos con videos subtitulados o los ciegos a los lectores de pantalla o para personas con discapacidad motora que pueden utilizar programas
+pero hay muchas dificultades por que hay muchas paginas que no tienen estas adaptaciones
 
----
+2.4 Destinatarios
 
-El servicio FTP es ofrecido por la capa de
-aplicación del modelo de capas de red TCP/IP al
-usuario, utilizando normalmente el puerto de red
-20 y el 21.
+    La mayoría de los estudios estiman que un 20% de la población tiene algún tipo de discapacidad no es algo que dificulte para hacer busquedas en la web pero es una parte grande
+    Cada discapacidad requiere de ciertos tipos de adaptaciones, que la mayoría de las veces, beneficiarán a casi todos, no sólo a las personas con discapacidad.
 
----
+2.5 Desarrolladores
 
-el problema básico de FTP es que está pensado para ofrecer la máxima velocidad en la
-conexión, pero no la máxima seguridad,
+    La mayoría de los errores de accesibilidad web son por falta de conocimientos del desarrollador.
 
----
+2.8 W3C
 
-Hoy en día existen extensiones sobre el protocolo FTP que aseguran el cifrado en la
-transferencia, como FTPS, empleando el cifrado SSL/TLS
+El W3C es un grupo internacional e independiente que define los protocolos y estándares para la web Una de las iniciativas del W3C es la WAI (Web Accessibility Initiative) que se encarga del desarrollo de normas de accesibilidad.
 
----
+2.10 WCAG
+Las WCAG (Web Content Accessibility Guidelines) son las principales normas de accesibilidad web.
 
-Existen múltiples tipos de clientes ftp, desde clientes en terminal de comandos (como ftp o lftp),
-clientes gráficos (como gftp o FileZilla client), hasta un cliente ftp en los navegadores mediante
-“ftp://”.
+Proporcionaban tres prioridades del WCAG 1.0:
 
----
+    Nivel A requisitos básicos,
+    Nivel AA mejor accesibilidad y la eliminación de importantes barreras,
+    Nivel AAA proporcionaba mejoras a la accesibilidad.
 
-Las funciones de un cliente FTP son:
-• Navegar por el árbol de directorios del servidor.
-• Descargar ficheros del servidor.
-• Subir ficheros al servidor.
-• Identificarse como usuario anónimo
-(anonymous) o como otro usuario
-previamente registrado.
+    2.12 WCAG 2.0
 
----
+    Se fundamentan en WCAG 1.0, pero introducen algunos cambios significativos.
 
-MODO ACTIVO
+    2.13 WCAG-EM 1.0
 
-1. El cliente envía una petición (comando PORT) desde cualquier puerto superior al 1024, por ejemplo el 1051, al puerto de
-   control 21 del servidor.
-   La solicitud contiene el puerto que el cliente empleará para recibir datos; en el ejemplo de la figura es el 1052.
-2. El servidor responde con un paquete de aceptación ACK. El canal de control queda activo y configurado.
-3. El servidor inicia la conexión de datos desde el puerto 20 al puerto de datos del cliente (en la figura el 1052).
-4. El cliente responde con un paquete de aceptación ACK y el canal de datos queda configurado.
-5. El servidor y el cliente proceden al envío y/o la recepción de datos y su posterior confirmación si llegan correctamente.
-6. Por último, se libera el canal de datos.
+    Metodología de evaluación de la accesibilidad del contenido de páginas web
 
-MODO PASIVO
+    2.14 ATAG 2.0
 
-1. El cliente envía una petición (comando PASV) desde cualquier puerto superior al 1024, por ejemplo el 1051, al puerto 21 del
-   servidor.
-2. El servidor responde con un mensaje que incluye el puerto de datos al que el cliente debe dirigirse para crear una conexión de
-   datos (en la figura el 5002). El canal de control queda activo y configurado.
-3. El cliente inicia la conexión de datos desde su puerto de datos (en la figura el 1052) al puerto de datos del servidor (5002).
-4. El servidor responde con un paquete de aceptación ACK y el canal de datos queda configurado.
-5. El servidor y el cliente proceden al envío y/o recepción de datos y su posterior confirmación si llegan correctamente.
-   Por último, se libera el canal de datos.
+    Accesibilidad de editores de páginas web
 
-Diferencias entre el modo activo y el modo pasivo son:
-1º Mientras que en el modo activo envía el comando “PORT”, en el modo pasivo envía el comando “PASV”
-2º En el modo pasivo, después de que el cliente envíe el comando PASV, el servidor envía el paquete de confirmación ACK y el puerto por el que se va a
-realizar la transferencia.
-3º En el modo activo, la conexión de datos la inicia el servidor mientras que en el modo pasivo, el que la inicia es el cliente.
-4º En el modo pasivo, el cliente es quien inicia siempre las conexiones, con lo cual es más seguro ya que traslada al servidor el problema de
-seguridad/puertos abiertos etc.
-5º en el modo activo, el puerto de conexión de datos del servidor es siempre el 20 mientras que en el modo pasivo, el servidor es quien elige el puerto.
+2.15 UAAG 2.0
 
----
+    Accesibilidad de navegadores web
 
-/etc/bind# nano named.conf.local para la creacion de zonas
+3.1 Perceptible (I)
 
-//
-// Do any local configuration here
-//
+    Disponible para los sentidos (visión y audición principalmente), bien a través del navegador o por medio de ayudas técnicas (por ejemplo, lectores de pantalla, ampliadores de pantalla, etc.)
 
-// Consider adding the 1918 zones here, if they are not used in your
-// organization
-//include "/etc/bind/zones.rfc1918";
+    Texto alternativo
 
-zone "despliegue.com"{
-type master;
-file "/var/lib/bind/master/manuelIS.local";
-};
-//zona Inversa
-zone "0.168.192.in-addr.arpa"{
-type master;
-file "/var/lib/bind/master/manuelIS.192";
-};
+    Contenido multimedia dependiente del tiempo
 
-/var/lib/bind/master#
+    Adaptable
 
-zona normal
+    Distinguible
 
-$ORIGIN despliegue.com.
-$TTL 86400;
+3.4 Operable (I)
 
-@ IN SOA despliegue.com despliegue.despliegue.com(
+    Los usuarios pueden interactuar con todos los controles y elementos interactivos usando el ratón, un teclado o un dispositivo de ayuda.
 
-        1;
-        6H;
-        1H;
-        2W;
-        3H;
+    Teclado accesible
 
-)
+    Tiempo suficiente
 
-        NS      despliegue.com
+    Ataques epilépticos
 
-despliegue.com IN A 192.168.0.10
-cliente.despliegue.com IN A 192.168.0.20
-Cliente IN CNAME cliente.despliegue.com
+    Navegación
 
-zona inversa ejemplo
+3.7 Comprensible (I)
 
-GNU nano 2.5.3 File: manuelIS.192
+    El contenido es claro y se limita la confusión y la ambigüedad.
 
-$ORIGIN 0.168.192.in-addr.arpa.
-$TTL 86400;
+    Legible
 
-@ IN SOA manuelIS manuel.manuelIS.org(
+    Previsible
 
-        1;
-        6H;
-        1H;
-        2W;
-        3H;
+    Asistencia a la entrada de datos
 
-)
+3.9 Robusto (I)
 
-        NS      manuelIS.org.
+    Una amplia gama de dispositivos y tecnologías puede acceder al contenido.
 
-10 PTR manuelIS.org.
-20 PTR UbuntuClienteDNS.
+Compatible
 
-named-checkzone 0.168.192.in-addr.arpa manuelIS.192 chekear zona inversa
+5 Beneficios
+
+5.1 Mejora el posicionamiento en Buscadores
+
+5.2 Se incrementa el número de potenciales visitantes
+
+5.3 Aumenta la usabilidad de la página
+
+5.4 Se cumplen los estándares web
+
+5.5 Reduce el tiempo de carga de las páginas web
+
+5.6 Reducimos el coste de mantenimiento
+
+5.7 Demuestra responsabilidad social
+
+5.8 Cumplir la Ley

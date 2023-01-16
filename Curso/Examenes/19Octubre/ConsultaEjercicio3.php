@@ -1,30 +1,24 @@
 <?php
-include("ejer2.php");
 
-echo "<form  method='POST'>";
-	 
+if (isset($_POST['submit'])) {
 
-foreach ($generos as $Valor) {
+    $name = $_POST['name'];
 
-	echo "<tr><td><input type='checkbox' name='Seleccion_generos' option>$Valor</td><br></tr>";
+    echo "User Has submitted the form and entered this name : <b> $name </b>";
 
-    }
-   echo"
-    <input type='submit' value='Consultar'>
-    </form>";
+    echo "<br>You can use the following form again to enter a new name.";
 
-    if(!isset ($_POST['Seleccion_generos'])){
-
-        echo "No has seleccionado ningun valor";
-    }
-
-
+}
 
 ?>
 
+<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 
+    <input type="text" name="name"><br>
 
+    <input type="submit" name="submit" value="Submit Form"><br>
 
+</form>
 
-
-
+</html>
+</body>
