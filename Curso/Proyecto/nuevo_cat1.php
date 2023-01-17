@@ -36,12 +36,29 @@ include "conexion.php";
 				<br>
 				<form action="nuevo_cat2.php" method="POST"
 					style="border-collapse: separate; border-spacing: 10px 5px;">
-					<label>Categoria</label>
-					<input type="text" id="categoria_id" name="categoria_id"><br>
-					<br>
-					<label>Descripcion</label>
-					<input type="text" id="Descripcion_id" name="Descripcion_id"><br>
-					<br>
+					<div class="col-12 col-md-12 col-lg-12 my-2">
+						<div class="row">
+							<div class="col-md-6 col-lg-10">
+								<label for="exampleFormControlInput1"
+									class="col-form-label letra-blanca">Categoria</label>
+							</div>
+							<div class="col-md-5 col-lg-10">
+								<input type="email" class="form-control" id="Categoria_id" name="Categoria_id" />
+							</div>
+						</div>
+					</div>
+
+					<div class="col-12 col-md-12 col-lg-12 my-2">
+						<div class="row">
+							<div class="col-md-6 col-lg-10">
+								<label for="exampleFormControlInput1"
+									class="col-form-label letra-blanca">Descripcion</label>
+							</div>
+							<div class="col-md-5 col-lg-10">
+								<input type="email" class="form-control" id="Descripcion_id" name="Descripcion_id" />
+							</div>
+						</div>
+					</div>
 					<button type="submit" class="btn btn-success">Guardar</button>
 					<a href="http://localhost:8080/Clase/Curso/Proyecto/categorias.php"> <button type="button"
 							class="btn btn-info">Atras</button></a>
