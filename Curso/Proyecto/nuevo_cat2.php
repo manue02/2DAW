@@ -13,5 +13,5 @@ function NuevoProducto($nom, $Descp)
 
 <script type="text/javascript">
 	alert("Producto Ingresado Exitosamante!!");
-	window.location.href = 'index.php';
+	window.location.href = 'categorias.php';
 </script>

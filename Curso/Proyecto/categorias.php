@@ -33,6 +33,15 @@ comprobar_sesion();
 		<div id="contenido">
 
 			<?php
+
+			echo "<table style='margin: auto; width: 800px; border-collapse: separate; border-spacing: 10px 5px;'>";
+			echo "<tr><th>Nombre</th>";
+			echo "<th> <a href='nuevo_cat1.php'> <button type='button' class='btn btn-info'>Nuevo</button> </a> </th>";
+			echo "<th>";
+			$arrayClientes = obtenerArrayOpciones("clientes", "NUM_CLIENTE", "NOMBRE");
+			pintarComboMensaje($arrayClientes, "Cliente", "Todos los clientes", 0);
+			echo "<th>	</tr>";
+
 			$categorias = cargar_categorias();
 			if ($categorias === false) {
 				echo "<p class='error'>Error al conectar con la base datos</p>";
@@ -41,19 +50,15 @@ comprobar_sesion();
 				while ($cat = mysqli_fetch_assoc($categorias)) {
 					/*$cat['nombre] $cat['codCat']*/
 					$url = "productos.php?categoria=" . $cat['codCat'];
-					echo "<li><a href='$url'>" . $cat['Nombre'] . "</a></li><br>";
+					echo "<tr><td><a href='$url'>" . $cat['Nombre'] . "</a> <br></td></tr>";
 				}
 				echo "</ul>";
 			}
 
-			?>
-			<a href="nuevo_cat1.php"> <button type="button" class="btn btn-info">Nuevo</button> </a>
 
 
-			<?php
 
-			$arrayClientes = obtenerArrayOpciones("clientes", "NUM_CLIENTE", "NOMBRE");
-			pintarComboMensaje($arrayClientes, "Cliente", "Todos los autores", 0);
+			echo "</table>";
 
 			?>
 

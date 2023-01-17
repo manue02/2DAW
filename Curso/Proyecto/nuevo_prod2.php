@@ -17,11 +17,7 @@ function NuevoProducto($nom, $Descp, $Stock, $precio, $CodCat)
 }
 
 
-
-
 ?>
-
-
 
 <script type="text/javascript">
 	alert("Producto Ingresado Exitosamante!!");
