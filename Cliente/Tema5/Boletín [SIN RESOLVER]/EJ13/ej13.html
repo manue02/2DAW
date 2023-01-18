@@ -35,57 +35,9 @@
 			<br />
 			<input type="submit" name="submit" value="Procesar Formulario" />
 		</form>
+
+		<script>
+			//validar formulario
+		</script>
 	</body>
-
-	<script>
-		function validarFormulario() {
-			let apellidos = document.formulario.apellidos.value;
-			let nombre = document.formulario.nombre.value;
-			let fechaNacimiento = document.formulario.fechaNacimiento.value;
-			let dni = document.formulario.dni.value;
-			let email = document.formulario.email.value;
-			let usuario = document.formulario.usuario.value;
-			let telefono = document.formulario.telefono.value;
-			let twitter = document.formulario.twitter.value;
-
-			let expresionRegularApellidos = /^[A-ZÁÉÍÓÚ][a-záéíóú]+(\s[A-ZÁÉÍÓÚ][a-záéíóú]+)+$/;
-			let expresionRegularNombre = /^[A-ZÁÉÍÓÚ][a-záéíóú]+$/;
-			let expresionRegularFechaNacimiento = /^([0-2][0-9]|3[0-1])\/(0[0-9]|1[0-2])\/(19[0-9]{2}|20[0-9]{2})$/;
-			let expresionRegularDni = /^[0-9]{8}[A-Z]$/;
-			let expresionRegularEmail = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
-			let expresionRegularUsuario = /^[a-z0-9._%+-]+$/;
-			let expresionRegularTelefono = /^[0-9]{9}$/;
-			let expresionRegularTwitter = /^@([a-z0-9._%+-]+)$/;
-
-			if (!expresionRegularApellidos.test(apellidos)) {
-				alert("Los apellidos no son válidos");
-				return false;
-			}
-
-			if (!expresionRegularNombre.test(nombre)) {
-				alert("El nombre no es válido");
-				return false;
-			}
-
-			if (expresionRegularFechaNacimiento.test(fechaNacimiento)) {
-				alert("La fecha de nacimiento no es válida");
-				return false;
-			}
-
-			if (!expresionRegularDni.test(dni)) {
-				alert("El DNI no es válido");
-				return false;
-			}
-
-			if (!expresionRegularEmail.test(email)) {
-				alert("El correo electrónico no es válido");
-				return false;
-			}
-
-			if (!expresionRegularUsuario.test(usuario)) {
-				alert("El usuario no es válido");
-				return false;
-			}
-		}
-	</script>
 </html>
