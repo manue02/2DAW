@@ -30,8 +30,6 @@ function mostrarSelect($resultSet)
 	}
 	return $devuelve;
 }
-
-
 //////////////////////////////////////
 function obtenerValorColumna($tabla,$nombrePK,$valorPK,$columna)
 {
