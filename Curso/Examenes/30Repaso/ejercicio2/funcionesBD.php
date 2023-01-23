@@ -32,7 +32,7 @@ function obtenerValorColumna($tabla, $nombrePK, $valorPK, $columna)
 	global $conexion;
 	$sql1 = "SELECT " . $columna . " FROM $tabla ";
 	$sql1 .= "WHERE " . $nombrePK . " ='" . $valorPK . "'";
-	echo $sql1;
+	//echo $sql1;
 	$resultado1 = mysqli_query($conexion, $sql1);
 	$fila1 = mysqli_fetch_assoc($resultado1);
 	return $fila1[$columna];
@@ -141,56 +141,57 @@ Devuelve:
 3 Si ha dejado algún campo vacio
 4 otro error
 */
-// function comprobarUsuario(
-// 	$nombreTabla,
-// 	$nombreColumna,
-// 	$nombreClave,
-// 	$contenidoColumna,
-// 	$contenidoClave
-// )
+// function comprobarUsuario($nombreTabla,$nombreColumna,$nombreClave,
+// $contenidoColumna,$contenidoClave){
+// global $conexion;
+// if (($contenidoColumna=="") || ($contenidoClave=="")) {
+//     $devuelve=3;
+// } 
+// else 
 // {
-// 	global $conexion;
-// 	if (($contenidoColumna == "") || ($contenidoClave == "")) {
-// 		$devuelve = 3;
-// 	} else {
-// 		/* Evitar inyecciones SQL usando sentencias preparadas*/
-// 		$sentencia = $conexion->stmt_init();
-// 		$cadenaSql = "SELECT COUNT(*) FROM " . $nombreTabla .
-// 			" WHERE " . $nombreColumna . "=? AND " . $nombreClave . "=?";
-// 		$sentencia->prepare($cadenaSql);
-// 		$sentencia->bind_param("ss", $contenidoColumna, $contenidoClave);
-// 		$sentencia->execute();
-// 		/*usando el método bind_result*/
-// 		$sentencia->bind_result($num_filas);
-// 		$sentencia->fetch();
-// 		if (!$sentencia) {
-// 			$devuelve = 4;
-// 		} else {
-// 			if ($num_filas > 0) {
-// 				$devuelve = 0;
-// 			} else {
-// 				$sentencia->close();
-// 				unset($sentencia);
-// 				$sentencia = $conexion->stmt_init();
-// 				$consulta = "SELECT COUNT(*) AS cuenta FROM " . $nombreTabla;
-// 				$consulta .= "   WHERE " . $nombreColumna . "=?";
-// 				$sentencia->prepare($consulta);
-// 				$sentencia->bind_param("s", $contenidoColumna);
-// 				$sentencia->execute();
-// 				/*en vez de bind_result uso ahora el método get_result */
-// 				$result = $sentencia->get_result();
-// 				$fila = $result->fetch_array();
-// 				$num_filas = $fila["cuenta"];
-// 				if (!$result) {
-// 					$devuelve = 4;
-// 				} elseif ($num_filas > 0) {
-// 					$devuelve = 1;
-// 				} else {
-// 					$devuelve = 2;
-// 				}
-// 			}
-// 		}
-// 	}
-// 	return $devuelve;
+// /* Evitar inyecciones SQL usando sentencias preparadas*/
+// $sentencia=$conexion->stmt_init();
+// $cadenaSql="SELECT COUNT(*) FROM ".$nombreTabla.
+//         " WHERE ".$nombreColumna."=? AND ".$nombreClave."=?";
+// $sentencia->prepare($cadenaSql);
+// $sentencia->bind_param("ss",$contenidoColumna,$contenidoClave);
+// $sentencia->execute();
+// /*usando el método bind_result*/
+// $sentencia->bind_result($num_filas);
+// $sentencia->fetch();
+// if (!$sentencia) {
+//     $devuelve= 4;
+//    } 
+// else
+//    { 
+//    if ($num_filas>0)
+// 		{
+//             $devuelve=0;			
+//         }
+// 		else
+// 		{           
+// 			$sentencia->close();
+// 			unset($sentencia);
+// 			$sentencia=$conexion->stmt_init();
+// 			$consulta = "SELECT COUNT(*) AS cuenta FROM ". $nombreTabla ;
+//             $consulta.="   WHERE ".$nombreColumna."=?";
+// 			$sentencia->prepare($consulta);
+// 			$sentencia->bind_param("s",$contenidoColumna);
+// 			$sentencia->execute();
+// 			/*en vez de bind_result uso ahora el método get_result */
+//             $result = $sentencia->get_result();
+// 		    $fila=$result->fetch_array();
+// 	        $num_filas=$fila["cuenta"];
+//             if (!$result) {
+//                 $devuelve= 4;
+//             } elseif ($num_filas>0) {
+//                 $devuelve= 1;
+//             } else {
+//                 $devuelve=2;
+//             }
+//         }
+//     }
+// }
+// return $devuelve;
 // }
 ?>
