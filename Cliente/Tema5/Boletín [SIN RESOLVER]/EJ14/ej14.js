@@ -1,13 +1,16 @@
-function validarFormulario() {
+//asignar la función al evento submit del formulario
+formulario.addEventListener("submit", validarFormulario);
+
+function validarFormulario(evento) {
 	//obtener los valores de los campos
-	let apellidos = formulario.apellidos;
-	let nombre = formulario.nombre;
-	let fechaNacimiento = formulario.fechaNacimiento;
-	let dni = formulario.dni;
-	let email = formulario.email;
-	let usuario = formulario.usuario;
-	let telefono = formulario.telefono;
-	let twitter = formulario.twitter;
+	let apellidos = formulario.apellidos.value.trim();
+	let nombre = formulario.nombre.value.trim();
+	let fechaNacimiento = formulario.fechaNacimiento.value.trim();
+	let dni = formulario.dni.value.trim();
+	let email = formulario.email.value.trim();
+	let usuario = formulario.usuario.value.trim();
+	let telefono = formulario.telefono.value.trim();
+	let twitter = formulario.twitter.value.trim();
 
 	//validar apellidos
 	let expresionApellidos = /^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(\s[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)*$/;
@@ -67,8 +70,5 @@ function validarFormulario() {
 
 	return true;
 }
-
-//asignar la función al evento submit del formulario
-document.formulario.onsubmit = validarFormulario;
 
 // https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Regular_Expressions
