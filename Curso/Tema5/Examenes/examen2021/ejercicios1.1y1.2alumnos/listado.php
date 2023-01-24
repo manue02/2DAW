@@ -32,7 +32,7 @@ if ($orden == 1) {
 
 }
 
-if ($comboLocalidades != 1) {
+if ($comboLocalidades != 0) {
     echo "NO ES TODAS ";
 
     $where = " WHERE true AND localidades.nombre LIKE '%$comboLocalidades%'";
