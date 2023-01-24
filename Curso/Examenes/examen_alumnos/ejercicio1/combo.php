@@ -5,19 +5,15 @@ echo "<form action='VerDatos.php' method='POST'>
 	  <select name='Datos'>";
 
 
-//mostrar un combo para que muestre los nombres ordenados alfabeticamente y mostrar los datos de la persona elegida
+//mostrar un combo para que muestre los nombres de los alumnos y al seleccionar uno muestre los datos de ese alumno en la siguiente página (VerDatos.php) 
 
+foreach ($datos as $nombre => $valor) {
+    echo "<option value='$nombre'>$nombre</option>";
+}
 
-
-
-
-echo "</select> <br>";
-
-echo "
-    <input type='submit' value='Ver Idiomas'>
-    </form>";
-
-
+echo "</select>
+      <input type='submit' value='Enviar'>
+      </form>";
 
 
 
