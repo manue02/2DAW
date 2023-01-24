@@ -1,5 +1,6 @@
 <?php
 include "conexion.php";
+require_once 'bd.php';
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +43,7 @@ include "conexion.php";
 								<label for="exampleFormControlInput1" class="col-form-label letra-blanca">Nombre</label>
 							</div>
 							<div class="col-md-5 col-lg-10">
-								<input type="email" class="form-control" id="Nombre_id" name="Nombre_id" />
+								<input type="text" class="form-control" id="Nombre_id" name="Nombre_id" />
 							</div>
 						</div>
 					</div>
@@ -54,7 +55,7 @@ include "conexion.php";
 									class="col-form-label letra-blanca">Descripcion</label>
 							</div>
 							<div class="col-md-5 col-lg-10">
-								<input type="email" class="form-control" id="Descripcion_id" name="Descripcion_id" />
+								<input type="text" class="form-control" id="Descripcion_id" name="Descripcion_id" />
 							</div>
 						</div>
 					</div>
@@ -65,7 +66,7 @@ include "conexion.php";
 								<label for="exampleFormControlInput1" class="col-form-label letra-blanca">Stock</label>
 							</div>
 							<div class="col-md-5 col-lg-10">
-								<input type="email" class="form-control" id="Stock_id" name="Stock_id" />
+								<input type="number" class="form-control" id="Stock_id" name="Stock_id" />
 							</div>
 						</div>
 					</div>
@@ -76,7 +77,7 @@ include "conexion.php";
 								<label for="exampleFormControlInput1" class="col-form-label letra-blanca">Precio</label>
 							</div>
 							<div class="col-md-5 col-lg-10">
-								<input type="email" class="form-control" id="Precio_id" name="Precio_id" />
+								<input type="number" class="form-control" id="Precio_id" name="Precio_id" />
 							</div>
 						</div>
 					</div>

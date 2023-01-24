@@ -5,9 +5,19 @@ require 'sesiones.php';
 require_once 'bd.php';
 comprobar_sesion();
 
-$CodCat = $_POST['cat'];
+NuevoProducto($_POST['Nombre_id'], $_POST['Descripcion_id'], $_POST['Stock_id'], $_POST['Precio_id'], $_POST['cat']);
 
-NuevoProducto($_POST['Nombre_id'], $_POST['Descripcion_id'], $_POST['Stock_id'], $_POST['Precio_id'], $CodCat);
+//traer el codigo de la categoria
+function cargar_categoria($cod)
+{
+	include 'conexion.php';
+
+	$sentencia = "SELECT * FROM categorias WHERE CodCat = $cod";
+	$resultado = $conexion->query($sentencia) or die("Error al consultar la base de datos" . mysqli_error($conexion));
+	$cat = mysqli_fetch_assoc($resultado);
+	return $cat;
+}
+
 
 function NuevoProducto($nom, $Descp, $Stock, $precio, $CodCat)
 {

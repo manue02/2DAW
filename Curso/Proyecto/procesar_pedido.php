@@ -18,7 +18,7 @@ comprobar_sesion();
 	require 'cabecera.php';
 
 
-	$resul = insertar_pedido($_SESSION['carrito'], $_SESSION['usuario']);
+	$resul = insertar_pedido($_SESSION['carrito'], $_SESSION['usuario']["codRes"]);
 	if ($resul === FALSE) {
 		$_SESSION["realizado"] = "No se ha podido realizar el pedido<br>";
 	} else {
@@ -26,6 +26,7 @@ comprobar_sesion();
 	}
 	$_SESSION['carrito'] = [];
 	header("Location:categorias.php");
+
 
 
 	?>

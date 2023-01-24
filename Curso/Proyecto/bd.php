@@ -73,29 +73,31 @@ function cargar_productos($codigosProductos)
 	}
 	return $resul;
 }
-function insertar_pedido($carrito, $codRes, $Cliente)
+//funcion de insertar pedido
+function insertar_pedido($carrito, $cliente)
 {
 	$bd = mysqli_connect("localhost", "root", "", "pedidosejemplo");
+	$bd->set_charset('utf8');
 	$hora = date("Y-m-d H:i:s", time());
 	// insertar el pedido
-	$sql = "insert into pedidosejemplo(NUM_PEDIDO, CLIENTE, FECHA) 
-			values('$codRes',$Cliente, $hora)";
+	$sql = "insert into pedidosejemplo(CLIENTE , FECHA) 
+			values('$cliente' , '$hora')";
 	$resul = mysqli_query($bd, $sql);
 	if (!$resul) {
 		return FALSE;
 	}
-
-	// insertar los productos del pedido
+	//recuperar el id del pedido
+	$idPedido = mysqli_insert_id($bd);
+	//recorrer el carrito
 	foreach ($carrito as $codProd => $cantidad) {
-		$sql = "insert into lineaspedido(NUM_PEDIDO, COD_PROD, CANTIDAD) 
-				values('$codRes', $codProd, $cantidad)";
-		$resul = mysqli_query($bd, $sql);
-		if (!$resul) {
-			return FALSE;
-		}
+		$ins = "insert into lineaspedidos (num_pedido, cod_prod, cantidad) 
+				values ($idPedido, $codProd, $cantidad)";
+		$resul = mysqli_query($bd, $ins);
+
+		return $idPedido;
 	}
-	return TRUE;
 }
+
 function cargar_foto($codProducto)
 {
 	$bd = mysqli_connect("localhost", "root", "", "pedidosejemplo");
