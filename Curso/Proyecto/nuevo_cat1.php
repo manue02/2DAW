@@ -1,7 +1,3 @@
-<?php
-include "conexion.php";
-?>
-
 <!DOCTYPE html>
 <html>
 
@@ -13,12 +9,6 @@ include "conexion.php";
 		@import url("css/mycss.css");
 	</style>
 	<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
 </head>
 
 <body>
@@ -34,8 +24,7 @@ include "conexion.php";
 					<h1 class="text-center">Alta de Nueva Categoria</h1>
 				</span>
 				<br>
-				<form action="nuevo_cat2.php" method="POST"
-					style="border-collapse: separate; border-spacing: 10px 5px;">
+				<form action=" " method="POST" style="border-collapse: separate; border-spacing: 10px 5px;">
 					<div class="col-12 col-md-12 col-lg-12 my-2">
 						<div class="row">
 							<div class="col-md-6 col-lg-10">
@@ -69,8 +58,26 @@ include "conexion.php";
 
 		</div>
 
-
 	</div>
+
+	<?php
+	require 'sesiones.php';
+	require_once 'bd.php';
+	require 'conexion.php';
+
+	$nom = $_POST['Categoria_id'];
+	$Descp = $_POST['Descripcion_id'];
+
+	NuevoCatalogo($nom, $Descp);
+
+	?>
+
+	<script type="text/javascript">
+		alert("Producto Ingresado Exitosamante!!");
+		window.location.href = 'categorias.php';
+	</script>
+
+
 
 
 </body>

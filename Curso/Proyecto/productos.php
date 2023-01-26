@@ -2,6 +2,7 @@
 /*comprueba que el usuario haya abierto sesión o redirige*/
 require 'sesiones.php';
 require_once 'bd.php';
+require 'conexion.php';
 comprobar_sesion();
 ?>
 <!DOCTYPE html>
@@ -44,7 +45,6 @@ comprobar_sesion();
 			echo "<h1 class='text-center'>" . $cat['nombre'] . "</h1> <br>";
 			echo "<table style='margin: auto; width: 800px; border-collapse: separate; border-spacing: 10px 5px;'>";
 			echo "<tr><th>Artículo</th><th>Nombre</th><th>Descripción</th><th>Comprar</th>";
-			echo "<th> <a href='nuevo_prod1.php'> <button type='button' class='btn btn-info'>Nuevo</button> </a> </th> </tr>";
 
 			while ($producto = mysqli_fetch_assoc($productos)) {
 
@@ -61,11 +61,22 @@ comprobar_sesion();
 			
 			</form></td></tr>";
 			}
-			echo "</table>"
-				?>
 
-			<div>
-				<div>
+			echo "
+			<form action = 'nuevo_prod1.php' method = 'POST'>
+		
+			<input name = 'cod' type='hidden' value = '" . $cat['nombre'] . "'>
+			<button type='submit' class='btn btn-info'>Nuevo</button> </a> </th> </tr>
+			
+			</form>";
+			echo "</table>";
+
+
+			?>
+
+		</div>
+	</div>
+
 
 
 

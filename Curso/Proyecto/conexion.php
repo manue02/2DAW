@@ -6,4 +6,7 @@ if (mysqli_connect_errno()) {
 } else {
 	//printf("Estas conectado");
 }
+
+
+
 ?>

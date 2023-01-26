@@ -161,4 +161,18 @@ function mostrarSelect($resultSet)
 	}
 	return $devuelve;
 }
+
+function NuevoCatalogo($nom, $Descp)
+{
+	include 'conexion.php';
+	$sentencia = "INSERT INTO categoria (CodCat, Nombre, Descripcion) VALUES (' ', '" . $nom . "', '" . $Descp . "') ";
+	$conexion->query($sentencia) or die("Error al ingresar los datos" . mysqli_error($conexion));
+}
+
+function NuevoProducto($nom, $Descp, $Stock, $precio, $CodCat)
+{
+	include 'conexion.php';
+	$sentencia = "INSERT INTO `productos`(`CodProd`, `Nombre`, `Descripcion`, `Stock`, `precio`, `CodCat`) VALUES (' ','$nom','$Descp',$Stock,$precio,$CodCat);";
+	$conexion->query($sentencia) or die("Error al ingresar los datos" . mysqli_error($conexion));
+}
 ?>

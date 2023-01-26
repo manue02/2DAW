@@ -55,9 +55,6 @@ comprobar_sesion();
 				echo "</ul>";
 			}
 
-
-
-
 			echo "</table>";
 
 			?>
