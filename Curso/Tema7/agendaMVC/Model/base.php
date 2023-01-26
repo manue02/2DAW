@@ -14,7 +14,24 @@ class Base
 	public static function mostrarContactos($sql)
 	{
 		//recibe la instruccion SELECT y devuelve un array de objetos contacto
+		$contactos = array();
+		//ejecutar la consulta que se le pasa como parámetro
+		$resultado = self::miConexion()->query($sql);
+		if ($resultado) {
+
+			while ($fila = $resultado->fetch(PDO::FETCH_ASSOC)) {
+
+
+				$contactos[] = new Contacto($fila["dni"], $fila["nombre"], $fila["apellido1"], $fila["apellido2"], $fila["domicilio"], $fila["tfno"]);
+
+			}
+
+
+		}
+
+		return $contactos;
 	}
+
 	protected static function ejecutaConsultaAccion($instruccion)
 	{
 
@@ -39,6 +56,6 @@ class Base
 
 	}
 
-
 }
+
 ?>

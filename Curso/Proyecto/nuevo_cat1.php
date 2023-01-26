@@ -43,7 +43,7 @@ include "conexion.php";
 									class="col-form-label letra-blanca">Categoria</label>
 							</div>
 							<div class="col-md-5 col-lg-10">
-								<input type="email" class="form-control" id="Categoria_id" name="Categoria_id" />
+								<input type="text" class="form-control" id="Categoria_id" name="Categoria_id" />
 							</div>
 						</div>
 					</div>
@@ -55,7 +55,7 @@ include "conexion.php";
 									class="col-form-label letra-blanca">Descripcion</label>
 							</div>
 							<div class="col-md-5 col-lg-10">
-								<input type="email" class="form-control" id="Descripcion_id" name="Descripcion_id" />
+								<input type="text" class="form-control" id="Descripcion_id" name="Descripcion_id" />
 							</div>
 						</div>
 					</div>

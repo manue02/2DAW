@@ -8,8 +8,10 @@ include("../Model/base.php");
 
 $Contacto = new Contacto($_POST["dni"], $_POST["nombre"], $_POST["apellido1"], $_POST["apellido2"], $_POST["domicilio"], $_POST["telefono"]);
 
-$ObjetoBase = new Base();
+// $ObjetoBase = new Base();
 
-$numero = $ObjetoBase->insertarContacto($Contacto);
+// $numero = $ObjetoBase->insertarContacto($Contacto);
 
+
+$numero = Base::insertarContacto($Contacto);
 ?>
