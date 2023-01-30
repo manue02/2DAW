@@ -35,7 +35,7 @@ for (let i = 0; i < categorias.length; i++) {
 function CategoriaSeleccionada() {
 	let productos = [];
 	let categoria = frmControles.categorias.value;
-	let indiceCategoria = categorias.indexOf(categoria);
+	let indiceCategoria = categoria.indexOf(categoria);
 	productos = catalogo.getproductos();
 
 	for (let i = 0; i < productos.length; i++) {
