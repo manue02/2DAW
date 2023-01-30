@@ -32,7 +32,7 @@ if (!isset($_POST['enviar'])) {
 }
 
 $resultado = Base::mostrarContactos($sql);
-echo "<pre> " . print_r($resultado) . " </pre>";
+//echo "<pre> " . print_r($resultado) . " </pre>";
 
 
 include("../View/obtenerContactos.php");

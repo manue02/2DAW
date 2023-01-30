@@ -44,7 +44,7 @@ class Base
 	}
 	public static function insertarContacto($pContacto)
 	{
-		//recibe un objeto contacto y lo inserta en la b.d. si el dni no existía ya en la tabla
+		//recibe un objeto contacto y lo inserta en la b.d. si el dni no existía ya en la tabla y mostrara una tabla con el resultado de la operación si ya existía el dni se mostrará un mensaje de error  y se devolverá un 0
 
 		$instruccion = "INSERT INTO contactos (dni, nombre, apellido1, apellido2, domicilio, tfno) 
 		VALUES ('" . $pContacto->getDni() . "','" . $pContacto->getNombre() . "','" . $pContacto->getApellido1() . "','" . $pContacto->getApellido2() . "','" . $pContacto->getDireccion() . "','" . $pContacto->getTelefono() . "')";

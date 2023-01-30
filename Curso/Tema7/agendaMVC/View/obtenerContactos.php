@@ -6,7 +6,9 @@ echo "<div id=\"contenido\">\n";
 echo '<table border = 2>';
 echo '<thead><tr><th>Nombre</th><th>Apellido1</th><th>Apellido2</th><th>Direccion</th><th>Telefono</th></tr></thead>';
 
-echo "<pre> " . print_r($resultado) . " </pre>";
+echo "<pre> ";
+echo print_r($resultado);
+echo " </pre> <br>";
 foreach ($resultado as $fila => $valor) {
     echo "<tr>";
     echo "<td>" . $valor->getNombre() . "</td>";

@@ -5,35 +5,38 @@ include("../Model/base.php");
 
 
 //recuperamos el nombre del profesor
+
 $nombreProfesor = $_POST['nombreProfesor'];
 
-echo "<pre>" . print_r($_POST) . "</pre>";
-
-//consulta para obtener los modulos del profesor
-$sql = "SELECT DISTINCT modulos.NOMBRE FROM modulos , imparte , profesores WHERE profesores.NOMBRE = '$nombreProfesor' AND profesores.ID = imparte.ID_PROFESOR AND modulos.ID_MODULO = imparte.ID_MODULO";
-
-//ejecutamos la consulta
-$resultado = mysqli_query($conexion, $sql);
-
-//echo $sql;
 
 echo "<form action='listarAlumnos.php' method='post'>";
 
 
 echo "<select name='modulo'>";
 
-//recorremos el resultado de la consulta
-while ($fila = mysqli_fetch_array($resultado)) {
-      echo "<option value='" . $fila['NOMBRE'] . "'>" . $fila['NOMBRE'] . "</option>";
+
+//obtenemos los modulos del profesor
+$modulos = Base::visualizarModulos($nombreProfesor);
+
+//creamos un combo con los modulos
+foreach ($modulos as $modulo) {
+      echo "<option value='$modulo'>$modulo</option>";
 }
 
 
+
 echo "</select>
+<input type='hidden' name='profesor' value='" . $_POST["nombreProfesor"] . "'>
       <input type='submit' value='Ver Alumnos'>
+     
       </form>";
 
-
+// echo "<pre>";
+// print_r($modulos);
+// echo "</pre>";
 
 include("../View/pedirProfesor.php");
+
+echo "";
 
 ?>
