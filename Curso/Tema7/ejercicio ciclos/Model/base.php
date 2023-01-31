@@ -90,27 +90,69 @@ class Base
 	{
 		//devuelve array de alumnos
 
+		$alumnos = array();
+		$sql = "SELECT ID , NOMBRE FROM alumnos";
+
+		$resultado = self::ejecutaConsulta($sql);
+
+		while ($fila = mysqli_fetch_array($resultado)) {
+			$alumnos[] = $fila['NOMBRE'];
+		}
+
+		return $alumnos;
+
 
 	}
 	public static function obtenerComboModulos()
 	{
 
 		//devuelve array asociativo en el que el indice es el id del modulo y el valor el nombre
+		$modulos = array();
+		$sql = "SELECT ID_MODULO , NOMBRE FROM modulos";
+
+		$resultado = self::ejecutaConsulta($sql);
+
+		while ($fila = mysqli_fetch_array($resultado)) {
+			$modulos[] = $fila['NOMBRE'];
+		}
+
+		return $modulos;
+
+
 	}
 
 	public static function existe($alumno, $modulo)
 	{
 		//devuelve true si el alumno está matriculado en el módulo
 
+		$sql = "SELECT * FROM cursa WHERE ID_ALUMNO = '$alumno' AND ID_MODULO = '$modulo'";
+		$resultado = self::ejecutaConsulta($sql);
+
+		if ($resultado->num_rows > 0) {
+			return true;
+		} else {
+			return false;
+		}
+
 	}
 
 	public static function actualiza($alumno, $modulo)
 	{
 		//hace un update en cursa añadiendo 1 a veces_matriculado en la fila correspondiente al idalumno y idmodulo recibidos
+
+		$sql = "UPDATE cursa SET veces_matriculado = veces_matriculado + 1 WHERE ID_ALUMNO = '$alumno' AND ID_MODULO = '$modulo'";
+		$resultado = self::ejecutaConsulta($sql);
+
+		return $resultado;
 	}
 	public static function inserta($alumno, $modulo)
 	{
 		//hace un insert en cursa con el idalumno y idmodulo recibidos
+
+		$sql = "INSERT INTO cursa (ID_ALUMNO, ID_MODULO, veces_matriculado) VALUES ('$alumno', '$modulo', 1)";
+		$resultado = self::ejecutaConsulta($sql);
+
+		return $resultado;
 
 	}
 }
