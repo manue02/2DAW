@@ -23,6 +23,16 @@ catalogo.addProducto(16, "Caña de chocolate", 1.35, 2);
 
 frmControles.categorias.addEventListener("change", CategoriaSeleccionada);
 
+//evento para poner las mesas libres en verde
+
+document.addEventListener("DOMContentLoaded", colorearMesasLibres);
+
+//añadir un evento alhacer clickk en una mesa
+let mesas = document.getElementsByClassName("mesa");
+for (let i = 0; i < mesas.length; i++) {
+	mesas[i].addEventListener("click", seleccionarMesa);
+}
+
 //añadair las categorias en el combo
 for (let i = 0; i < categorias.length; i++) {
 	let oOption = document.createElement("option");
@@ -33,20 +43,65 @@ for (let i = 0; i < categorias.length; i++) {
 //mostrar los productos en el combo de productos en funcion de la categoria seleccionada en el combo de categorias
 
 function CategoriaSeleccionada() {
+	BorrarCombo();
 	let productos = [];
 	let categoria = frmControles.categorias.value;
-	let indiceCategoria = categoria.indexOf(categoria);
+	switch (categoria) {
+		case "Tostadas":
+			categoria = 1;
+			break;
+		case "Bebidas":
+			categoria = 0;
+			break;
+		case "Bollería":
+			categoria = 2;
+			break;
+	}
+	//let indiceCategoria = categoria.indexOf(categoria);
 	productos = catalogo.getproductos();
 
 	for (let i = 0; i < productos.length; i++) {
-		if (indiceCategoria == productos[i].idCategoria) {
+		if (categoria == productos[i].getIdCategoria()) {
 			let oOption = document.createElement("option");
-			oOption.text = productos[i].nombreProducto;
+			oOption.text = productos[i].getNombreProducto();
 			frmControles.productos.add(oOption);
 		}
 	}
+}
 
-	console.log(productos[0]["nombreProducto"]);
+//colorear todas las mesas que esten libres
+function colorearMesasLibres() {
+	let mesas = document.getElementsByClassName("mesa");
+	for (let i = 0; i < mesas.length; i++) {
+		mesas[i].style.backgroundColor = "green";
+	}
 
-	console.log(productos);
+	CategoriaSeleccionada();
+}
+
+//colorear todas las mesas que esten ocupadas
+function colorearMesasOcupadas() {
+	let mesas = document.getElementsByClassName("mesa");
+	for (let i = 0; i < mesas.length; i++) {
+		mesas[i].style.backgroundColor = "red";
+	}
+}
+
+//hacer que al hacer click en una mesa se muestre la mesa seleccionada en el div cuenta
+
+function seleccionarMesa() {
+	let mesa = this;
+	let cuenta = document.getElementById("cuenta");
+	//poner un texto en el div cuenta
+
+	cuenta.innerHTML = "<h2>Cuenta</h2> <p>Mesa " + mesa.innerHTML + "</p>";
+}
+
+//borrar el combo de productos
+function BorrarCombo() {
+	let productos = frmControles.productos;
+	let longitud = productos.length;
+	for (let i = longitud - 1; i >= 0; i--) {
+		productos.remove(i);
+	}
 }
