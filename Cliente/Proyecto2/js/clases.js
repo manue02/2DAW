@@ -57,7 +57,7 @@ class Catalogo {
 
 	setproductos(productos) {
 		this.#productos = productos;
-	}
+	}  
 
 	addProducto(idProducto, nombreProducto, precioUnidad, idCategoria) {
 		this.#productos.push(new Producto(idProducto, nombreProducto, precioUnidad, idCategoria));
