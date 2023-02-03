@@ -1,6 +1,7 @@
 // Sugerencia de categorias y productos
 
 let catalogo = new Catalogo();
+let cuenta = new Cuenta();
 
 categorias = ["Bebidas", "Tostadas", "Bollería"];
 
@@ -26,6 +27,9 @@ frmControles.categorias.addEventListener("change", CategoriaSeleccionada);
 //evento para poner las mesas libres en verde
 
 document.addEventListener("DOMContentLoaded", colorearMesasLibres);
+
+//document.getElementsByClassName("boton").addEventListener("click", liberarMesa);
+let arrayUnidades = [];
 
 //añadir un evento alhacer clickk en una mesa
 let mesas = document.getElementsByClassName("mesa");
@@ -53,17 +57,18 @@ function CategoriaSeleccionada() {
 	let productos = [];
 	let categoria = frmControles.categorias.value;
 	switch (categoria) {
-		case "Tostadas":
-			categoria = 1;
-			break;
 		case "Bebidas":
 			categoria = 0;
+			break;
+		case "Tostadas":
+			categoria = 1;
 			break;
 		case "Bollería":
 			categoria = 2;
 			break;
 	}
-	//let indiceCategoria = categoria.indexOf(categoria);
+	// String(categoria);
+	// let indiceCategoria = categoria.indexOf(categoria);
 	productos = catalogo.productos;
 
 	for (let i = 0; i < productos.length; i++) {
@@ -73,13 +78,15 @@ function CategoriaSeleccionada() {
 			frmControles.productos.add(oOption);
 		}
 	}
+
+	console.log(categoria);
 }
 
 //colorear todas las mesas que esten libres
 function colorearMesasLibres() {
 	let mesas = document.getElementsByClassName("mesa");
 	for (let i = 0; i < mesas.length; i++) {
-		mesas[i].style.backgroundColor = "green";
+		mesas[i].classList.add("libre");
 	}
 
 	CategoriaSeleccionada();
@@ -89,7 +96,7 @@ function colorearMesasLibres() {
 function colorearMesasOcupadas() {
 	let mesas = document.getElementsByClassName("mesa");
 	for (let i = 0; i < mesas.length; i++) {
-		mesas[i].style.backgroundColor = "red";
+		mesas[i].classList.add("ocupada");
 	}
 }
 
@@ -98,16 +105,21 @@ function colorearMesasOcupadas() {
 function seleccionarMesa() {
 	let mesa = this;
 	let cuenta = document.getElementById("cuenta");
+	let seleccionada = cuenta.setAttribute("id", "seleccionada");
 	//poner un texto en el div cuenta
 
-	cuenta.innerHTML = "<h2>Cuenta</h2> <p>Mesa " + mesa.innerHTML + "</p>";
+	cuenta.innerHTML = "<h1>Cuenta</h1> <h2>Mesa " + mesa.innerHTML + "</h2>" + "<h2>Total: 0€</h2>" + "<button class = 'boton'>Pagar y liberar la mesa</button>";
+
+	let tabla = document.createElement("table");
+	tabla.setAttribute("id", "tabla");
+	cuenta.appendChild(tabla);
+	tabla.innerHTML = "<tr><th>Modificar</th><th>Uds</th><th>Id</th><th>Producto</th><th>Precio</th></tr>";
 }
 
 //borrar el combo de productos
 function BorrarCombo() {
 	let productos = frmControles.productos;
-	let longitud = productos.length;
-	for (let i = longitud - 1; i >= 0; i--) {
+	for (let i = productos.length; i >= 0; i--) {
 		productos.remove(i);
 	}
 }
@@ -115,24 +127,45 @@ function BorrarCombo() {
 //mostar las unidades de un producto sumando la tecla pulsada, mostar el id del producto y el nombre del producto con su precio unitario y el total de ese producto en la cuenta
 
 function unidadesProducto() {
-	let arrayUnidades = [];
-	for (let i = 0; i < unidades.length; i++) {
-		if (unidades[i].value == this.value) {
-			arrayUnidades.push(unidades[i].value);
-
-			console.log(arrayUnidades);
-		}
-	}
 	let producto = frmControles.productos.value;
 	let precio = 0;
 	let total = 0;
 	let cuenta = document.getElementById("cuenta");
+	let mesas = document.getElementsByClassName("mesa");
 	let productos = catalogo.productos;
-	for (let i = 0; i < productos.length; i++) {
-		if (producto == productos[i].NombreProducto) {
-			precio = productos[i].PrecioUnidad;
-			total = precio * unidades;
-			cuenta.innerHTML += "<p>" + productos[i].IdProducto + " " + productos[i].NombreProducto + " (ud: " + precio + "€) " + unidades + " = " + total + "€</p>";
+	let Bolenano = (cuenta.pagada = false);
+
+	for (let i = 0; i < unidades.length; i++) {
+		if (unidades[i].value == this.value) {
+			arrayUnidades.push(unidades[i].value);
+
+			let sumaArray = arrayUnidades.reduce((a, b) => parseInt(a) + parseInt(b));
+
+			let unidadesTotal = sumaArray;
+
+			for (let i = 0; i < productos.length; i++) {
+				if (producto == productos[i].NombreProducto) {
+					precio = productos[i].PrecioUnidad;
+					total = precio * unidadesTotal;
+					//redondear el total a dos decimales
+					total = total.toFixed(2);
+
+					cuenta.innerHTML += "<p>" + productos[i].IdProducto + " " + productos[i].NombreProducto + " (ud: " + precio + "€) " + unidadesTotal + " = " + total + "€</p>";
+				}
+			}
+		}
+
+		//pintar de rojo la mesa que este seleccionada si no se ha pagado la cuenta y de verde si se ha pagado la cuenta
+		for (let i = 0; i < mesas.length; i++) {
+			if (mesas[i].getElementById.contains(seleccionada)) {
+				if (Bolenano == false) {
+					mesas[i].classList.add("ocupada");
+					mesas[i].classList.remove("libre");
+				} else {
+					mesas[i].classList.add("libre");
+					mesas[i].classList.remove("ocupada");
+				}
+			}
 		}
 	}
 }
