@@ -33,6 +33,12 @@ for (let i = 0; i < mesas.length; i++) {
 	mesas[i].addEventListener("click", seleccionarMesa);
 }
 
+//añadir un evento al hacer click en en tecla de un producto
+let unidades = document.getElementsByClassName("tecla");
+for (let i = 0; i < unidades.length; i++) {
+	unidades[i].addEventListener("click", unidadesProducto);
+}
+
 //añadair las categorias en el combo
 for (let i = 0; i < categorias.length; i++) {
 	let oOption = document.createElement("option");
@@ -58,12 +64,12 @@ function CategoriaSeleccionada() {
 			break;
 	}
 	//let indiceCategoria = categoria.indexOf(categoria);
-	productos = catalogo.getproductos();
+	productos = catalogo.productos;
 
 	for (let i = 0; i < productos.length; i++) {
-		if (categoria == productos[i].getIdCategoria()) {
+		if (categoria == productos[i].IdCategoria) {
 			let oOption = document.createElement("option");
-			oOption.text = productos[i].getNombreProducto();
+			oOption.text = productos[i].NombreProducto;
 			frmControles.productos.add(oOption);
 		}
 	}
@@ -102,5 +108,30 @@ function BorrarCombo() {
 	let productos = frmControles.productos;
 	for (let i = productos.length; i >= 0; i--) {
 		productos.remove(i);
+	}
+}
+
+//mostar las unidades de un producto sumando la tecla pulsada, mostar el id del producto y el nombre del producto con su precio unitario y el total de ese producto en la cuenta
+
+function unidadesProducto() {
+	let arrayUnidades = [];
+	for (let i = 0; i < unidades.length; i++) {
+		if (unidades[i].value == this.value) {
+			arrayUnidades.push(unidades[i].value);
+
+			console.log(arrayUnidades);
+		}
+	}
+	let producto = frmControles.productos.value;
+	let precio = 0;
+	let total = 0;
+	let cuenta = document.getElementById("cuenta");
+	let productos = catalogo.productos;
+	for (let i = 0; i < productos.length; i++) {
+		if (producto == productos[i].NombreProducto) {
+			precio = productos[i].PrecioUnidad;
+			total = precio * unidades;
+			cuenta.innerHTML += "<p>" + productos[i].IdProducto + " " + productos[i].NombreProducto + " (ud: " + precio + "€) " + unidades + " = " + total + "€</p>";
+		}
 	}
 }

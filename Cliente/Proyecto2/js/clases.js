@@ -11,35 +11,35 @@ class Producto {
 		this.#idCategoria = idCategoria;
 	}
 
-	getIdProducto() {
+	get IdProducto() {
 		return this.#idProducto;
 	}
 
-	setIdProducto(idProducto) {
+	set IdProducto(idProducto) {
 		this.#idProducto = idProducto;
 	}
 
-	getNombreProducto() {
+	get NombreProducto() {
 		return this.#nombreProducto;
 	}
 
-	setNombreProducto(nombreProducto) {
+	set NombreProducto(nombreProducto) {
 		this.#nombreProducto = nombreProducto;
 	}
 
-	getPrecioUnidad() {
+	get PrecioUnidad() {
 		return this.#precioUnidad;
 	}
 
-	setPrecioUnidad(precioUnidad) {
+	set PrecioUnidad(precioUnidad) {
 		this.#precioUnidad = precioUnidad;
 	}
 
-	getIdCategoria() {
+	get IdCategoria() {
 		return this.#idCategoria;
 	}
 
-	setIdCategoria(idCategoria) {
+	set IdCategoria(idCategoria) {
 		this.#idCategoria = idCategoria;
 	}
 }
@@ -51,11 +51,11 @@ class Catalogo {
 		this.#productos = [];
 	}
 
-	getproductos() {
+	get productos() {
 		return this.#productos;
 	}
 
-	setproductos(productos) {
+	set productos(productos) {
 		this.#productos = productos;
 	}
 
@@ -73,19 +73,19 @@ class LineaCuenta {
 		this.#idProducto = idProducto;
 	}
 
-	getUnidades() {
+	get Unidades() {
 		return this.#unidades;
 	}
 
-	setUnidades(unidades) {
+	set Unidades(unidades) {
 		this.#unidades = unidades;
 	}
 
-	getIdProducto() {
+	get IdProducto() {
 		return this.#idProducto;
 	}
 
-	setIdProducto(idProducto) {
+	set IdProducto(idProducto) {
 		this.#idProducto = idProducto;
 	}
 }
@@ -101,27 +101,27 @@ class Cuenta {
 		this.#pagada = false;
 	}
 
-	getMesa() {
+	get Mesa() {
 		return this.#mesa;
 	}
 
-	setMesa(mesa) {
+	set Mesa(mesa) {
 		this.#mesa = mesa;
 	}
 
-	getLineasDeCuenta() {
+	get LineasDeCuenta() {
 		return this.#lineasDeCuenta;
 	}
 
-	setLineasDeCuenta(lineasDeCuenta) {
+	set LineasDeCuenta(lineasDeCuenta) {
 		this.#lineasDeCuenta = lineasDeCuenta;
 	}
 
-	getPagada() {
+	get Pagada() {
 		return this.#pagada;
 	}
 
-	setPagada(pagada) {
+	set Pagada(pagada) {
 		this.#pagada = pagada;
 	}
 }
@@ -135,19 +135,19 @@ class Gestor {
 		this.#mesaActual = 0;
 	}
 
-	getcuentas() {
+	get cuentas() {
 		return this.#cuentas;
 	}
 
-	setcuentas(cuentas) {
+	set cuentas(cuentas) {
 		this.#cuentas = cuentas;
 	}
 
-	getmesaActual() {
+	get mesaActual() {
 		return this.#mesaActual;
 	}
 
-	setmesaActual(mesaActual) {
+	set mesaActual(mesaActual) {
 		this.#mesaActual = mesaActual;
 	}
 }
