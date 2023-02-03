@@ -100,8 +100,7 @@ function seleccionarMesa() {
 //borrar el combo de productos
 function BorrarCombo() {
 	let productos = frmControles.productos;
-	let longitud = productos.length;
-	for (let i = longitud - 1; i >= 0; i--) {
+	for (let i = productos.length; i >= 0; i--) {
 		productos.remove(i);
 	}
 }
