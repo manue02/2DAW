@@ -95,9 +95,9 @@ class Cuenta {
 	#lineasDeCuenta;
 	#pagada;
 
-	constructor(mesa) {
+	constructor(mesa, lineasDeCuenta, pagada) {
 		this.#mesa = mesa;
-		this.#lineasDeCuenta = [];
+		this.#lineasDeCuenta = lineasDeCuenta;
 		this.#pagada = false;
 	}
 
@@ -130,9 +130,9 @@ class Gestor {
 	#cuentas;
 	#mesaActual;
 
-	constructor() {
+	constructor(mesaActual) {
+		this.#mesaActual = mesaActual;
 		this.#cuentas = [];
-		this.#mesaActual = 0;
 	}
 
 	get cuentas() {

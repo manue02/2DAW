@@ -12,3 +12,40 @@ function sumaArray(aNumeros) {
 }
 
 console.log(sumaArray(aNumeros));
+
+function unidadesProducto() {
+	let Teclado = this.value;
+	let cuenta = document.getElementById("cuenta");
+	cuenta.append(Teclado);
+	let nombreProducto = frmControles.productos.value;
+	let ArrayDeidProducto = [];
+	ArrayDeidProducto = BuscarUnIdProducto(nombreProducto);
+
+	console.log(ArrayDeidProducto);
+
+	let resultadoID = ArrayDeidProducto.IdProducto;
+	let resultadoPrecio = ArrayDeidProducto.PrecioUnidad;
+
+	precioTotalUnidad = resultadoPrecio * Teclado;
+
+	precioTotalUnidad = precioTotalUnidad.toFixed(2);
+
+	let salto = document.createElement("br");
+	cuenta.append(salto);
+
+	//let lineaCuenta = new LineaCuenta(Teclado.value, subIDprod);
+
+	console.log(Teclado, resultadoID, nombreProducto, precioTotalUnidad);
+
+	//cuenta.append(Teclado.value, subIDprod, nombreProducto, precio);
+	cuenta.innerHTML += "<p>" + resultadoID + " " + nombreProducto + " (ud: " + resultadoPrecio + "€) " + Teclado + " = " + precioTotalUnidad + "€</p>";
+}
+
+function BuscarUnIdProducto(value) {
+	let productos = catalogo.productos;
+	for (let i = 0; i < productos.length; i++) {
+		if (value == productos[i].IdProducto) {
+			return productos[i];
+		}
+	}
+}
