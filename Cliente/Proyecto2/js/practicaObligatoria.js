@@ -184,16 +184,20 @@ function unidadesProducto() {
 	cuenta.append(tabla);
 	tabla.innerHTML = "<tr><th>Modificar</th><th>Uds</th><th>Id</th><th>Producto</th><th>Precio</th></tr>";
 
-	let tr = document.createElement("tr");
-	tabla.append(tr);
-	tr.innerHTML =
-		"<td><button class = 'boton' onClick = 'AñadirUnidad()'>+</button> <button class = 'boton' onClick = 'QuitarUnidad()'>-</button></td><td>" +
-		Teclado +
-		"</td><td>" +
-		resultadoID +
-		"</td><td>" +
-		nombreProducto +
-		"</td><td>" +
-		precioTotalUnidad +
-		"€</td>";
+	array.forEach((arrayLineasCuenta) => {
+		let tr = document.createElement("tr");
+		tabla.append(tr);
+		tr.innerHTML =
+			"<td><button class = 'boton' onClick = 'AñadirUnidad()'>+</button> <button class = 'boton' onClick = 'QuitarUnidad()'>-</button></td><td>" +
+			arrayLineasCuenta.Unidades +
+			"</td><td>" +
+			arrayLineasCuenta.IdProducto +
+			"</td><td>" +
+			nombreProducto +
+			"</td><td>" +
+			precioTotalUnidad +
+			"€</td>";
+	});
+
+	//recorrer la cueenta y mostrarla en la tabla
 }
