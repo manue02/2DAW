@@ -46,20 +46,30 @@ comprobar_sesion();
 			echo "<table style='margin: auto; width: 800px; border-collapse: separate; border-spacing: 10px 5px;'>";
 			echo "<tr><th>Artículo</th><th>Nombre</th><th>Descripción</th><th>Comprar</th>";
 
+			echo "
+			<form action = 'nuevaFoto.php' method = 'POST'>
+		
+			<button type='submit' class='btn btn-info'>Nueva Foto</button> </a> </th> </tr>
+			
+			</form>";
 			while ($producto = mysqli_fetch_assoc($productos)) {
 
 				$cod = $producto['CodProd'];
 				$nombreFoto = cargar_foto($cod);
 				$nom = $producto['Nombre'];
 				$des = $producto['Descripcion'];
+				$pre = $producto['precio'];
 				echo "<tr><td>";
 				echo "<img src='" . $nombreFoto . "' width='52' height='52'>";
 				echo "</td><td>$nom</td><td>$des</td>
 			<td><form action = 'anadir.php' method = 'POST'>
 			<input name = 'unidades' type='number' min = '1' value = '1'>
-			<input type = 'submit' value='Comprar'><input name = 'cod' type='hidden' value = '$cod'>
+			<input type = 'submit' value='Comprar'><input name = 'cod' type='hidden' value = '$cod'> <input name = 'precio' type='hidden' value = '$pre'>
 			
 			</form></td></tr>";
+				// echo "<pre>";
+				// print_r($producto);
+				// echo "</pre>";
 			}
 
 			echo "
@@ -72,7 +82,17 @@ comprobar_sesion();
 			echo "</table>";
 
 
+			echo "</table>";
+
+			//consulta para mostar los nombres de los clientes que han comprado un producto
+			
+
+
 			?>
+
+
+
+
 
 		</div>
 	</div>

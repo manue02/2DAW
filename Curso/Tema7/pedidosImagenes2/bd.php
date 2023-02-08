@@ -111,4 +111,12 @@ function cargar_foto($codProducto)
 		$fichero .= "sinfoto.gif";
 	return $fichero;
 }
+function pintarCombo($arrayOpciones, $nombreCombo)
+{
+	echo "<p><select name='" . $nombreCombo . "'>";
+	foreach ($arrayOpciones as $indice => $valor) {
+		echo "<option value='" . $indice . "'>" . $valor . "</option>";
+	}
+	echo "</select></p>";
+}
 ?>

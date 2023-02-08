@@ -1,3 +1,11 @@
+<?php
+/*comprueba que el usuario haya abierto sesión o redirige*/
+require 'sesiones.php';
+require_once 'bd.php';
+include 'conexion.php';
+comprobar_sesion();
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -9,6 +17,7 @@
 		@import url("css/mycss.css");
 	</style>
 	<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+	<?php require 'cabecera.php'; ?>
 </head>
 
 <body>
@@ -49,8 +58,7 @@
 						</div>
 					</div>
 					<button type="submit" class="btn btn-success">Guardar</button>
-					<a href="http://localhost:8080/Clase/Curso/Proyecto/categorias.php"> <button type="button"
-							class="btn btn-info">Atras</button></a>
+
 				</form>
 
 
@@ -61,9 +69,9 @@
 	</div>
 
 	<?php
-	require 'sesiones.php';
-	require_once 'bd.php';
-	require 'conexion.php';
+
+
+
 
 	$nom = $_POST['Categoria_id'];
 	$Descp = $_POST['Descripcion_id'];

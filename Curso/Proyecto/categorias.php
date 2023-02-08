@@ -35,12 +35,23 @@ comprobar_sesion();
 			<?php
 
 			echo "<table style='margin: auto; width: 800px; border-collapse: separate; border-spacing: 10px 5px;'>";
-			echo "<tr><th>Nombre</th>";
-			echo "<th> <a href='nuevo_cat1.php'> <button type='button' class='btn btn-info'>Nuevo</button> </a> </th>";
+
+
 			echo "<th>";
+
+			echo '<form name="alta" action="listausuarios.php" method="POST" >';
+
 			$arrayClientes = obtenerArrayOpciones("clientes", "NUM_CLIENTE", "NOMBRE");
 			pintarComboMensaje($arrayClientes, "Cliente", "Todos los clientes", 0);
+			echo '<th><td align="left" colspan=2><input type=submit name ="Consultar" value="Consultar">';
+
+			echo '</th></form>';
+
+
 			echo "<th>	</tr>";
+
+
+
 
 			$categorias = cargar_categorias();
 			if ($categorias === false) {
@@ -57,7 +68,11 @@ comprobar_sesion();
 
 			echo "</table>";
 
+
+
+
 			?>
+
 
 
 
