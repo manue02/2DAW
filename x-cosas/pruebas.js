@@ -1,51 +1,61 @@
-//crear una funcion que reciba un array de numeros y que me devuelva la suma de todos los numeros
-//crear un array con numeros al azar y llamar a la funcion anterior para que me devuelva la suma de todos los numeros del array
+//El Element.append()método inserta un conjunto de Nodeobjetos u objetos de cadena después del último hijo del Element. TextLos objetos de cadena se insertan como nodos equivalentes .
 
-let aNumeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+//El Element.prepend()método inserta un conjunto de Nodeobjetos u objetos de cadena antes del primer hijo del Element. TextLos objetos de cadena se insertan como nodos equivalentes .
 
-function sumaArray(aNumeros) {
-	let iSuma = 0;
-	for (let i = 0; i < aNumeros.length; i++) {
-		iSuma += aNumeros[i];
-	}
-	return iSuma;
-}
+//El Element.after()método inserta un conjunto de Nodeobjetos de cadena en la lista de Elementelementos secundarios del elemento principal, justo después de Element. TextLos objetos de cadena se insertan como nodos equivalentes .
 
-console.log(sumaArray(aNumeros));
+//El Element.before()método inserta un conjunto Nodeo una cadena de objetos en la lista de elementos secundarios del elemento principal de this Element, justo antes de this Element. TextLos objetos de cadena se insertan como nodos equivalentes .
 
-function unidadesProducto() {
-	let Teclado = this.value;
-	let cuenta = document.getElementById("cuenta");
-	cuenta.append(Teclado);
-	let nombreProducto = frmControles.productos.value;
-	let ArrayDeidProducto = [];
-	ArrayDeidProducto = BuscarUnIdProducto(nombreProducto);
+//Ejemplo de expresión regular para validar un email
+// var email = document.getElementById("email");
+// var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+// if (emailRegex.test(email.value)) {
+//   alert("Email correcto");
+// } else {
+//   alert("Email incorrecto");
+// }
 
-	console.log(ArrayDeidProducto);
+//Ejemplo de expresión regular para validar un DNI
+// var dni = document.getElementById("dni");
+// var dniRegex = /^\d{8}[a-zA-Z]$/;
+// if (dniRegex.test(dni.value)) {
+//   alert("DNI correcto");
+// } else {
+//   alert("DNI incorrecto");
+// }
 
-	let resultadoID = ArrayDeidProducto.IdProducto;
-	let resultadoPrecio = ArrayDeidProducto.PrecioUnidad;
+//Ejemplo de expresión regular para validar un teléfono
+// var telefono = document.getElementById("telefono");
+// var telefonoRegex = /^[9|6|7][0-9]{8}$/;
+// if (telefonoRegex.test(telefono.value)) {
+//   alert("Teléfono correcto");
+// } else {
+//   alert("Teléfono incorrecto");
+// }
 
-	precioTotalUnidad = resultadoPrecio * Teclado;
+//Ejemplo de expresión regular para validar una fecha
+// var fecha = document.getElementById("fecha");
+// var fechaRegex = /^\d{1,2}\/\d{1,2}\/\d{4}$/;
+// if (fechaRegex.test(fecha.value)) {
+//   alert("Fecha correcta");
+// } else {
+//   alert("Fecha incorrecta");
+// }
 
-	precioTotalUnidad = precioTotalUnidad.toFixed(2);
+//Ejemplo de expresión regular para validar una hora
+// var hora = document.getElementById("hora");
+// var horaRegex = /^\d{1,2}:\d{2}:\d{2}$/;
+// if (horaRegex.test(hora.value)) {
+//   alert("Hora correcta");
+// } else {
+//   alert("Hora incorrecta");
+// }
 
-	let salto = document.createElement("br");
-	cuenta.append(salto);
-
-	//let lineaCuenta = new LineaCuenta(Teclado.value, subIDprod);
-
-	console.log(Teclado, resultadoID, nombreProducto, precioTotalUnidad);
-
-	//cuenta.append(Teclado.value, subIDprod, nombreProducto, precio);
-	cuenta.innerHTML += "<p>" + resultadoID + " " + nombreProducto + " (ud: " + resultadoPrecio + "€) " + Teclado + " = " + precioTotalUnidad + "€</p>";
-}
-
-function BuscarUnIdProducto(value) {
-	let productos = catalogo.productos;
-	for (let i = 0; i < productos.length; i++) {
-		if (value == productos[i].IdProducto) {
-			return productos[i];
-		}
-	}
-}
+//Ejemplo de expresión regular para validar una URL
+// var url = document.getElementById("url");
+// var urlRegex = /^(http|https):\/\/[a-zA-Z0-9-\.]+\.[a-z]{2,4}/;
+// if (urlRegex.test(url.value)) {
+//   alert("URL correcta");
+// } else {
+//   alert("URL incorrecta");
+// }

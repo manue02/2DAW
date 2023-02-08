@@ -1,5 +1,7 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import Demo from "./demo";
+function welcome(props) {
+	return <h1>Hello, {props.name}</h1>;
+}
 
-ReactDOM.render(<Demo />, document.querySelector("#root"));
+const root = ReactDOM.createRoot(document.getElementById("root"));
+const element = <welcome name="Sara" />;
+root.render(element);
