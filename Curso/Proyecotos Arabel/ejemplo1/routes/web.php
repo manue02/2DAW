@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('hola');
+});
+Route::get('/entrada', function () {
+    return view('entrada');
+});
+Route::get('/contactos', [ContactoController::class, 'index']);
+
+Route::get('/otrosContactos', function () {
+    return view('contactos.otralista');
 });
