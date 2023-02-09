@@ -99,6 +99,27 @@ function liberarMesa() {
 	cuenta.innerHTML = "<h1>Cuenta</h1> <h2>Mesa " + NumeroMesa + "</h2>";
 	let rojo = document.getElementsByClassName("mesa");
 	rojo[NumeroMesa - 1].classList.remove("ocupada");
+
+	let gestor = Gestores[NumeroMesa - 1];
+
+	let Tdcuenta = gestor;
+
+	//poner la cuenta pagada en el array de cuentas y poner a true el atributo pagada
+	for (let i = 0; i < Tdcuenta.length; i++) {
+		if (Tdcuenta[i].mesaActual == NumeroMesa) {
+			for (let i = 0; i < Tdcuenta.cuentas.length; i++) {
+				Tdcuenta[i].cuentas.pagada = true;
+
+				if (Tdcuenta[i].cuentas.pagada == true) {
+					//borrar la array de productos de la cuenta que se ha pagado
+					Tdcuenta[i].cuentas = [];
+					//borrar la cuenta del array de cuentas
+					Tdcuenta.splice(i, 1);
+				}
+			}
+		}
+	}
+	//console.log(Tdcuenta.cuentas.mesa);
 }
 
 //hacer que al hacer click en una mesa se muestre la mesa seleccionada en el div cuenta
@@ -117,7 +138,6 @@ function seleccionarMesa() {
 		tabla.innerHTML = "<tr><th>Modificar</th><th>Uds</th><th>Id</th><th>Producto</th><th>Precio</th></tr>";
 	} else {
 		cuenta.innerHTML = "<h1>Cuenta</h1> <h2>Mesa " + mesa.innerHTML + "</h2>";
-		//meter el numero de la mesa seleccionada en una cuenta nueva
 	}
 }
 //borrar el combo de productos
@@ -165,7 +185,7 @@ function unidadesProducto() {
 	let arrayLineasCuenta = [];
 	arrayLineasCuenta.push(lineaCuenta);
 
-	//crear una cuenta nueva
+	//crear una cuenta nueva por cada mesa
 	let cuentaNueva = new Cuenta(NumeroMesa, [arrayLineasCuenta], false);
 
 	let gestor = Gestores[NumeroMesa - 1];
@@ -176,6 +196,8 @@ function unidadesProducto() {
 
 	gestor.cuentas.push(cuentaNueva);
 
+	//console.log(gestor.cuentas);
+
 	cuenta.innerHTML = "<h1>Cuenta</h1> <h2>" + mesa + "</h2>" + "<h2>Total: " + precioTotalUnidad + "€</h2>" + "<button class = 'boton' onClick = 'liberarMesa()'>Pagar y liberar la mesa</button>";
 	//meter el numero de la mesa seleccionada en una cuenta nueva
 
@@ -184,20 +206,16 @@ function unidadesProducto() {
 	cuenta.append(tabla);
 	tabla.innerHTML = "<tr><th>Modificar</th><th>Uds</th><th>Id</th><th>Producto</th><th>Precio</th></tr>";
 
-	array.forEach((arrayLineasCuenta) => {
-		let tr = document.createElement("tr");
-		tabla.append(tr);
-		tr.innerHTML =
-			"<td><button class = 'boton' onClick = 'AñadirUnidad()'>+</button> <button class = 'boton' onClick = 'QuitarUnidad()'>-</button></td><td>" +
-			arrayLineasCuenta.Unidades +
-			"</td><td>" +
-			arrayLineasCuenta.IdProducto +
-			"</td><td>" +
-			nombreProducto +
-			"</td><td>" +
-			precioTotalUnidad +
-			"€</td>";
-	});
-
-	//recorrer la cueenta y mostrarla en la tabla
+	let tr = document.createElement("tr");
+	tabla.append(tr);
+	tr.innerHTML =
+		"<td><button class = 'boton' onClick = 'AñadirUnidad()'>+</button> <button class = 'boton' onClick = 'QuitarUnidad()'>-</button></td><td>" +
+		Teclado +
+		"</td><td>" +
+		resultadoID +
+		"</td><td>" +
+		nombreProducto +
+		"</td><td>" +
+		precioTotalUnidad +
+		"€</td>";
 }

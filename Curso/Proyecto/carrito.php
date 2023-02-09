@@ -25,22 +25,27 @@ comprobar_sesion();
 	}
 	echo "<h2>Carrito de la compra</h2>";
 	echo "<table>"; //abrir la tabla
-	echo "<tr><th>Nombre</th><th>Descripción</th><th>Unidades</th><th>Eliminar</th></tr>";
+	echo "<tr><th>Nombre</th><th>Descripción</th><th>Unidades</th><th>Precio</th><th>Eliminar</th></tr>";
 	while ($producto = mysqli_fetch_assoc($productos)) {
 		$cod = $producto['CodProd'];
 		$nom = $producto['Nombre'];
 		$des = $producto['Descripcion'];
+		$pre = $_SESSION['carrito'][$cod]["2"];
+		$unidades = $_SESSION['carrito'][$cod]["1"];
 
-		$unidades = $_SESSION['carrito'][$cod];
-
+		// echo "<pre>";
+		// print_r($producto);
+		// echo "</pre>";
 		//print_r($producto);				
-		echo "<tr><td>$nom</td><td>$des</td><td>$unidades</td>
+		echo "<tr><td>$nom</td><td>$des</td><td>$unidades</td><td>$pre</td>
 			<td><form action = 'eliminar.php' method = 'POST'>
 			
 			<input type = 'submit' value='Eliminar'>
 			<input name = 'cod' type='hidden' value = '$cod'>  </form></td></tr>";
 	}
 	echo "</table>";
+
+
 
 	?>
 	<hr>

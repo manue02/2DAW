@@ -6,7 +6,7 @@ require 'sesiones.php';
 comprobar_sesion();
 
 echo print_r($_POST);
-
+require 'cabecera.php';
 ?>
 
 <!DOCTYPE html>
@@ -84,8 +84,7 @@ echo print_r($_POST);
 
 					?>
 					<button type='submit' class='btn btn-info'>Nuevo</button>
-					<a href="http://localhost:8080/Clase/Curso/Proyecto/categorias.php"> <button type="button"
-							class="btn btn-info">Atras</button></a>
+
 				</form>
 
 

@@ -3,7 +3,7 @@
 function comprobar_usuario($nombre, $clave)
 {
 	$bd = mysqli_connect("localhost", "root", "", "pedidosejemplo");
-	$ins = "select NUM_CLIENTE, EMAIL from clientes where NOMBRE = '$nombre' 
+	$ins = "select * from clientes where NOMBRE = '$nombre' 
 			and PASSWORD = '$clave'";
 	$bd->set_charset('utf8');
 	$resul = mysqli_query($bd, $ins);
@@ -28,6 +28,26 @@ function cargar_categorias()
 	//si hay 1 o más
 	return $resul;
 }
+
+function cargar_pedidos($nombre)
+{
+	$bd = mysqli_connect("localhost", "root", "", "pedidosejemplo");
+	$bd->set_charset('utf8');
+
+
+	$sql = "SELECT  productos.Nombre, pedidos.FECHA FROM  productos , lineas, pedidos, clientes WHERE productos.CodProd = lineas.COD_PRODUCTO AND pedidos.NUM_PEDIDO = lineas.NUM_PEDIDO AND clientes.NUM_CLIENTE = $nombre;";
+	echo $sql;
+	$resul = mysqli_query($bd, $sql);
+	if (!$resul) {
+		return FALSE;
+	}
+	if (mysqli_num_rows($resul) == 0) {
+		return FALSE;
+	}
+	//si hay 1 o más
+	return $resul;
+}
+
 function cargar_categoria($codCat)
 {
 	$bd = mysqli_connect("localhost", "root", "", "pedidosejemplo");
@@ -74,29 +94,69 @@ function cargar_productos($codigosProductos)
 	return $resul;
 }
 //funcion de insertar pedido
-function insertar_pedido($carrito, $cliente)
+function insertar_pedido($carrito, $codRes)
 {
 	$bd = mysqli_connect("localhost", "root", "", "pedidosejemplo");
-	$bd->set_charset('utf8');
+	foreach ($carrito as $codProd => $unidades) {
+		$stock = "SELECT Stock FROM productos WHERE CodProd = '" . $codProd . "'";
+		$resul = mysqli_query($bd, $stock);
+
+		while ($unicaFila = $resul->fetch_assoc()) {
+			extract($unicaFila);
+			if ($Stock < $unidades['1']) {
+				return "No se ha podido hacer el pedido ya que hay un producto que no tiene stock";
+			}
+
+
+		}
+
+	}
+
 	$hora = date("Y-m-d H:i:s", time());
 	// insertar el pedido
-	$sql = "insert into pedidosejemplo(CLIENTE , FECHA) 
-			values('$cliente' , '$hora')";
+	$sql = "insert into pedidos(CLIENTE, FECHA) 
+            values($codRes,'$hora')";
 	$resul = mysqli_query($bd, $sql);
 	if (!$resul) {
 		return FALSE;
 	}
-	//recuperar el id del pedido
-	$idPedido = mysqli_insert_id($bd);
-	//recorrer el carrito
-	foreach ($carrito as $codProd => $cantidad) {
-		$ins = "insert into lineaspedidos (num_pedido, cod_prod, cantidad) 
-				values ($idPedido, $codProd, $cantidad)";
-		$resul = mysqli_query($bd, $ins);
 
-		return $idPedido;
+	$sql = "SELECT MAX(NUM_PEDIDO) AS NUM_PEDIDO FROM pedidos";
+	$resul = mysqli_query($bd, $sql);
+
+	while ($unicaFila = $resul->fetch_assoc()) {
+		extract($unicaFila);
+		$ultimoLugar = $NUM_PEDIDO;
 	}
+	// coger el id del nuevo pedido para las filas detalle
+	$pedido = mysqli_insert_id($bd);
+	// insertar las filas en pedidoproductos
+	foreach ($carrito as $codProd => $unidades) {
+		$sql = "insert into lineas (NUM_PEDIDO, COD_PRODUCTO, PRECIO, CANTIDAD) 
+            values(" . $ultimoLugar . "," . $codProd . "," . $unidades['2'] . "," . $unidades['1'] . ")";
+		$resul = mysqli_query($bd, $sql);
+
+		$stock = "SELECT Stock FROM productos WHERE CodProd = '" . $codProd . "'";
+		$resul = mysqli_query($bd, $stock);
+
+		while ($unicaFila = $resul->fetch_assoc()) {
+			extract($unicaFila);
+			$stock = intval($Stock);
+			$total = $stock - $unidades['1'];
+		}
+		$sql = "UPDATE productos SET Stock='" . $total . "' WHERE CodProd = '" . $codProd . "'";
+		$resul = mysqli_query($bd, $sql);
+
+
+	}
+
+
+	return $pedido;
+
+
 }
+
+
 
 function cargar_foto($codProducto)
 {
