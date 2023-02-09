@@ -70,6 +70,7 @@ function CategoriaSeleccionada() {
 	for (let i = 0; i < productos.length; i++) {
 		if (categoria == productos[i].IdCategoria) {
 			let oOption = document.createElement("option");
+			oOption.setAttribute("id", "ComboProductos");
 			oOption.text = productos[i].NombreProducto;
 			frmControles.productos.add(oOption);
 		}
@@ -101,25 +102,8 @@ function liberarMesa() {
 	rojo[NumeroMesa - 1].classList.remove("ocupada");
 
 	let gestor = Gestores[NumeroMesa - 1];
-
 	let Tdcuenta = gestor;
-
-	//poner la cuenta pagada en el array de cuentas y poner a true el atributo pagada
-	for (let i = 0; i < Tdcuenta.length; i++) {
-		if (Tdcuenta[i].mesaActual == NumeroMesa) {
-			for (let i = 0; i < Tdcuenta.cuentas.length; i++) {
-				Tdcuenta[i].cuentas.pagada = true;
-
-				if (Tdcuenta[i].cuentas.pagada == true) {
-					//borrar la array de productos de la cuenta que se ha pagado
-					Tdcuenta[i].cuentas = [];
-					//borrar la cuenta del array de cuentas
-					Tdcuenta.splice(i, 1);
-				}
-			}
-		}
-	}
-	//console.log(Tdcuenta.cuentas.mesa);
+	Tdcuenta.cuentas = [];
 }
 
 //hacer que al hacer click en una mesa se muestre la mesa seleccionada en el div cuenta
@@ -196,7 +180,7 @@ function unidadesProducto() {
 
 	gestor.cuentas.push(cuentaNueva);
 
-	//console.log(gestor.cuentas);
+	//console.table(gestor.cuentas);
 
 	cuenta.innerHTML = "<h1>Cuenta</h1> <h2>" + mesa + "</h2>" + "<h2>Total: " + precioTotalUnidad + "€</h2>" + "<button class = 'boton' onClick = 'liberarMesa()'>Pagar y liberar la mesa</button>";
 	//meter el numero de la mesa seleccionada en una cuenta nueva
@@ -216,6 +200,66 @@ function unidadesProducto() {
 		"</td><td>" +
 		nombreProducto +
 		"</td><td>" +
-		precioTotalUnidad +
+		resultadoPrecio +
 		"€</td>";
+}
+
+//funcion para añadir unidades a un producto de la cuenta de una mesa seleccionada y modificar el precio total
+function AñadirUnidad() {
+	let unidades = document.getElementById("tabla").getElementsByTagName("td")[1].innerHTML;
+	let mesa = document.getElementById("cuenta").getElementsByTagName("h2")[0].innerHTML;
+	let NumeroMesa = mesa.substring(5, 6);
+	let IdTabla = document.getElementById("tabla").getElementsByTagName("td")[2].innerHTML;
+	let sumaUnidades = parseInt(unidades) + 1;
+
+	let precio = document.getElementById("tabla").getElementsByTagName("td")[4].innerHTML;
+	let sumaPrecio = parseFloat(precio) * parseFloat(sumaUnidades);
+	sumaPrecio = sumaPrecio.toFixed(2);
+
+	document.getElementById("tabla").getElementsByTagName("td")[1].innerHTML = sumaUnidades;
+	document.getElementById("cuenta").getElementsByTagName("h2")[1].innerHTML = "Total: " + sumaPrecio + "€";
+
+	let lineaCuenta = new LineaCuenta(sumaUnidades, IdTabla);
+
+	let arrayLineasCuenta = [];
+	arrayLineasCuenta.push(lineaCuenta);
+
+	//crear una cuenta nueva por cada mesa
+	let cuentaNueva = new Cuenta(NumeroMesa, [arrayLineasCuenta], false);
+
+	let gestor = Gestores[NumeroMesa - 1];
+	if (gestor === undefined) {
+		gestor = new Gestor(NumeroMesa);
+		Gestores[NumeroMesa - 1] = gestor;
+	}
+
+	gestor.cuentas.push(cuentaNueva);
+}
+
+//funcion para quitar unidades a un producto de la cuenta de una mesa seleccionada y modificar el precio total
+function QuitarUnidad() {
+	let mesa = document.getElementById("cuenta").getElementsByTagName("h2")[0].innerHTML;
+	let IdTabla = document.getElementById("tabla").getElementsByTagName("td")[2].innerHTML;
+	let NumeroMesa = mesa.substring(5, 6);
+
+	let unidades = document.getElementById("tabla").getElementsByTagName("td")[1].innerHTML;
+	let sumaUnidades = parseInt(unidades) - 1;
+
+	let precio = document.getElementById("tabla").getElementsByTagName("td")[4].innerHTML;
+	let sumaPrecio = parseFloat(precio) * parseFloat(sumaUnidades);
+	sumaPrecio = sumaPrecio.toFixed(2);
+
+	document.getElementById("tabla").getElementsByTagName("td")[1].innerHTML = sumaUnidades;
+	document.getElementById("cuenta").getElementsByTagName("h2")[1].innerHTML = "Total: " + sumaPrecio + "€";
+
+	//si las unidades son 0, borrar la cuenta y pregunta por si esta seguro de querer borrarla
+	if (sumaUnidades == 0) {
+		let confirmar = confirm("¿Estas seguro de querer borrar la cuenta?");
+		if (confirmar) {
+			let cuenta = document.getElementById("cuenta");
+			cuenta.innerHTML = "<h1>Cuenta</h1> <h2>" + mesa + "</h2>";
+			let rojo = document.getElementsByClassName("mesa");
+			rojo[NumeroMesa - 1].classList.remove("ocupada");
+		}
+	}
 }
