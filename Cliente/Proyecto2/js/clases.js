@@ -109,11 +109,11 @@ class Cuenta {
 		this.#mesa = mesa;
 	}
 
-	get LineasDeCuenta() {
+	get lineasDeCuenta() {
 		return this.#lineasDeCuenta;
 	}
 
-	set LineasDeCuenta(lineasDeCuenta) {
+	set lineasDeCuenta(lineasDeCuenta) {
 		this.#lineasDeCuenta = lineasDeCuenta;
 	}
 

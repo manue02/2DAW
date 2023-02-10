@@ -59,3 +59,52 @@
 // } else {
 //   alert("URL incorrecta");
 // }
+
+//funcion para mostar toda la cuenta de una mesa seleccionada
+function MostrarCuenta() {
+	// let mesa = this;
+	// let contador = 0;
+	// let cuenta = document.getElementById("cuenta");
+	// cuenta.innerHTML =
+	// 	"<h1>Cuenta</h1> <h2 id='numero'>Mesa " +
+	// 	mesa.innerHTML +
+	// 	"</h2>" +
+	// 	"<h2>Total: 0€</h2>" +
+	// 	"<input onclick='mesaVerde(" +
+	// 	mesa.innerHTML +
+	// 	")' type='button'  id='pagar' value='Pagar y liberar la mesa'>";
+	// //meter el numero de la mesa seleccionada en una cuenta nueva
+	// let tabla = document.createElement("table");
+	// tabla.setAttribute("id", "tabla");
+	// cuenta.append(tabla);
+	// tabla.innerHTML = "<tr><th>Modificar</th><th>Uds</th><th>Id</th><th>Producto</th><th>Precio</th></tr>";
+	// if (gestores[mesa.innerHTML - 1] != undefined) {
+	// 	console.log(mesa.innerHTML - 1);
+	// 	for (let i = 0; i < gestores[mesa.innerHTML - 1].cuentas.length; i++) {
+	// 		for (let o = 0; o < gestores[mesa.innerHTML - 1].cuentas[i].lineasCuenta.length; o++) {
+	// 			//recorremos el array de catalago
+	// 			for (let j = 0; j < catalogo.productos.length; j++) {
+	// 				if (catalogo.productos[j].idProducto == gestores[mesa.innerHTML - 1].cuentas[i].lineasCuenta[o].idProducto) {
+	// 					console.log(gestores[mesa.innerHTML - 1].cuentas[i].lineasCuenta[o].unidades);
+	// 					console.log(catalogo.productos[j].nombreProducto);
+	// 					let precioTotal = gestores[mesa.innerHTML - 1].cuentas[i].lineasCuenta[o].unidades * catalogo.productos[j].precioUnidad;
+	// 					let tr = document.createElement("tr");
+	// 					tabla.append(tr);
+	// 					tr.innerHTML =
+	// 						"<td id = " +
+	// 						contador++ +
+	// 						"><button class = 'boton' onClick = 'AñadirUnidad()'>+</button> <button class = 'boton' onClick = 'QuitarUnidad()'>-</button></td><td>" +
+	// 						gestores[mesa.innerHTML - 1].cuentas[i].lineasCuenta[o].unidades +
+	// 						"</td><td>" +
+	// 						gestores[mesa.innerHTML - 1].cuentas[i].lineasCuenta[o].idProducto +
+	// 						"</td><td>" +
+	// 						catalogo.productos[j].nombreProducto +
+	// 						"</td><td>" +
+	// 						precioTotal +
+	// 						"€</td>";
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// }
+}
