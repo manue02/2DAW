@@ -169,6 +169,8 @@ function unidadesProducto() {
 	let arrayLineasCuenta = [];
 	arrayLineasCuenta.push(lineaCuenta);
 
+	console.log(arrayLineasCuenta);
+
 	//crear una cuenta nueva por cada mesa
 	let cuentaNueva = new Cuenta(NumeroMesa, [arrayLineasCuenta], false);
 
@@ -180,7 +182,7 @@ function unidadesProducto() {
 
 	gestor.cuentas.push(cuentaNueva);
 
-	//console.table(gestor.cuentas);
+	console.log(gestor.cuentas);
 
 	cuenta.innerHTML = "<h1>Cuenta</h1> <h2>" + mesa + "</h2>" + "<h2>Total: " + precioTotalUnidad + "€</h2>" + "<button class = 'boton' onClick = 'liberarMesa()'>Pagar y liberar la mesa</button>";
 	//meter el numero de la mesa seleccionada en una cuenta nueva
@@ -262,4 +264,83 @@ function QuitarUnidad() {
 			rojo[NumeroMesa - 1].classList.remove("ocupada");
 		}
 	}
+}
+
+//funcion para mostar toda la cuenta de una mesa seleccionada
+function MostrarCuenta() {
+	let mesa = document.getElementById("cuenta").getElementsByTagName("h2")[0].innerHTML;
+	let NumeroMesa = mesa.substring(5, 6);
+
+	let gestor = Gestores[NumeroMesa - 1];
+	if (gestor === undefined) {
+		gestor = new Gestor(NumeroMesa);
+		Gestores[NumeroMesa - 1] = gestor;
+	}
+
+	let cuenta = document.getElementById("cuenta");
+	cuenta.innerHTML = "<h1>Cuenta</h1> <h2>" + mesa + "</h2>";
+
+	let tabla = document.createElement("table");
+	tabla.setAttribute("id", "tabla");
+	cuenta.append(tabla);
+	tabla.innerHTML = "<tr><th>Modificar</th><th>Uds</th><th>Id</th><th>Producto</th><th>Precio</th></tr>";
+
+	// if (Gestores[NumeroMesa - 1]) != undefined) {
+	// 	for (let i = 0; i < Gestores[NumeroMesa - 1].cuentas.length; i++) {
+	// 		let unidades = Gestores[NumeroMesa - 1].cuentas[i].lineasCuenta[i].unidades;
+	// 		let IdTabla = Gestores[NumeroMesa - 1].cuentas[i].lineasCuenta[i].IdTabla;
+
+	// 		let nombreProducto = document.getElementById(IdTabla).getElementsByTagName("td")[1].innerHTML;
+	// 		let precio = document.getElementById(IdTabla).getElementsByTagName("td")[2].innerHTML;
+
+	// 		let tr = document.createElement("tr");
+	// 		tabla.append(tr);
+
+	// 		tr.innerHTML =
+	// 			"<td><button class = 'boton' onClick = 'AñadirUnidad()'>+</button> <button class = 'boton' onClick = 'QuitarUnidad()'>-</button></td><td>" +
+	// 			unidades +
+	// 			"</td><td>" +
+	// 			IdTabla +
+	// 			"</td><td>" +
+	// 			nombreProducto +
+	// 			"</td><td>" +
+	// 			precio +
+	// 			"€</td>";
+	// 	}
+	// }
+
+	let tr = document.createElement("tr");
+	tabla.append(tr);
+
+	tr.innerHTML =
+		"<td><button class = 'boton' onClick = 'AñadirUnidad()'>+</button> <button class = 'boton' onClick = 'QuitarUnidad()'>-</button></td><td>" +
+		unidades +
+		"</td><td>" +
+		IdTabla +
+		"</td><td>" +
+		nombreProducto +
+		"</td><td>" +
+		precio +
+		"€</td>";
+}
+
+//nose puede repetir el mismo producto en la misma cuenta
+function ComprobarProducto(value) {
+	let mesa = document.getElementById("cuenta").getElementsByTagName("h2")[0].innerHTML;
+	let NumeroMesa = mesa.substring(5, 6);
+
+	let gestor = Gestores[NumeroMesa - 1];
+	if (gestor === undefined) {
+		gestor = new Gestor(NumeroMesa);
+		Gestores[NumeroMesa - 1] = gestor;
+	}
+
+	for (let i = 0; i < Gestores[NumeroMesa - 1].cuentas.length; i++) {
+		for (let j = 0; j < Gestores[NumeroMesa - 1].cuentas[i].lineasCuenta.length; j++) {
+			if (Gestores[NumeroMesa - 1].cuentas[i].lineasCuenta[j].IdTabla == value) {
+				return true;
+			}
+		}
+	}
+	return false;
 }
