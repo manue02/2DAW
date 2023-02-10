@@ -20,6 +20,17 @@ Route::get('/', function () {
 Route::get('/entrada', function () {
     return view('entrada');
 });
+Route::get('/entrada0', function () {
+    return view('formulario.entrada0');
+});
+Route::get('/formulario', function () {
+    return view('formulario.entrada');
+});
+
+Route::post('/formulario', function () {
+    return view('formulario.mostrar');
+});
+
 Route::get('/contactos', [ContactoController::class, 'index']);
 
 Route::get('/otrosContactos', function () {

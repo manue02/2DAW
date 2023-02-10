@@ -1,0 +1,22 @@
+5.4 Comandos utilizados en este capítulo
+Adición de ficheros y directorios al índice de elementos a tener en cuenta en el próximo commit
+git add . --all
+
+
+Commit (confirmación de cambios realizados)
+git commit -m "Añadido el fichero HolaMundo.java"
+Actualización en GitHub de los cambios realizados en local
+git push
+Edición de un fichero
+gedit .gitignore
+Copia de un fichero
+cp HolaMundo.java HolaMundo.java.bak
+Ficheros README.md, .gitignore y HEAD 42
+Compilación de una clase de Java
+javac HolaMundo.java
+Cambio de directorio
+ls -a
+Registro de cambios
+git log
+Ayuda sobre un comando
+git help log
