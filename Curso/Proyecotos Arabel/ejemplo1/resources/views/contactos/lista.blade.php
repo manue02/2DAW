@@ -15,6 +15,7 @@
             	<a href="/contactos/ver/{{$unContacto->id}}">Ver</a>
             	<a href="/contactos/editar/{{$unContacto->id}}">Editar</a>
             	<a href="/contactos/eliminar/{{$unContacto->id}}">Eliminar</a>
+            <!-- Esta seguro de borrar -->
             </td>
         </tr>
 

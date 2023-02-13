@@ -82,6 +82,11 @@ class ContactoController extends Controller
         //
         $contacto = Contacto::find($id);
         $contacto->nombre = $request->nombre;
+        $contacto->apellido = $request->apellido;
+        $contacto->direccion = $request->direccion;
+        $contacto->telefono = $request->telefono;
+        $contacto->save();
+        return redirect()->action([ContactoController::class, 'index']);
     }
 
     /**
@@ -93,5 +98,8 @@ class ContactoController extends Controller
     public function destroy($id)
     {
         //
+        $contacto = Contacto::find($id);
+        $contacto->delete();
+        return redirect()->action([ContactoController::class, 'index']);
     }
 }

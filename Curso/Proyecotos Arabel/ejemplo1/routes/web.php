@@ -42,3 +42,4 @@ Route::post('/contactos/crear', [ContactoController::class, 'store']);
 Route::get('/contactos/ver/{id}', [ContactoController::class, 'show']);
 Route::get('/contactos/editar/{id}', [ContactoController::class, 'edit']);
 Route::post('/contactos/editar/{id}', [ContactoController::class, 'update']);
+Route::get('/contactos/eliminar/{id}', [ContactoController::class, 'destroy']);
