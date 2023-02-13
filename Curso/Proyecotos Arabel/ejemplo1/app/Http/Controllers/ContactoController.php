@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Contacto;
 use Illuminate\Http\Request;
 
-
 class ContactoController extends Controller
 {
     /**
@@ -15,10 +14,10 @@ class ContactoController extends Controller
      */
     public function index()
     {
-        //
+        //como la select *
         $contactos = Contacto::all();
-        return view('contactos.lista', ['contactos' => $contactos]);
-
+        //enviar datos a la vista
+        return view('contactos.lista', array('miscontactos' => $contactos));
     }
 
     /**
@@ -28,9 +27,7 @@ class ContactoController extends Controller
      */
     public function create()
     {
-        //
-
-
+        return view('contactos.crear');
     }
 
     /**
@@ -41,7 +38,10 @@ class ContactoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $contactoNuevo = new Contacto($request->all());
+        $contactoNuevo->save();
+        return redirect()->action([ContactoController::class, 'index']);
+
     }
 
     /**
@@ -52,7 +52,9 @@ class ContactoController extends Controller
      */
     public function show($id)
     {
-        //
+        $contacto = Contacto::find($id);
+        return view('contactos.ver', array('contactoActual' => $contacto));
+
     }
 
     /**
@@ -64,6 +66,8 @@ class ContactoController extends Controller
     public function edit($id)
     {
         //
+        $contacto = Contacto::find($id);
+        return view('contactos.editar', array('contactoActual' => $contacto));
     }
 
     /**
@@ -76,6 +80,8 @@ class ContactoController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $contacto = Contacto::find($id);
+        $contacto->nombre = $request->nombre;
     }
 
     /**

@@ -6,8 +6,10 @@
 		<input type="text" name="nombre"></p>
 <p>Apellido:
 		<input type="text" name="apellido"></p>
-<p>Edad:
-		<input type="text" name="edad"></p>
+<p>Teléfono:
+		<input type="text" name="telefono"></p>
+<p>Dirección:
+		<input type="text" name="direccion"></p>		
 <input type="submit" name="enviar" value="Envio">
 
 </form>
