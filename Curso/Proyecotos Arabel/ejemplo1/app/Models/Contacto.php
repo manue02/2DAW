@@ -8,12 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Contacto extends Model
 {
     use HasFactory;
-    protected $table = 'contactos';
-
-    protected $fillable = ['nombre', 'apellido', 'telefono', 'direccion'];
-
-    protected $hidden = ['id'];
-
-    public $timestamps = false;
-
+    protected $table="contactos";
+    protected $fillable=['nombre','apellido','telefono','direccion'];
+    protected $hidden=['id'];
+    public $timestamps=false;
 }

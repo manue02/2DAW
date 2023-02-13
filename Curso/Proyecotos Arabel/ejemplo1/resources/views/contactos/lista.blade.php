@@ -1,40 +1,25 @@
-<?php
-
-// echo "<pre>";
-// print_r($contactos);
-// echo "</pre>";
-
-?>
-
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Listado de contactos</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/style.css" rel="stylesheet">
-    </head>
-    <body>
-        <h1>Mis contactos</h1>
-        <table border="2">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Apellidos</th>
-                    <th>Telefono</th>
-                    <th>Direccion</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($contactos as $contacto)
-                    <tr>
-                        <td>{{ $contacto->nombre }}</td>
-                        <td>{{ $contacto->apellido }}</td>
-                        <td>{{ $contacto->telefono }}</td>
-                        <td>{{ $contacto->direccion }}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-    
-    </body>
+<head>
+<title>Listado de Contactos</title>
+</head>
+<body>
+    <h3>Mis Contactos</h3>
+    <h4><a href="/contactos/crear">Crear un nuevo contacto</a></h4>
+    <table border='1'><tr><th>Nombre</th><th>Apellido</th><th>Dirección</th><th>Teléfono</th><th>Acciones</th></tr>        
+    @foreach ($miscontactos as $unContacto)
+        <tr><td>{{$unContacto->nombre}}</td>
+            <td>{{$unContacto->apellido}}</td>
+            <td>{{$unContacto->direccion}}</td>
+            <td>{{$unContacto->telefono}}</td>
+            <td>
+            	<a href="/contactos/ver/{{$unContacto->id}}">Ver</a>
+            	<a href="/contactos/editar/{{$unContacto->id}}">Editar</a>
+            	<a href="/contactos/eliminar/{{$unContacto->id}}">Eliminar</a>
+            <!-- Esta seguro de borrar -->
+            </td>
+        </tr>
+
+    @endforeach
+</table>
+</body>
 </html>
