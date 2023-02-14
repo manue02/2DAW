@@ -1,0 +1,14 @@
+primero creamos en models el archivo 
+
+php artisan make:model profesores
+
+
+luego tenemos que crear el controller de profesores
+
+$ php artisan make:controller ProfesorController --resource
+
+luego te vas a que esta en resource el viuw y tre crear la carpeta con el archivo blade lista
+
+y luego te vas a routa y te vas al web php y lo tienes que editar y ya te saldra lo que sea
+
+hay que tener cuidado con los use
