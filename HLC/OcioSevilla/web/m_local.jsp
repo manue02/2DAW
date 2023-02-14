@@ -19,7 +19,7 @@
             <title>JSP Page</title>
         </head>
         <body>
-            <h3><h:outputText value="Añadir un nuevo Local"/></h3>
+            <h3><h:outputText value="Modificar una pelicula"/></h3>
             <h:form>
             <h:panelGrid columns="2">
                 <h:outputText value="Nombre:"/>

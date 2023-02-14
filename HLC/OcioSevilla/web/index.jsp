@@ -21,7 +21,30 @@
         <body>
             <h3><h:outputText value="Bares de Sevilla"/></h3>
               <h:form>
-            <h:dataTable value="#{g_ocio.rsOcio}" var="fila" border="1">
+                        <h:panelGrid columns="4" border="1">
+                    <f:facet name="header">
+                        <h:outputText style="font-size:25px" value="Búsqueda de Peliculas"/>
+                    </f:facet>
+                    <h:outputText value="Nombre:" />
+                    <h:inputText value="#{g_ocio.snombre_Busc}" />
+                    <h:outputText value="Tipo" />
+                    <h:selectOneMenu value="#{g_ocio.szona_Busc}">
+                        <f:selectItems value="#{g_ocio.listaZonas}" />
+                    </h:selectOneMenu>
+                     <h:outputText value="Actor:" />
+                     <h:selectManyListbox value="#{g_ocio.sfpago_Busc}">
+                         <f:selectItems value="#{g_ocio.listaFPago}" />
+                    </h:selectManyListbox>
+                     <h:outputText value="Año" />
+                     <h:inputText value="#{g_ocio.sdireccion_Busc}" />
+                     <h:commandButton value="Buscar" actionListener="#{g_ocio.buscar_local(event)}"  />
+                     <h:outputText value="" />
+                     <h:outputText value="" />
+                     <h:commandButton value="Limpiar Búsqueda" actionListener="#{g_ocio.limpiar_buscar_local(event)}"/>
+                </h:panelGrid>
+            <br/><br/>			
+                    <h4>Este es el resultado de la búsqueda</h4>
+                <h:dataTable value="#{g_ocio.rsOcio}" var="fila" binding="#{g_ocio.tabla}"  border="1">
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="ID"/>

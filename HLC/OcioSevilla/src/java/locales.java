@@ -18,7 +18,14 @@ public class locales {
    private String direccion;
    private String[] formas_pago;
    private String mensaje;
- 
+ //si pongo esto no funciona
+    // public locales() {
+    //   if (g_ocio.idLocal.equals("")){
+     //      recoge_datos(g_ocio.idLocal);
+     //  }
+        
+  //  }
+  
 public void recoge_datos(String pIdLocal){
 nombre=MySQL_Util.ObtenerDato("peliculas", "id", pIdLocal, "peli_nombre");
 direccion=MySQL_Util.ObtenerDato("peliculas", "id", pIdLocal, "peli_anno");
@@ -115,7 +122,7 @@ formas_pago=MySQL_Util.Llenar_Seleccionados(g_ocio.Conn,cadsql,"ID_PERSONA");
     }
      public String modificar_local(){
         //primero modifico en locales
-    String cadsql1="UPDATE locales SET peli_nombre='"+nombre+"',peli_anno='";
+    String cadsql1="UPDATE peliculas SET peli_nombre='"+nombre+"',peli_anno='";
     cadsql1+=direccion+"', peli_tipo="+zona+" WHERE id="+g_ocio.idLocal;
     MySQL_Util.Ej_ConsultaAccion(g_ocio.Conn, cadsql1);
     //para modificar las formas de pago, primero borro las que había
