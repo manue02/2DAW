@@ -26,6 +26,3 @@ Route::get('/profesores/ver/{id}', [ProfesorController::class, 'show']);
 Route::get('/profesores/editar/{id}', [ProfesorController::class, 'edit']);
 Route::post('/profesores/editar/{id}', [ProfesorController::class, 'update']);
 Route::get('/profesores/eliminar/{id}', [ProfesorController::class, 'destroy']);
-Route::get ('pruebaswhere ', function(){
-    $curso
-});
