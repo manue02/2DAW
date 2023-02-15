@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Grid, TextField, Button, Typography, Divider } from "@mui/material";
+import SaltoLinea from "./componentes/SaltoLinea";
 
 const PokemonInfo = ({ pokemon }) => {
 	return (
@@ -30,14 +31,13 @@ const PokemonInfo = ({ pokemon }) => {
 
 const PokemonSearch = () => {
 	const [searchTerm, setSearchTerm] = useState("");
-	const [pokemon, setPokemon] = useState(null);
+	const [pokemon] = useState(null);
 	const [searchHistory, setSearchHistory] = useState([]);
 
 	const handleSearch = async () => {
 		const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${searchTerm.toLowerCase()}`);
 		const data = await response.json();
-		setPokemon(data);
-		setSearchHistory((prevHistory) => [...prevHistory, data]);
+		setSearchHistory((searchHistory) => [...searchHistory, data]);
 	};
 
 	const handleClearHistory = () => {
@@ -47,6 +47,7 @@ const PokemonSearch = () => {
 	return (
 		<Grid container spacing={2}>
 			<Grid item xs={12}>
+				<SaltoLinea />
 				<TextField label="Buscar Pokemon" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} fullWidth />
 			</Grid>
 			<Grid item xs={12}>
