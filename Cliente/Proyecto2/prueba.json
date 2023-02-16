@@ -1,0 +1,21 @@
+{
+	"categorias": ["Bebidas", "Tostadas", "Bollería"],
+	"productos": [
+		{ "id": 1, "nombre": "Café con leche", "precio": 0.95, "categoria": 0 },
+		{ "id": 2, "nombre": "Té", "precio": 1.05, "categoria": 0 },
+		{ "id": 3, "nombre": "Cola-cao", "precio": 1.35, "categoria": 0 },
+		{ "id": 4, "nombre": "Chocolate a la taza", "precio": 1.95, "categoria": 0 },
+		{ "id": 5, "nombre": "Media con aceite", "precio": 1.25, "categoria": 1 },
+		{ "id": 6, "nombre": "Entera con aceite", "precio": 1.95, "categoria": 1 },
+		{ "id": 7, "nombre": "Media con aceite y jamón", "precio": 1.95, "categoria": 1 },
+		{ "id": 8, "nombre": "Entera con aceite y jamón", "precio": 2.85, "categoria": 1 },
+		{ "id": 9, "nombre": "Media con mantequilla", "precio": 1.15, "categoria": 1 },
+		{ "id": 10, "nombre": "Entera con mantequilla", "precio": 1.75, "categoria": 1 },
+		{ "id": 11, "nombre": "Media con manteca colorá", "precio": 1.45, "categoria": 1 },
+		{ "id": 12, "nombre": "Entera con manteca colorá", "precio": 2.15, "categoria": 1 },
+		{ "id": 13, "nombre": "Croissant", "precio": 0.95, "categoria": 2 },
+		{ "id": 14, "nombre": "Napolitana de chocolate", "precio": 1.45, "categoria": 2 },
+		{ "id": 15, "nombre": "Caracola de crema", "precio": 1.65, "categoria": 2 },
+		{ "id": 16, "nombre": "Caña de chocolate", "precio": 1.35, "categoria": 2 }
+	]
+}
