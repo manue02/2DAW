@@ -1,23 +1,17 @@
 import { useState } from "react";
-import { Container, Box, Typography, TextField, Button } from "@mui/material";
-import { getPokemon } from "./api/pokemon";
+import { Container, Box, Typography, TextField, Button, Grid } from "@mui/material";
 import PokemonInfo from "./components/PokemonInfo";
-import SearchHistory from "./components/SearchHistory";
+import SearchHistory from "./components/Busqueda";
 
 function App() {
-	const [query, setQuery] = useState("");
-	const [pokemon, setPokemon] = useState(null);
+	const [searchTerm, setSearchTerm] = useState("");
+	const [pokemon] = useState(null);
 	const [searchHistory, setSearchHistory] = useState([]);
 
 	const handleSearch = async () => {
-		if (!query) return;
-
-		const newPokemon = await getPokemon(query);
-
-		if (newPokemon) {
-			setPokemon(newPokemon);
-			setSearchHistory((prevHistory) => [newPokemon, ...prevHistory]);
-		}
+		const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${searchTerm.toLowerCase()}`);
+		const data = await response.json();
+		setSearchHistory((searchHistory) => [...searchHistory, data]);
 	};
 
 	const handleClearHistory = () => {
@@ -28,17 +22,22 @@ function App() {
 		<Container maxWidth="sm">
 			<Box mt={4} display="flex" flexDirection="column" alignItems="center">
 				<Typography variant="h4" component="h1" gutterBottom>
-					Pokémon Search
+					Busca tu Pokemon
 				</Typography>
 				<Box width="100%" mb={2}>
-					<TextField label="Enter a Pokémon name or ID" fullWidth value={query} onChange={(e) => setQuery(e.target.value)} />
+					<TextField label="Introduce el Pokemon o el ID" fullWidth value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
 				</Box>
 				<Button variant="contained" onClick={handleSearch}>
-					Search
+					Buscar
 				</Button>
 			</Box>
 			{pokemon && <PokemonInfo pokemon={pokemon} />}
 			<SearchHistory history={searchHistory} onClearHistory={handleClearHistory} />
+			<Grid item xs={12}>
+				<Button variant="contained" onClick={handleClearHistory}>
+					Limpiar historial
+				</Button>
+			</Grid>
 		</Container>
 	);
 }
