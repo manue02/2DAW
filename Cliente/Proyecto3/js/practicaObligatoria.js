@@ -72,15 +72,18 @@ function CategoriaSeleccionada(listaProductos) {
 			break;
 	}
 
-	for (let producto of Object.entries(listaProductos)) {
-		if (producto.categoria == categoria) {
-			let lista = document.createElement("option");
-			lista.innerHTML = producto.nombre;
-			frmControles.productos.add(lista);
-		}
+	//hago un filtro para que me devuelva los productos que tengan la categoria seleccionada
 
+	const productos = listaProductos.filter((producto) => producto.categoria == categoria);
+
+	// Actualizamos el listado de productos en el combo rrecorriendo el array de productos
+	productos.forEach((producto) => {
+		const option = document.createElement("option");
+		option.value = producto.id;
+		option.text = producto.nombre;
+		frmControles.productos.add(option);
 		console.log(producto);
-	}
+	});
 }
 
 //colorear todas las mesas libres
@@ -93,13 +96,13 @@ function colorearMesasLibres() {
 	const ficheroCategoria = "categorias.json";
 	fetch(apiRest + ficheroCategoria)
 		.then((res) => res.json())
-		.then((data) => Object.values(data)) //Devuelve un objeto cuyos índice es el id generado por Firebase. Lo quitamos quedándonos con values
+		.then((data) => Object.values(data))
 		.then(MostrarCategorias);
 
 	const ficheroProductos = "productos.json";
 	fetch(apiRest + ficheroProductos)
 		.then((res) => res.json())
-		.then((data) => Object.values(data)) //Devuelve un objeto cuyos índice es el id generado por Firebase. Lo quitamos quedándonos con values
+		.then((data) => Object.values(data))
 		.then(CategoriaSeleccionada);
 
 	let cuenta = document.getElementById("cuenta");
