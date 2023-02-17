@@ -60,6 +60,8 @@ function CategoriaSeleccionada(listaProductos) {
 
 	const productos = listaProductos.filter((producto) => producto.categoria == categoria);
 
+	const frmModificarProducto = document.getElementById("frmModificarProducto");
+
 	// Actualizamos el listado de productos en el combo rrecorriendo el array de productos
 	productos.forEach((producto) => {
 		const option = document.createElement("option");
@@ -69,7 +71,11 @@ function CategoriaSeleccionada(listaProductos) {
 		console.log(producto);
 	});
 
-	//console.log(categoria);
+	Object.entries(listaProductos).forEach(([key, TodosProducots]) => {
+		let lista = document.createElement("option");
+		lista.innerHTML = TodosProducots.nombre;
+		frmModificarProducto.Nombre_categoria.add(lista);
+	});
 }
 
 //colorear todas las mesas libres
@@ -108,6 +114,29 @@ function liberarMesa() {
 	let gestor = Gestores[NumeroMesa - 1];
 	let Tdcuenta = gestor;
 	Tdcuenta.cuentas = [];
+}
+function insertarAlumno(event) {
+	const ficheroProductos = "productos.json";
+	const frmNuevoProducto = document.getElementById("frmNuevoProducto");
+	const IdProducto = frmNuevoProducto.IdProducto.value;
+	const nombre = frmNuevoProducto.nombre.value.trim();
+	const precio = frmNuevoProducto.precio.value;
+
+	const NuevoProducto = {
+		IdProducto: IdProducto,
+		nombre: nombre,
+		precio: precio,
+	};
+	event.preventDefault();
+
+	fetch(apiRest + fichero, {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json;charset=utf-8",
+		},
+		body: JSON.stringify(NuevoProducto),
+	}).then((res) => res.json());
+	setTimeout(recuperarDatos, 800); //Para dar margen a que la actualización del dato se haya hecho en la BD
 }
 
 //hacer que al hacer click en una mesa se muestre la mesa seleccionada en el div cuenta

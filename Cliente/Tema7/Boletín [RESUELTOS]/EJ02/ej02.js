@@ -40,26 +40,6 @@ function actualizarPrecio() {
 }
 
 // Función que añade un nuevo producto a la base de datos
-async function anadirProducto(nombre, categoria, precio) {
-	try {
-		const response = await fetch("url_de_la_api/productos", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({ nombre, categoria, precio }),
-		});
-
-		if (response.ok) {
-			const data = await response.json();
-			return data;
-		} else {
-			throw new Error("Error al añadir el producto");
-		}
-	} catch (error) {
-		console.log(error);
-	}
-}
 
 // Función que actualiza el precio de un producto existente en la base de datos
 async function actualizarPrecioProducto(id, precio) {
@@ -156,3 +136,14 @@ function borrarCombo(combo) {
 		combo.remove(0);
 	}
 }
+
+Object.entries(listaProductos).forEach(([key, value]) => {
+	const option = document.createElement("option");
+	option.value = value.id;
+	option.text = value.nombre;
+	if (value.categoria === categoria) {
+		frmControles.productos.add(option);
+	}
+
+	console.log(value.categoria);
+});
