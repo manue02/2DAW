@@ -1,12 +1,15 @@
 // Sugerencia de categorias y productos
 
 let catalogo = new Catalogo();
-let arrayUnidades = [];
+let arrayProductos = [];
 let Gestores = new Array(9);
 let contador = 0;
 const apiRest = "https://primerproyecto-34e1f-default-rtdb.asia-southeast1.firebasedatabase.app/";
+arrayProductos = catalogo.productos;
 
 frmControles.categorias.addEventListener("change", CategoriaSeleccionada);
+frmNuevoProducto.addEventListener("submit", insertarProducto);
+frmModificarProducto.addEventListener("submit", actualizarPrecioProducto);
 
 document.addEventListener("DOMContentLoaded", colorearMesasLibres);
 
@@ -20,6 +23,19 @@ for (let i = 0; i < mesas.length; i++) {
 let unidades = document.getElementsByClassName("tecla");
 for (let i = 0; i < unidades.length; i++) {
 	unidades[i].addEventListener("click", unidadesProducto);
+}
+
+function CargarProductos(listaProductos) {
+	for (let p of listaProductos) {
+		catalogo.addProducto(JSON.stringify(p.id), JSON.stringify(p.nombre), JSON.stringify(p.precio), JSON.stringify(p.categoria));
+	}
+
+	Object.entries(listaProductos).forEach(([key, TodosProducots]) => {
+		let lista = document.createElement("option");
+		lista.innerHTML = TodosProducots.nombre;
+		lista.value = TodosProducots.id;
+		frmModificarProducto.Nombre_categoria.add(lista);
+	});
 }
 
 //mostrar los productos en el combo de productos en funcion de la categoria seleccionada en el combo de categorias
@@ -39,43 +55,46 @@ function MostrarCategorias(listaCategorias) {
 	}
 }
 
-function CategoriaSeleccionada(listaProductos) {
-	BorrarCombo();
-	const frmControles = document.getElementById("frmControles");
-	let categoria = frmControles.categorias.value;
-
+function getCategoriaIndex(categoria) {
 	switch (categoria) {
 		case "Bebidas":
-			categoria = 0;
-			break;
+			return 0;
 		case "Tostadas":
-			categoria = 1;
-			break;
+			return 1;
 		case "Bollería":
-			categoria = 2;
-			break;
+			return 2;
 	}
+}
 
-	//hago un filtro para que me devuelva los productos que tengan la categoria seleccionada
+function CategoriaSeleccionada() {
+	BorrarCombo();
+	let categoria = frmControles.categorias.value;
 
-	const productos = listaProductos.filter((producto) => producto.categoria == categoria);
+	for (let i = 0; i < arrayProductos.length; i++) {
+		if (getCategoriaIndex(categoria) == arrayProductos[i].IdCategoria) {
+			let oOption = document.createElement("option");
+			oOption.setAttribute("id", "ComboProductos");
+			oOption.text = arrayProductos[i].NombreProducto;
+			oOption.text = arrayProductos[i].NombreProducto.replace(/"/g, "");
+			frmControles.productos.add(oOption);
+		}
+	}
+}
 
-	const frmModificarProducto = document.getElementById("frmModificarProducto");
+function recuperarDatosProducto() {
+	const ficheroProductos = "productos.json";
+	fetch(apiRest + ficheroProductos)
+		.then((res) => res.json())
+		.then((data) => Object.values(data))
+		.then(CargarProductos);
+}
 
-	// Actualizamos el listado de productos en el combo rrecorriendo el array de productos
-	productos.forEach((producto) => {
-		const option = document.createElement("option");
-		option.value = producto.id;
-		option.text = producto.nombre;
-		frmControles.productos.add(option);
-		console.log(producto);
-	});
-
-	Object.entries(listaProductos).forEach(([key, TodosProducots]) => {
-		let lista = document.createElement("option");
-		lista.innerHTML = TodosProducots.nombre;
-		frmModificarProducto.Nombre_categoria.add(lista);
-	});
+function recuperarDatoscCategoria() {
+	const ficheroCategoria = "categorias.json";
+	fetch(apiRest + ficheroCategoria)
+		.then((res) => res.json())
+		.then((data) => Object.values(data))
+		.then(MostrarCategorias);
 }
 
 //colorear todas las mesas libres
@@ -85,22 +104,16 @@ function colorearMesasLibres() {
 		mesas[i].classList.add("libre");
 	}
 
-	const ficheroCategoria = "categorias.json";
-	fetch(apiRest + ficheroCategoria)
-		.then((res) => res.json())
-		.then((data) => Object.values(data))
-		.then(MostrarCategorias);
+	recuperarDatoscCategoria();
 
-	const ficheroProductos = "productos.json";
-	fetch(apiRest + ficheroProductos)
-		.then((res) => res.json())
-		.then((data) => Object.values(data))
-		.then(CategoriaSeleccionada);
+	recuperarDatosProducto();
 
 	let cuenta = document.getElementById("cuenta");
 	//poner un texto en el div cuenta
 
 	cuenta.innerHTML = "<h1>Cuenta</h1> <h2>Mesa " + 1 + "</h2>";
+
+	CategoriaSeleccionada();
 }
 
 //al hacer click en el boton de liberar mesa  se vuelve a colorear la mesa de verde
@@ -115,28 +128,92 @@ function liberarMesa() {
 	let Tdcuenta = gestor;
 	Tdcuenta.cuentas = [];
 }
-function insertarAlumno(event) {
+async function insertarProducto(event) {
 	const ficheroProductos = "productos.json";
 	const frmNuevoProducto = document.getElementById("frmNuevoProducto");
-	const IdProducto = frmNuevoProducto.IdProducto.value;
 	const nombre = frmNuevoProducto.nombre.value.trim();
 	const precio = frmNuevoProducto.precio.value;
-
-	const NuevoProducto = {
-		IdProducto: IdProducto,
-		nombre: nombre,
-		precio: precio,
-	};
+	let categorias = frmNuevoProducto.categoria.value;
+	let categoria = getCategoriaIndex(categorias);
 	event.preventDefault();
 
-	fetch(apiRest + fichero, {
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json;charset=utf-8",
-		},
-		body: JSON.stringify(NuevoProducto),
-	}).then((res) => res.json());
-	setTimeout(recuperarDatos, 800); //Para dar margen a que la actualización del dato se haya hecho en la BD
+	try {
+		const response = await fetch(apiRest + ficheroProductos);
+		//los datos JSON devueltos por el servidor.
+		const data = await response.json();
+		console.log(data);
+		const lastProduct = data[data.length - 1];
+		console.log(lastProduct);
+		const lastId = lastProduct.id;
+		console.log(lastId);
+
+		// incrementar el ID en 1
+		const nextId = lastId + 1;
+
+		console.log(nextId);
+
+		// crear el nuevo producto
+		const nuevoProducto = {
+			id: nextId,
+			categoria: categoria,
+			nombre: nombre,
+			precio: precio,
+		};
+
+		console.log(nuevoProducto);
+
+		// enviar el nuevo producto al servidor
+		const postResponse = await fetch(apiRest + ficheroProductos, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json;charset=utf-8",
+			},
+			body: JSON.stringify(nuevoProducto),
+		});
+
+		await postResponse.json();
+
+		// actualizar el combo de productos
+		recuperarDatosProducto();
+	} catch (error) {
+		console.error(error);
+	}
+
+	// limpiar el formulario
+	frmNuevoProducto.reset();
+}
+
+async function actualizarPrecioProducto(event) {
+	event.preventDefault();
+	let datos = { precio: 0 };
+	const frmModificarProducto = document.getElementById("frmModificarProducto");
+	const nombre = frmModificarProducto.Nombre_categoria.value;
+	const precio = frmModificarProducto.precio.value;
+
+	let id = nombre - 1;
+
+	let url = apiRest + "productos" + "/" + id + ".json";
+
+	datos.precio = precio;
+	try {
+		const response = await fetch(url, {
+			method: "PATCH",
+			headers: {
+				"Content-Type": "application/json;charset=utf-8",
+			},
+			body: JSON.stringify(datos),
+		});
+
+		await response.json();
+	} catch (error) {
+		console.error(error);
+	}
+
+	//limpiar el formulario
+	frmModificarProducto.reset();
+
+	//actualizar el combo de productos
+	recuperarDatosProducto();
 }
 
 //hacer que al hacer click en una mesa se muestre la mesa seleccionada en el div cuenta

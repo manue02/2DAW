@@ -56,10 +56,6 @@
 				<label>Categoría:</label>
 				<select name="categoria"></select>
 				<label
-					><h4>ID Producto:</h4>
-					<input type="text" name="ID_Producto"
-				/></label>
-				<label
 					><h4>Nombre:</h4>
 					<input type="text" name="nombre"
 				/></label>
@@ -68,7 +64,7 @@
 				<input type="text" name="precio" />
 				<br />
 				<br />
-				<button value="Nuevo" onClick="anadirProducto()">Nuevo Producto</button>
+				<input type="submit" value="Insertar" />
 			</form>
 			<h3>Modificar Producto</h3>
 			<form id="frmModificarProducto" name="frmModificarProducto">
@@ -77,7 +73,7 @@
 				<label><h4>Precio:</h4></label>
 				<input type="text" name="precio" /><br />
 				<br />
-				<button value="Modificar" onClick="modificarProducto()">Modificar</button>
+				<input type="submit" value="Modificar" />
 			</form>
 		</div>
 		<script src="./js/clases.js"></script>
