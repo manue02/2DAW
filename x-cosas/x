@@ -1,105 +1,13 @@
-2.1 objetivos
+export GIT_SSL_NO_VERIFY=1
 
-La accesibilidad web no se centra sólo en las personas con discapacidad, tiene como objetivo lograr que las páginas web sean utilizables por el máximo número de personas, da igual sus conocimientos o capacidades personales e independientemente del equipo que se use para entrar en la web.
+pro si da error en los certificados de mierda
 
-2.2 Oportunidades
-ofrecen oprtunidades para acceder a la web para lo sordos con videos subtitulados o los ciegos a los lectores de pantalla o para personas con discapacidad motora que pueden utilizar programas
-pero hay muchas dificultades por que hay muchas paginas que no tienen estas adaptaciones
+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
 
-2.4 Destinatarios
+5. Aperitivo, comida y postre (add, commit, push).
 
-    La mayoría de los estudios estiman que un 20% de la población tiene algún tipo de discapacidad no es algo que dificulte para hacer busquedas en la web pero es una parte grande
-    Cada discapacidad requiere de ciertos tipos de adaptaciones, que la mayoría de las veces, beneficiarán a casi todos, no sólo a las personas con discapacidad.
-
-2.5 Desarrolladores
-
-    La mayoría de los errores de accesibilidad web son por falta de conocimientos del desarrollador.
-
-2.8 W3C
-
-El W3C es un grupo internacional e independiente que define los protocolos y estándares para la web Una de las iniciativas del W3C es la WAI (Web Accessibility Initiative) que se encarga del desarrollo de normas de accesibilidad.
-
-2.10 WCAG
-Las WCAG (Web Content Accessibility Guidelines) son las principales normas de accesibilidad web.
-
-Proporcionaban tres prioridades del WCAG 1.0:
-
-    Nivel A requisitos básicos,
-    Nivel AA mejor accesibilidad y la eliminación de importantes barreras,
-    Nivel AAA proporcionaba mejoras a la accesibilidad.
-
-    2.12 WCAG 2.0
-
-    Se fundamentan en WCAG 1.0, pero introducen algunos cambios significativos.
-
-    2.13 WCAG-EM 1.0
-
-    Metodología de evaluación de la accesibilidad del contenido de páginas web
-
-    2.14 ATAG 2.0
-
-    Accesibilidad de editores de páginas web
-
-2.15 UAAG 2.0
-
-    Accesibilidad de navegadores web
-
-3.1 Perceptible (I)
-
-    Disponible para los sentidos (visión y audición principalmente), bien a través del navegador o por medio de ayudas técnicas (por ejemplo, lectores de pantalla, ampliadores de pantalla, etc.)
-
-    Texto alternativo
-
-    Contenido multimedia dependiente del tiempo
-
-    Adaptable
-
-    Distinguible
-
-3.4 Operable (I)
-
-    Los usuarios pueden interactuar con todos los controles y elementos interactivos usando el ratón, un teclado o un dispositivo de ayuda.
-
-    Teclado accesible
-
-    Tiempo suficiente
-
-    Ataques epilépticos
-
-    Navegación
-
-3.7 Comprensible (I)
-
-    El contenido es claro y se limita la confusión y la ambigüedad.
-
-    Legible
-
-    Previsible
-
-    Asistencia a la entrada de datos
-
-3.9 Robusto (I)
-
-    Una amplia gama de dispositivos y tecnologías puede acceder al contenido.
-
-Compatible
-
-5 Beneficios
-
-5.1 Mejora el posicionamiento en Buscadores
-
-5.2 Se incrementa el número de potenciales visitantes
-
-5.3 Aumenta la usabilidad de la página
-
-5.4 Se cumplen los estándares web
-
-5.5 Reduce el tiempo de carga de las páginas web
-
-5.6 Reducimos el coste de mantenimiento
-
-5.7 Demuestra responsabilidad social
-
-5.8 Cumplir la Ley
-
-https://leonidasesteban.com/pokedex
+1 añadido el archivo paco
+2 creo una etiqueta 3.0
+3 add
+4 git push -tags
+push archivos

@@ -119,3 +119,24 @@ function MostrarCuenta() {
 
 //comando git para convinar dos ramas
 //git merge rama1 rama2
+
+//crear un archivo gitignore para que no se suba los backups
+//touch .gitignore
+
+//etiqueta tu repositorio con version 1.0
+//git tag -a v1.0 -m "version 1.0"
+
+//5.	Crea una rama llamada “experimentafuncion”
+//git branch experimentafuncion
+
+//6.	Cambia a la rama “experimentafuncion”
+//git checkout experimentafuncion
+
+//fusionar la rama experimentafuncion con la rama master
+//git merge experimentafuncion master
+
+//eliminar la rama experimentafuncion
+//git branch -d experimentafuncion
+
+//hacer un pull request
+//git push origin master
