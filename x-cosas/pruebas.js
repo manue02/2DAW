@@ -108,3 +108,14 @@ function MostrarCuenta() {
 	// 	}
 	// }
 }
+
+//comando git para subir los cambios a github
+//git add .
+//git commit -m "mensaje"
+//git push
+
+//comando git para descargar los cambios de github
+//git pull
+
+//comando git para convinar dos ramas
+//git merge rama1 rama2

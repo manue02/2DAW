@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<style>
+			table {
+				border-collapse: collapse;
+				text-align: center;
+			}
+
+			td {
+				border: 1px solid black;
+				padding: 3px 5px;
+			}
+
+			button {
+				margin: 3px;
+			}
+		</style>
+		<title>Ejercicio 08</title>
+	</head>
+	<body>
+		<h1>Ejercicio 1</h1>
+		<div id="salida"></div>
+		<br />
+		<button id="recuperarDatos">Recuperar Datos</button>
+		<h3>Nuevo Partido</h3>
+		<form name="formNuevoPartido">
+			<label>Equipo Local: </label><input type="text" name="local" /> <br />
+			<label>Eqipo Visitante: </label><input type="text" name="visitante" /> <br />
+			<label>Goles local: </label><input type="number" name="golesLocal" /> <br />
+			<label>Goles Visitantes: </label><input type="number" name="golesVisitante" /><br />
+			<input type="submit" value="Insertar" />
+		</form>
+
+		<h3>Eliminar Partido</h3>
+		<form name="formEliminarPartido">
+			<label>Id: </label><input type="number" name="id_Firebase" /> <br />
+			<input type="submit" value="Eliminar" />
+		</form>
+
+		<h3>Modificar Partido</h3>
+		<form name="formActualizarPartido">
+			<label>Id: </label><input type="number" name="idFirebase" /> <br />
+			<label>Equipo Local: </label><input type="text" name="id" /> <br />
+
+			<input type="submit" value="Modificar" />
+		</form>
+
+		<script src="./Ejercicio1.js"></script>
+	</body>
+</html>
