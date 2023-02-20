@@ -129,7 +129,7 @@ function liberarMesa() {
 	Tdcuenta.cuentas = [];
 }
 async function insertarProducto(event) {
-	const ficheroProductos = "productos.json";
+	const ficheroProductos = "productos/";
 	const frmNuevoProducto = document.getElementById("frmNuevoProducto");
 	const nombre = frmNuevoProducto.nombre.value.trim();
 	const precio = frmNuevoProducto.precio.value;
@@ -138,7 +138,7 @@ async function insertarProducto(event) {
 	event.preventDefault();
 
 	try {
-		const response = await fetch(apiRest + ficheroProductos);
+		const response = await fetch(apiRest + ficheroProductos + ".json");
 		//los datos JSON devueltos por el servidor.
 		const data = await response.json();
 		console.log(data);
@@ -163,8 +163,8 @@ async function insertarProducto(event) {
 		console.log(nuevoProducto);
 
 		// enviar el nuevo producto al servidor
-		const postResponse = await fetch(apiRest + ficheroProductos, {
-			method: "POST",
+		const postResponse = await fetch(apiRest + ficheroProductos + nextId + ".json", {
+			method: "PUT",
 			headers: {
 				"Content-Type": "application/json;charset=utf-8",
 			},

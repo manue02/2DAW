@@ -15,7 +15,7 @@ function mostrarAlumnos(listaCoches) {
 		for (let c of coches) {
 			fila = tabla.insertRow();
 			celda = fila.insertCell();
-			celda.textContent = JSON.stringify(c.marca);
+			celda.textContent = c.marca;
 			celda = fila.insertCell();
 			celda.textContent = JSON.stringify(c.modelo);
 			celda = fila.insertCell();
