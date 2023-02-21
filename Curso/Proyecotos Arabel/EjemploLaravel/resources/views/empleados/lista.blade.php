@@ -9,6 +9,24 @@
  
 </thead>
 
+@foreach ($g as $empleado)
+<tr>
+<td>{{$empleado->nombre}}</td>
+<td>{{$empleado->apellidos}}</td>
+<td>{{$empleado->sueldo}}</td>
+<td>{{$empleado->departamento->nombre}}</td>
+<td>
+
+@foreach ($empleado->idiomas as $idioma)
+{{$idioma->nombre}}<br>
+
+
+</td>
+</tr>
+
+@endforeach
+
+
 </table>
   <!!{!! $g->appends(\Request::except('page'))->render() !!}
 </div>
