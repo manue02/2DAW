@@ -27,7 +27,7 @@ for (let i = 0; i < unidades.length; i++) {
 
 function CargarProductos(listaProductos) {
 	for (let p of listaProductos) {
-		catalogo.addProducto(JSON.stringify(p.id), JSON.stringify(p.nombre), JSON.stringify(p.precio), JSON.stringify(p.categoria));
+		catalogo.addProducto(p.id, p.nombre, p.precio, p.categoria);
 	}
 
 	Object.entries(listaProductos).forEach(([key, TodosProducots]) => {
@@ -75,7 +75,6 @@ function CategoriaSeleccionada() {
 			let oOption = document.createElement("option");
 			oOption.setAttribute("id", "ComboProductos");
 			oOption.text = arrayProductos[i].NombreProducto;
-			oOption.text = arrayProductos[i].NombreProducto.replace(/"/g, "");
 			frmControles.productos.add(oOption);
 		}
 	}
@@ -113,7 +112,7 @@ function colorearMesasLibres() {
 
 	cuenta.innerHTML = "<h1>Cuenta</h1> <h2>Mesa " + 1 + "</h2>";
 
-	CategoriaSeleccionada();
+	setTimeout(CategoriaSeleccionada, 1000);
 }
 
 //al hacer click en el boton de liberar mesa  se vuelve a colorear la mesa de verde
@@ -163,7 +162,7 @@ async function insertarProducto(event) {
 		console.log(nuevoProducto);
 
 		// enviar el nuevo producto al servidor
-		const postResponse = await fetch(apiRest + ficheroProductos + nextId + ".json", {
+		const postResponse = await fetch(apiRest + ficheroProductos + lastId + ".json", {
 			method: "PUT",
 			headers: {
 				"Content-Type": "application/json;charset=utf-8",
@@ -181,6 +180,8 @@ async function insertarProducto(event) {
 
 	// limpiar el formulario
 	frmNuevoProducto.reset();
+
+	setTimeout(CategoriaSeleccionada, 1000);
 }
 
 async function actualizarPrecioProducto(event) {
@@ -214,6 +215,8 @@ async function actualizarPrecioProducto(event) {
 
 	//actualizar el combo de productos
 	recuperarDatosProducto();
+
+	setTimeout(CategoriaSeleccionada, 1000);
 }
 
 //hacer que al hacer click en una mesa se muestre la mesa seleccionada en el div cuenta
@@ -277,10 +280,9 @@ function BorrarCombo() {
 }
 
 function BuscarUnIdProducto(value) {
-	let productos = catalogo.productos;
-	for (let i = 0; i < productos.length; i++) {
-		if (value == productos[i].NombreProducto) {
-			return productos[i];
+	for (lista of arrayProductos) {
+		if (lista.NombreProducto == value) {
+			return lista;
 		}
 	}
 }
@@ -292,8 +294,12 @@ function unidadesProducto() {
 	let NumeroMesa = mesa.substring(5, 6);
 
 	let nombreProducto = frmControles.productos.value;
+	console.log(nombreProducto);
+
 	let ArrayDeidProducto = [];
 	ArrayDeidProducto = BuscarUnIdProducto(nombreProducto);
+
+	console.log(ArrayDeidProducto);
 
 	let resultadoID = ArrayDeidProducto.IdProducto;
 	let resultadoPrecio = ArrayDeidProducto.PrecioUnidad;

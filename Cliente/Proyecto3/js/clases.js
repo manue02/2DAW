@@ -1,153 +1,153 @@
 class Producto {
-	#idProducto;
-	#nombreProducto;
-	#precioUnidad;
-	#idCategoria;
+	_idProducto;
+	_nombreProducto;
+	_precioUnidad;
+	_idCategoria;
 
 	constructor(idProducto, nombreProducto, precioUnidad, idCategoria) {
-		this.#idProducto = idProducto;
-		this.#nombreProducto = nombreProducto;
-		this.#precioUnidad = precioUnidad;
-		this.#idCategoria = idCategoria;
+		this._idProducto = idProducto;
+		this._nombreProducto = nombreProducto;
+		this._precioUnidad = precioUnidad;
+		this._idCategoria = idCategoria;
 	}
 
 	get IdProducto() {
-		return this.#idProducto;
+		return this._idProducto;
 	}
 
 	set IdProducto(idProducto) {
-		this.#idProducto = idProducto;
+		this._idProducto = idProducto;
 	}
 
 	get NombreProducto() {
-		return this.#nombreProducto;
+		return this._nombreProducto;
 	}
 
 	set NombreProducto(nombreProducto) {
-		this.#nombreProducto = nombreProducto;
+		this._nombreProducto = nombreProducto;
 	}
 
 	get PrecioUnidad() {
-		return this.#precioUnidad;
+		return this._precioUnidad;
 	}
 
 	set PrecioUnidad(precioUnidad) {
-		this.#precioUnidad = precioUnidad;
+		this._precioUnidad = precioUnidad;
 	}
 
 	get IdCategoria() {
-		return this.#idCategoria;
+		return this._idCategoria;
 	}
 
 	set IdCategoria(idCategoria) {
-		this.#idCategoria = idCategoria;
+		this._idCategoria = idCategoria;
 	}
 }
 
 class Catalogo {
-	#productos;
+	_productos;
 
 	constructor() {
-		this.#productos = [];
+		this._productos = [];
 	}
 
 	get productos() {
-		return this.#productos;
+		return this._productos;
 	}
 
 	set productos(productos) {
-		this.#productos = productos;
+		this._productos = productos;
 	}
 
 	addProducto(idProducto, nombreProducto, precioUnidad, idCategoria) {
-		this.#productos.push(new Producto(idProducto, nombreProducto, precioUnidad, idCategoria));
+		this._productos.push(new Producto(idProducto, nombreProducto, precioUnidad, idCategoria));
 	}
 }
 
 class LineaCuenta {
-	#unidades;
-	#idProducto;
+	_unidades;
+	_idProducto;
 
 	constructor(unidades, idProducto) {
-		this.#unidades = unidades;
-		this.#idProducto = idProducto;
+		this._unidades = unidades;
+		this._idProducto = idProducto;
 	}
 
 	get Unidades() {
-		return this.#unidades;
+		return this._unidades;
 	}
 
 	set Unidades(unidades) {
-		this.#unidades = unidades;
+		this._unidades = unidades;
 	}
 
 	get IdProducto() {
-		return this.#idProducto;
+		return this._idProducto;
 	}
 
 	set IdProducto(idProducto) {
-		this.#idProducto = idProducto;
+		this._idProducto = idProducto;
 	}
 }
 
 class Cuenta {
-	#mesa;
-	#lineasDeCuenta;
-	#pagada;
+	_mesa;
+	_lineasDeCuenta;
+	_pagada;
 
 	constructor(mesa, lineasDeCuenta, pagada) {
-		this.#mesa = mesa;
-		this.#lineasDeCuenta = lineasDeCuenta;
-		this.#pagada = false;
+		this._mesa = mesa;
+		this._lineasDeCuenta = lineasDeCuenta;
+		this._pagada = false;
 	}
 
 	get Mesa() {
-		return this.#mesa;
+		return this._mesa;
 	}
 
 	set Mesa(mesa) {
-		this.#mesa = mesa;
+		this._mesa = mesa;
 	}
 
 	get lineasDeCuenta() {
-		return this.#lineasDeCuenta;
+		return this._lineasDeCuenta;
 	}
 
 	set lineasDeCuenta(lineasDeCuenta) {
-		this.#lineasDeCuenta = lineasDeCuenta;
+		this._lineasDeCuenta = lineasDeCuenta;
 	}
 
 	get Pagada() {
-		return this.#pagada;
+		return this._pagada;
 	}
 
 	set Pagada(pagada) {
-		this.#pagada = pagada;
+		this._pagada = pagada;
 	}
 }
 
 class Gestor {
-	#cuentas;
-	#mesaActual;
+	_cuentas;
+	_mesaActual;
 
 	constructor(mesaActual) {
-		this.#mesaActual = mesaActual;
-		this.#cuentas = [];
+		this._mesaActual = mesaActual;
+		this._cuentas = [];
 	}
 
 	get cuentas() {
-		return this.#cuentas;
+		return this._cuentas;
 	}
 
 	set cuentas(cuentas) {
-		this.#cuentas = cuentas;
+		this._cuentas = cuentas;
 	}
 
 	get mesaActual() {
-		return this.#mesaActual;
+		return this._mesaActual;
 	}
 
 	set mesaActual(mesaActual) {
-		this.#mesaActual = mesaActual;
+		this._mesaActual = mesaActual;
 	}
 }
