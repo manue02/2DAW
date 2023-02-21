@@ -1,6 +1,7 @@
 import { Grid, Typography } from "@mui/material";
 
 function PokemonInfo({ pokemon }) {
+	// PokemonInfo es un componente que muestra la información del pokemon
 	return (
 		<Grid container spacing={2}>
 			<Grid item xs={12}>

@@ -1,13 +1,20 @@
 import { Typography, Grid } from "@mui/material";
 
-function SearchHistory({ history }) {
-	if (!history || history.length === 0) {
+function BuscarHistorial({ historial }) {
+	// BuscarHistorial es un componente que muestra el historial de búsquedas
+	if (!historial || historial.length === 0) {
+		//si no hay historial o el historial está vacío
 		return null;
 	}
 
 	return (
+		//muestra en el navegador el historial de busqueda
 		<div>
-			{history.map((pokemon) => (
+			<Typography variant="h5" component="h2" gutterBottom>
+				<p className="parrafo"> Historial de Busqueda</p>
+			</Typography>
+			{historial.map((pokemon) => (
+				// map es un método de los arrays que permite iterar sobre cada uno de los elementos del array
 				<Grid container spacing={2}>
 					<Grid item xs={12}>
 						<Typography variant="h6">{pokemon.name}</Typography>
@@ -35,4 +42,4 @@ function SearchHistory({ history }) {
 	);
 }
 
-export default SearchHistory;
+export default BuscarHistorial;
