@@ -21,14 +21,12 @@ function BuscarHistorial({ historial }) {
 						<Divider />
 						<Typography variant="h6">{pokemon.name}</Typography>
 					</Grid>
-
 					<Grid item xs={4}>
 						<img src={pokemon.sprites.front_default} alt="De frente sprite" />
 					</Grid>
 					<Grid item xs={4}>
 						<img src={pokemon.sprites.back_default} alt="Atras sprite" />
 					</Grid>
-
 					<Grid item xs={4}>
 						<Typography variant="body1">
 							<strong>ID:</strong> {pokemon.id}
