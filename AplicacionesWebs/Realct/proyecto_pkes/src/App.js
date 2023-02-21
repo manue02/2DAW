@@ -35,7 +35,9 @@ function App() {
 					Buscar
 				</Button>
 			</Box>
+
 			{pokemon && <PokemonInfo pokemon={pokemon} />}
+
 			<BuscarHistorial historial={Buscar} onClearHistory={LimpiarHistorial} />
 			<Grid item xs={12}>
 				<Button variant="contained" onClick={LimpiarHistorial}>
