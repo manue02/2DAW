@@ -17,11 +17,11 @@ function mostrarAlumnos(listaCoches) {
 			celda = fila.insertCell();
 			celda.textContent = c.marca;
 			celda = fila.insertCell();
-			celda.textContent = JSON.stringify(c.modelo);
+			celda.textContent = c.modelo;
 			celda = fila.insertCell();
-			celda.textContent = JSON.stringify(c.matricula);
+			celda.textContent = c.matricula;
 			celda = fila.insertCell();
-			celda.textContent = JSON.stringify(c.kilometros);
+			celda.textContent = c.kilometros;
 		}
 
 		console.table(coches);
