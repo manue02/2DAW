@@ -1,22 +1,19 @@
-5.4 Comandos utilizados en este capítulo
-Adición de ficheros y directorios al índice de elementos a tener en cuenta en el próximo commit
-git add . --all
+En React, "props" es una abreviatura de "propiedades". Las propiedades son una forma de pasar datos de un componente React padre a un componente hijo.
 
+Las props se utilizan para configurar un componente y determinar cómo se comportará y se verá en la aplicación. Un componente padre puede pasar propiedades a uno o varios componentes hijos, y el componente hijo puede utilizar esas propiedades para controlar su propia lógica y presentación.
 
-Commit (confirmación de cambios realizados)
-git commit -m "Añadido el fichero HolaMundo.java"
-Actualización en GitHub de los cambios realizados en local
-git push
-Edición de un fichero
-gedit .gitignore
-Copia de un fichero
-cp HolaMundo.java HolaMundo.java.bak
-Ficheros README.md, .gitignore y HEAD 42
-Compilación de una clase de Java
-javac HolaMundo.java
-Cambio de directorio
-ls -a
-Registro de cambios
-git log
-Ayuda sobre un comando
-git help log
+Las props se pasan como un objeto de atributos en la declaración del componente en el componente padre, y se pueden acceder en el componente hijo como argumentos de la función que define el componente.
+
+---
+
+    Container: es un componente que se utiliza para envolver y centrar otros elementos en la página. Proporciona un ancho máximo y una cierta cantidad de relleno para los contenidos de la página.
+
+    Box: es un componente que proporciona una caja flexible y configurable para contener otros elementos. Se utiliza para agrupar y organizar el contenido en la página.
+
+    Typography: es un componente que se utiliza para mostrar texto con diferentes estilos y variantes de fuente. Proporciona una gran cantidad de opciones para personalizar la apariencia del texto.
+
+    TextField: es un componente que se utiliza para permitir al usuario introducir datos en un formulario o campo de entrada. Proporciona una variedad de opciones para personalizar la apariencia y el comportamiento del campo de entrada.
+
+    Button: es un componente que se utiliza para activar acciones o navegar a diferentes partes de la aplicación. Proporciona una gran cantidad de opciones para personalizar la apariencia y el comportamiento del botón.
+
+    Grid: es un componente que se utiliza para organizar el contenido en filas y columnas. Proporciona una variedad de opciones para personalizar la disposición y el tamaño de los elementos en la página.
