@@ -383,7 +383,9 @@ function AñadirUnidad(value) {
 	let sumaUnidades = parseInt(unidades) + 1;
 	let precioUnidad = document.getElementById(value).getElementsByTagName("td")[3].innerHTML;
 
-	let PrecioSumaUnidad = parseFloat(precioUnidad) * parseFloat(sumaUnidades);
+	let precioUnicaUnidad = precioUnidad / unidades;
+
+	let PrecioSumaUnidad = parseFloat(precioUnicaUnidad) * parseFloat(sumaUnidades);
 
 	console.log(mesa);
 
@@ -393,6 +395,7 @@ function AñadirUnidad(value) {
 
 	document.getElementById(value).getElementsByTagName("td")[1].innerHTML = sumaUnidades;
 	document.getElementById("cuenta").getElementsByTagName("h2")[1].innerHTML = "Total: " + sumaPrecio;
+	document.getElementById(value).getElementsByTagName("td")[3].innerHTML = PrecioSumaUnidad;
 
 	ModificarUnidadesBD(sumaUnidades, IdTabla, nombreProducto, PrecioSumaUnidad, NumeroMesa);
 }
@@ -404,17 +407,26 @@ function QuitarUnidad(value) {
 	let IdTabla = document.getElementById(value).getElementsByTagName("td")[2].innerHTML;
 	let nombreProducto = document.getElementById(value).getElementsByTagName("td")[0].innerHTML;
 	let unidades = document.getElementById(value).getElementsByTagName("td")[1].innerHTML;
+	console.log("Esto es unidades" + unidades);
+
 	let sumaUnidades = parseInt(unidades) - 1;
+	console.log("Esto es sumaUnidades" + sumaUnidades);
+
 	let precioUnidad = document.getElementById(value).getElementsByTagName("td")[3].innerHTML;
 	let precio = document.getElementById(value).getElementsByTagName("td")[4].innerHTML;
 
-	let precioRestaUnidad = parseFloat(precioUnidad) - parseFloat(precioUnidad);
+	let precioUnicaUnidad = precioUnidad / unidades;
+	console.log("Esto es tal" + precioUnicaUnidad);
+	let precioRestaUnidad = parseFloat(precioUnicaUnidad) - parseFloat(unidades);
+
+	console.log("Esto es la resta" + precioRestaUnidad);
 
 	let sumaPrecio = parseFloat(precio) * parseFloat(sumaUnidades);
 	sumaPrecio = sumaPrecio.toFixed(2);
 
 	document.getElementById(value).getElementsByTagName("td")[1].innerHTML = sumaUnidades;
 	document.getElementById("cuenta").getElementsByTagName("h2")[1].innerHTML = "Total: " + sumaPrecio;
+	document.getElementById(value).getElementsByTagName("td")[3].innerHTML = precioRestaUnidad;
 
 	//si las unidades son 0, borrar la cuenta y pregunta por si esta seguro de querer borrarla
 	if (sumaUnidades == 0) {
