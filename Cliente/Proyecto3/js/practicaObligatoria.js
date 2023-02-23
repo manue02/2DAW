@@ -10,6 +10,7 @@ arrayProductos = catalogo.productos;
 frmControles.categorias.addEventListener("change", CategoriaSeleccionada);
 frmNuevoProducto.addEventListener("submit", insertarProducto);
 frmModificarProducto.addEventListener("submit", actualizarPrecioProducto);
+document.getElementById("recuperarDatos").addEventListener("click", recuperarDatos);
 
 document.addEventListener("DOMContentLoaded", colorearMesasLibres);
 
@@ -144,7 +145,11 @@ function liberarMesa() {
 	let PrecioNumero = precioTotal.split(" ")[1];
 
 	console.log(precioTotal);
+
 	let fechaActual = new Date();
+
+	//mostrar en formato dd/mm/yyyy
+	let fecha = fechaActual.getDate() + "/" + fechaActual.getMonth() + "/" + fechaActual.getFullYear();
 	let horaActual = fechaActual.getHours() + ":" + fechaActual.getMinutes();
 	let cuenta = document.getElementById("cuenta");
 	let NumeroMesa = mesa.substring(5, 6);
@@ -162,13 +167,13 @@ function liberarMesa() {
 
 	console.log(apiRest + ficheroMesas);
 
-	let ficheroCuentaPagar = " MesasPagar " + ".json";
+	let ficheroCuentaPagar = "MesasPagar" + ".json";
 	fetch(apiRest + ficheroCuentaPagar, {
 		method: "PUT",
 		body: JSON.stringify({
 			NumeroMesa: NumeroMesa,
 			Importe: PrecioNumero,
-			Fecha: fechaActual,
+			Fecha: fecha,
 			Hora: horaActual,
 		}),
 	})
@@ -509,4 +514,37 @@ function ModificarUnidadesBD(sumaUnidades, IdTabla, nombreProducto, precioUnidad
 		.then((data) => console.log(data));
 
 	console.log(apiRest + "cuentas/" + "Mesa" + NumeroMesa + "/" + IdTabla + ".json");
+}
+
+function recuperarDatos() {
+	fetch(apiRest + "MesasPagar.json")
+		.then((response) => response.json())
+		.then((response) => Object.values(response))
+		.then(mostrarListaCuentasCerradas)
+		.catch(console.log);
+
+	console.log(apiRest + "MesasPagar.json");
+}
+
+function mostrarListaCuentasCerradas(data) {
+	console.log(data);
+	const capaSalida = document.getElementById("ListarCuenta");
+	let tabla = document.createElement("table");
+	let cabecera = tabla.createTHead();
+	let fila = tabla.insertRow();
+	cabecera.innerHTML = "<th>Fecha</th><th>Hora</th><th>Importe</th><th>Mesa</th>";
+	tabla.append(cabecera);
+	for (let c of data) {
+		celda = fila.insertCell();
+		celda.textContent = c;
+
+		console.log(c);
+	}
+	borrarSalida();
+
+	capaSalida.append(tabla);
+}
+
+function borrarSalida() {
+	document.getElementById("ListarCuenta").innerHTML = "";
 }
