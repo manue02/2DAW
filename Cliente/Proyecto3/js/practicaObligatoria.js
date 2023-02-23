@@ -167,7 +167,7 @@ function liberarMesa() {
 
 	console.log(apiRest + ficheroMesas);
 
-	let ficheroCuentaPagar = "MesasPagar" + ".json";
+	let ficheroCuentaPagar = "MesasPagar/" + contador + ".json";
 	fetch(apiRest + ficheroCuentaPagar, {
 		method: "PUT",
 		body: JSON.stringify({
@@ -179,6 +179,7 @@ function liberarMesa() {
 	})
 		.then((res) => res.json())
 		.then((data) => console.log(data));
+	contador++;
 }
 
 async function insertarProducto(event) {
@@ -523,23 +524,36 @@ function recuperarDatos() {
 		.then(mostrarListaCuentasCerradas)
 		.catch(console.log);
 
-	console.log(apiRest + "MesasPagar.json");
+	console.log(apiRest + "MesasPagar/" + 9 + ".json");
 }
 
 function mostrarListaCuentasCerradas(data) {
 	console.log(data);
-	const capaSalida = document.getElementById("ListarCuenta");
-	let tabla = document.createElement("table");
-	let cabecera = tabla.createTHead();
-	let fila = tabla.insertRow();
-	cabecera.innerHTML = "<th>Fecha</th><th>Hora</th><th>Importe</th><th>Mesa</th>";
-	tabla.append(cabecera);
-	for (let c of data) {
-		celda = fila.insertCell();
-		celda.textContent = c;
+	let capaSalida = document.getElementById("ListarCuenta");
 
-		console.log(c);
+	let tabla = document.createElement("table");
+	tabla.innerHTML = `
+	<tr>
+		<th>Fecha</th>
+		<th>Hora</th>
+		<th>Importe</th>
+		<th>NumeroMesa</th>
+	</tr>
+	`;
+
+	for (lista of data) {
+		console.log(lista);
+		let fila = document.createElement("tr"); // Crear una fila
+		for (lista2 in lista) {
+			let producto = lista[lista2];
+			console.log(producto);
+			let celda = document.createElement("td"); // Crear una celda
+			celda.textContent = producto;
+			fila.append(celda); // Agregar la celda a la fila
+		}
+		tabla.append(fila); // Agregar la fila a la tabla
 	}
+
 	borrarSalida();
 
 	capaSalida.append(tabla);
