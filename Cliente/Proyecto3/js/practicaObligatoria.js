@@ -99,6 +99,7 @@ function recuperarDatoscCategoria() {
 //colorear todas las mesas libres
 function colorearMesasLibres() {
 	let mesas = document.getElementsByClassName("mesa");
+	let NumeroMesa = 1;
 	for (let i = 0; i < mesas.length; i++) {
 		mesas[i].classList.add("libre");
 	}
@@ -113,16 +114,44 @@ function colorearMesasLibres() {
 	cuenta.innerHTML = "<h1>Cuenta</h1> <h2>Mesa " + 1 + "</h2>";
 
 	setTimeout(CategoriaSeleccionada, 1000);
+
+	//si hay datos en una mesa se pinta de rojo y se muestra la cuenta de la mesa
+	for (let i = 0; i < mesas.length; i++) {
+		let ficheroMesas = "cuentas/Mesa" + (i + 1) + ".json";
+		fetch(apiRest + ficheroMesas)
+			.then((res) => res.json())
+			.then((data) => {
+				if (data != null) {
+					mesas[i].classList.remove("libre");
+					mesas[i].classList.add("ocupada");
+				}
+			});
+	}
+
+	if (mesas[0].classList.contains("ocupada")) {
+		setTimeout(pintarMesaSeleccionada(NumeroMesa), 1000);
+	}
+
+	console.log(mesas[0]);
+
+	//si la mesa esta ocupada
 }
 
 //al hacer click en el boton de liberar mesa  se vuelve a colorear la mesa de verde
 function liberarMesa() {
 	let mesa = document.getElementById("cuenta").getElementsByTagName("h2")[0].innerHTML;
+	let precioTotal = document.getElementById("cuenta").getElementsByTagName("h2")[1].innerHTML;
+	let PrecioNumero = precioTotal.split(" ")[1];
+
+	console.log(precioTotal);
+	let fechaActual = new Date();
+	let horaActual = fechaActual.getHours() + ":" + fechaActual.getMinutes();
 	let cuenta = document.getElementById("cuenta");
 	let NumeroMesa = mesa.substring(5, 6);
 	cuenta.innerHTML = "<h1>Cuenta</h1> <h2>Mesa " + NumeroMesa + "</h2>";
 	let rojo = document.getElementsByClassName("mesa");
 	rojo[NumeroMesa - 1].classList.remove("ocupada");
+	rojo[NumeroMesa - 1].classList.add("libre");
 
 	let ficheroMesas = "cuentas/Mesa" + NumeroMesa + ".json";
 	fetch(apiRest + ficheroMesas, {
@@ -132,7 +161,21 @@ function liberarMesa() {
 		.then((data) => console.log(data));
 
 	console.log(apiRest + ficheroMesas);
+
+	let ficheroCuentaPagar = " MesasPagar " + ".json";
+	fetch(apiRest + ficheroCuentaPagar, {
+		method: "PUT",
+		body: JSON.stringify({
+			NumeroMesa: NumeroMesa,
+			Importe: PrecioNumero,
+			Fecha: fechaActual,
+			Hora: horaActual,
+		}),
+	})
+		.then((res) => res.json())
+		.then((data) => console.log(data));
 }
+
 async function insertarProducto(event) {
 	const ficheroProductos = "productos/";
 	const frmNuevoProducto = document.getElementById("frmNuevoProducto");
@@ -259,6 +302,10 @@ function unidadesProducto() {
 	let mesa = document.getElementById("cuenta").getElementsByTagName("h2")[0].innerHTML;
 	let NumeroMesa = mesa.substring(5, 6);
 
+	setTimeout(pintarMesaSeleccionada(NumeroMesa), 1000);
+
+	console.log(NumeroMesa);
+
 	let nombreProducto = frmControles.productos.value;
 	console.log(nombreProducto);
 
@@ -270,6 +317,8 @@ function unidadesProducto() {
 	let resultadoID = ArrayDeidProducto.IdProducto;
 	let resultadoPrecio = ArrayDeidProducto.PrecioUnidad;
 
+	console.log(resultadoPrecio);
+
 	precioTotalUnidad = resultadoPrecio * Teclado;
 
 	precioTotalUnidad = precioTotalUnidad.toFixed(2);
@@ -280,7 +329,7 @@ function unidadesProducto() {
 	let rojo = document.getElementsByClassName("mesa");
 	rojo[NumeroMesa - 1].classList.add("ocupada");
 
-	let insertarUnidades = { unidades: parseInt(Teclado), IdProducto: resultadoID, nombre: nombreProducto, precioTotal: parseInt(precioTotalUnidad), precioUnidad: parseInt(resultadoPrecio) };
+	let insertarUnidades = { unidades: parseInt(Teclado), IdProducto: resultadoID, nombre: nombreProducto, precioTotal: precioTotalUnidad, precioUnidad: resultadoPrecio };
 
 	fetch(apiRest + "cuentas/" + "Mesa" + NumeroMesa + "/" + resultadoID + ".json", {
 		method: "PUT",
@@ -291,8 +340,6 @@ function unidadesProducto() {
 	})
 		.then((response) => response.json())
 		.then((data) => console.log(data));
-
-	setTimeout(pintarMesaSeleccionada(NumeroMesa), 1000);
 
 	if (Gestores[NumeroMesa - 1] != undefined) {
 		for (let i = 0; i < Gestores[NumeroMesa - 1].cuentas.length; i++) {
@@ -336,6 +383,8 @@ function AñadirUnidad(value) {
 	let sumaUnidades = parseInt(unidades) + 1;
 	let precioUnidad = document.getElementById(value).getElementsByTagName("td")[3].innerHTML;
 
+	let PrecioSumaUnidad = parseFloat(precioUnidad) * parseFloat(sumaUnidades);
+
 	console.log(mesa);
 
 	let precio = document.getElementById(value).getElementsByTagName("td")[4].innerHTML;
@@ -343,9 +392,9 @@ function AñadirUnidad(value) {
 	sumaPrecio = sumaPrecio.toFixed(2);
 
 	document.getElementById(value).getElementsByTagName("td")[1].innerHTML = sumaUnidades;
-	document.getElementById("cuenta").getElementsByTagName("h2")[1].innerHTML = "Total: " + sumaPrecio + "€";
+	document.getElementById("cuenta").getElementsByTagName("h2")[1].innerHTML = "Total: " + sumaPrecio;
 
-	ModificarUnidadesBD(sumaUnidades, IdTabla, nombreProducto, precioUnidad, NumeroMesa);
+	ModificarUnidadesBD(sumaUnidades, IdTabla, nombreProducto, PrecioSumaUnidad, NumeroMesa);
 }
 
 //funcion para quitar unidades a un producto de la cuenta de una mesa seleccionada y modificar el precio total
@@ -359,11 +408,13 @@ function QuitarUnidad(value) {
 	let precioUnidad = document.getElementById(value).getElementsByTagName("td")[3].innerHTML;
 	let precio = document.getElementById(value).getElementsByTagName("td")[4].innerHTML;
 
+	let precioRestaUnidad = parseFloat(precioUnidad) - parseFloat(precioUnidad);
+
 	let sumaPrecio = parseFloat(precio) * parseFloat(sumaUnidades);
 	sumaPrecio = sumaPrecio.toFixed(2);
 
 	document.getElementById(value).getElementsByTagName("td")[1].innerHTML = sumaUnidades;
-	document.getElementById("cuenta").getElementsByTagName("h2")[1].innerHTML = "Total: " + sumaPrecio + "€";
+	document.getElementById("cuenta").getElementsByTagName("h2")[1].innerHTML = "Total: " + sumaPrecio;
 
 	//si las unidades son 0, borrar la cuenta y pregunta por si esta seguro de querer borrarla
 	if (sumaUnidades == 0) {
@@ -385,17 +436,16 @@ function QuitarUnidad(value) {
 		}
 	}
 
-	ModificarUnidadesBD(sumaUnidades, IdTabla, nombreProducto, precioUnidad, NumeroMesa);
+	ModificarUnidadesBD(sumaUnidades, IdTabla, nombreProducto, precioRestaUnidad, NumeroMesa);
 }
 
 function pintarMesaSeleccionada(mesa) {
-	cuenta.innerHTML = "<h1>Cuenta</h1> <h2>Mesa " + mesa + "<h2>Total: 0€</h2>" + "<button class = 'boton' onClick = 'liberarMesa()'>Pagar y liberar la mesa</button>";
+	cuenta.innerHTML = "<h1>Cuenta</h1> <h2>Mesa " + mesa + "<h2>Total:  €</h2>" + "<button class = 'boton' onClick = 'liberarMesa()'>Pagar y liberar la mesa</button>";
 	fetch(apiRest + "cuentas/" + "Mesa" + mesa + ".json")
 		.then((response) => response.json())
 		.then((data) => {
 			console.log(data);
 			let cuenta = document.getElementById("cuenta");
-			let total = 0;
 
 			let tabla1 = document.createElement("table");
 			tabla1.innerHTML = `
@@ -409,12 +459,15 @@ function pintarMesaSeleccionada(mesa) {
 			`;
 			cuenta.append(tabla1);
 
+			let precioTotal = 0;
+
 			for (lista in data) {
 				let producto = data[lista];
 				console.log(lista);
-				let precioTotal = producto.unidades * producto.precioTotal;
-				precioTotal = precioTotal.toFixed(2);
-				total += parseFloat(precioTotal);
+
+				precioTotal += parseFloat(producto.precioTotal);
+
+				cuenta.getElementsByTagName("h2")[1].innerHTML = "Total: " + precioTotal + "€";
 
 				let tabla = document.createElement("table");
 				tabla.innerHTML = `
@@ -422,7 +475,7 @@ function pintarMesaSeleccionada(mesa) {
 					<td>${producto.nombre}</td>
 					<td>${producto.unidades}</td>
 					<td>${producto.IdProducto}</td>
-					<td>${producto.precioTotal}</td>
+					<td>${producto.precioTotal}€</td>
 					<td><button class = "boton" onClick = "AñadirUnidad(${lista})">+</button> <button class = "boton" onClick = "QuitarUnidad(${lista})">-</button></td>
 
 				</tr>
