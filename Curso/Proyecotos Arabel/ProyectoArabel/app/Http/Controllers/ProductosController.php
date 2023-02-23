@@ -30,6 +30,8 @@ class ProductosController extends Controller
     public function create()
     {
         //
+        $pro = Productos::all();
+        return view('productos.crear', ['productos' => $pro]);
     }
 
     /**
@@ -41,6 +43,17 @@ class ProductosController extends Controller
     public function store(Request $request)
     {
         //
+        $producto = new Productos();
+
+        $producto->codigo = $request->input('codigo');
+        $producto->descripcion = $request->input('descripcion');
+        $producto->precio_compra = $request->input('precio_compra');
+        $producto->precio_venta = $request->input('precio_venta');
+        $producto->stock = $request->input('stock');
+
+        $producto->save();
+
+        return redirect()->action([ProductosController::class, 'index']);
     }
 
     /**
@@ -92,6 +105,10 @@ class ProductosController extends Controller
     public function destroy($id)
     {
         //
+        $producto = Productos::find($id);
+        $producto->delete();
+        return redirect()->action([ProductosController::class, 'index']);
+
 
     }
 }

@@ -15,6 +15,9 @@
 <body>
 
 
+
+
+
 <table border="1">
 <tr><th colspan="1">Codigo</th><th>Descripcion</th><th colspan="1">Precio Compra</th><th colspan="1">Precio Venta</th><th colspan="1">Margen</th><th colspan="1">Stock</th> <th colspan="4">Acciones</th></tr>
 
@@ -35,10 +38,11 @@ $margen = $producto->precio_venta - $producto->precio_compra;
 
 <td>
 
-<button onclick="window.location.href='/productos/eliminar/{{$producto->codigo}}'">Eliminar</button> 
+<a href="/productos/eliminar/{{$producto->codigo}}" onclick="return eliminarProducto('Eliminar Producto')"> Eliminar</a>
 <button onclick="window.location.href='/productos/modificar/{{$producto->codigo}}'">Modificar</button>  
 <button onclick="window.location.href='/productos/eliminar/{{$producto->codigo}}'">Entrada</button>  
 <button onclick="window.location.href='/productos/eliminar/{{$producto->codigo}}'">Salida</button>  
+
 
 
 
@@ -48,6 +52,17 @@ $margen = $producto->precio_venta - $producto->precio_compra;
 
 
 @endforeach
+
+<script>
+   
+   function eliminarProducto(value){
+
+    action = confirm(value) ? true : event.preventDefault()
+
+   }
+
+
+</script>
 
 
 </body>

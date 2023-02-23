@@ -24,9 +24,6 @@
 <p>Precio Venta: <input type="text" name="precio_venta" value="{{$producto->precio_venta}}"></p>
 <p>Stock: <input type="text" name="stock" value="{{$producto->stock}}"></p>
 
-<button onclick="window.location.href='/productos/modificar/{{$producto->codigo}}'">Modificar</button>
-
-
 <input type="submit" name="enviar" value="Envio">
 
 
