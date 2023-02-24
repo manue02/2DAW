@@ -45,13 +45,15 @@ class ProductosController extends Controller
         //
         $producto = new Productos();
 
-        $producto->codigo = $request->input('codigo');
-        $producto->descripcion = $request->input('descripcion');
-        $producto->precio_compra = $request->input('precio_compra');
-        $producto->precio_venta = $request->input('precio_venta');
-        $producto->stock = $request->input('stock');
+        $producto->codigo = $request->codigo;
+        $producto->descripcion = $request->descripcion;
+        $producto->precio_compra = $request->precio_compra;
+        $producto->precio_venta = $request->precio_venta;
+        $producto->stock = $request->stock;
 
         $producto->save();
+
+
 
         return redirect()->action([ProductosController::class, 'index']);
     }
@@ -94,6 +96,19 @@ class ProductosController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $producto = Productos::find($id);
+
+        $producto->codigo = $request->codigo;
+        $producto->descripcion = $request->descripcion;
+        $producto->precio_compra = $request->precio_compra;
+        $producto->precio_venta = $request->precio_venta;
+        $producto->stock = $request->stock;
+
+        $producto->save();
+
+        return redirect()->action([ProductosController::class, 'index']);
+
+
     }
 
     /**
@@ -111,4 +126,18 @@ class ProductosController extends Controller
 
 
     }
+
+    public function incrementarStock(Productos $producto)
+    {
+        $producto->increment('stock');
+        return redirect()->route('productos.index');
+    }
+
+    public function disminuirStock(Productos $producto)
+    {
+        $producto->decrement('stock');
+        return redirect()->route('productos.index');
+    }
+
+
 }
