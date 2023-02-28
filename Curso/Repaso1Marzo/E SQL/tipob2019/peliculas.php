@@ -8,24 +8,26 @@
 <body>
 <h1>Gestión de peliculas</h1>
 <p><a href="nuevapelicula.php">Introducir una nueva pelicula</a></p>
-
 <form action="listapeliculas.php" method="post">
 <p>Mostrar los peliculas según el siguiente criterio:<br />
 Por autor:
-<select name="">
-  <option selected value="">Todos los personas</option>
+<?php
+ include('funcionesBd.php') ;
+$conexion = mysqli_connect("localhost", "root", "","filmoteca");
+mysqli_set_charset($conexion, "utf8");
 
-</select><br />
-Por compañia:
-<select name="">
-  <option selected value="">Todas las companyes</option>
-
-?>
-</select><br />
-Por idioma:
-<select name="">
-  <option selected value="">Todos los idiomas</option>
-
+$arrayAutores = obtenerArrayOpciones("personas","ID","NOMBRE");
+pintarComboMensaje($arrayAutores,"aid","Todos los autores",0);
+ 
+echo "<br>Por compañia:";
+$arrayCats = obtenerArrayOpciones("company","ID","NOMBRE");
+pintarComboMensaje($arrayCats,"eid","Todos las compañias:",0);
+	
+echo "<br>Por idioma:";
+$arrayIdiomas = obtenerArrayOpciones("idiomas","ID","NOMBRE");
+pintarComboMensaje($arrayIdiomas,"lid","Todos los idiomas:",0);
+  
+?><br />
 Conteniendo el Texto: <input type="text" name="searchtext" /><br />
 <input type="submit" name="submit" value="Search" />
 </form>
