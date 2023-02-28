@@ -24,18 +24,6 @@ echo $cadenaselect;
 $modulos = ejecutarConsulta($cadenaselect);
 
 
-$select = "SELECT DISTINCT usuarios.NOMBRE ";
-$from = "FROM calificacion ";
-$innerJoin = "INNER JOIN usuarios ON usuarios.DNI=calificacion.DNI_ALUMNO 
-	INNER JOIN imparte ON imparte.COD_MODULO = calificacion.COD_MODULO INNER JOIN usuarios p ON p.DNI = imparte.DNI_PROFESOR  INNER JOIN cursa ON cursa.DNI_ALUMNO = calificacion.DNI_ALUMNO";
-$where = " WHERE imparte.DNI_PROFESOR ='" . $Profesor . "'";
-
-$cadena = $select . $from . $innerJoin . $where;
-
-echo "<br>";
-echo $cadena;
-
-$notas = ejecutarConsulta($cadena);
 
 echo "<h3>Selecciona un módulo</h3>";
 echo "<form method='post' action=''>";
@@ -53,8 +41,22 @@ echo "</select><br>";
 echo "<input type='submit' name='enviar' value='Aceptar'/>";
 echo "</form>";
 
+$modulosProfe = $_POST['modulos'];
 
+echo $modulosProfe;
 
+$select = "SELECT DISTINCT usuarios.NOMBRE ";
+$from = "FROM calificacion ";
+$innerJoin = "INNER JOIN usuarios ON usuarios.DNI=calificacion.DNI_ALUMNO 
+	INNER JOIN imparte ON imparte.COD_MODULO = calificacion.COD_MODULO INNER JOIN usuarios p ON p.DNI = imparte.DNI_PROFESOR  INNER JOIN cursa ON cursa.DNI_ALUMNO = calificacion.DNI_ALUMNO";
+$where = " WHERE imparte.DNI_PROFESOR ='" . $Profesor . "' AND calificacion.COD_MODULO = '" . $modulosProfe . "'";
+
+$cadena = $select . $from . $innerJoin . $where;
+
+echo "<br>";
+echo $cadena;
+
+$notas = ejecutarConsulta($cadena);
 
 echo "<h3>Selecciona un alumno y su nota</h3>";
 
@@ -89,9 +91,26 @@ echo "<option value='8'>8</option>";
 echo "<option value='9'>9</option>";
 echo "<option value='10'>10</option>";
 echo "</select><br>";
-
+echo "<input type='hidden' value='$modulosProfe' name='modulo'/>";
 echo "<input type='submit' name='envio' value='Enviar'/>";
 echo "</form>";
+
+if (isset($_POST['envio'])) {
+	$alumno = $_POST['alumnos'];
+	$evaluacion = $_POST['evaluacion'];
+	$nota = $_POST['nota'];
+	$modulosProfe = $_POST['modulo'];
+
+
+	$alumno = ObtenerDNI($alumno);
+
+	$consulta = "UPDATE calificacion SET NOTA = '" . $nota . "' WHERE DNI_ALUMNO = '" . $alumno . "' AND COD_MODULO = '" . $modulosProfe . "' AND calificacion.EVALUACION = '" . $evaluacion . "';";
+
+	echo "<br>";
+	echo $consulta;
+
+	$actualizar = ejecutarConsulta($consulta);
+}
 
 
 
