@@ -1,9 +1,23 @@
 <?php
+$conexion = new mysqli("localhost", "root", "", "ciclos");
+//Comprobar conexion
+if (mysqli_connect_errno()) {
+	printf("Fallo la conexion");
+} else {
+	//printf("Estas conectado");
+}
+
+function ejecutarConsulta($Consulta)
+{
+	global $conexion;
+	$resultado = $conexion->query($Consulta);
+	return $resultado;
+}
 
 function comprobar_usuario($nombre, $clave)
 {
 	$bd = mysqli_connect("localhost", "root", "", "ciclos");
-	$ins = "select DNI, NOMBRE from usuarios where NOMBRE = '$nombre' 
+	$ins = "select TIPO_USU from usuarios where NOMBRE = '$nombre' 
 			and PASSWORD = '$clave'";
 	$bd->set_charset('utf8');
 	$resul = mysqli_query($bd, $ins);
@@ -38,7 +52,13 @@ function obtenerArrayOpciones($tabla, $guarda, $muestra)
 	return $arrayCombo;
 }
 
-
-
+function ObtenerDNI($nombre)
+{
+	global $conexion;
+	$sql = "SELECT DNI FROM usuarios WHERE NOMBRE='$nombre'";
+	$resultado = mysqli_query($conexion, $sql);
+	$fila = mysqli_fetch_assoc($resultado);
+	return $fila['DNI'];
+}
 
 ?>

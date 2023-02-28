@@ -2,7 +2,7 @@
 include("ejer2.php");
 
 
-include("ejer2.php");
+
 if (!isset($_POST['envio'])) {
 
     echo "<form  method='POST'>";
