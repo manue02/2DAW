@@ -58,7 +58,7 @@ class base
                 $sql = "SELECT * FROM ventas WHERE cod_producto = $producto";
                 $resultado = self::EjecutaConsulta($sql);
                 while ($fila = $resultado->fetch_assoc()) {
-                        $venta = new Venta($fila['nif'], $fila['cod_producto'], $fila['unidades'], $fila['fecha']);
+                        $venta = new cod_producto($fila['nif'], $fila['cod_producto'], $fila['unidades'], $fila['fecha']);
                         $arrayVentas[] = $venta;
                 }
 
