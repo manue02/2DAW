@@ -2,7 +2,7 @@ formulario.addEventListener("submit", validarFormulario);
 
 function validarFormulario(event) {
 	const regExpMarca = /^[A-ZÑÁÉÍÓÚ][a-zñáéíóú]?(s[A-ZÑÁÉÍÓÚ][a-zñáéíóú]*)*/;
-	const regExpFechaNac = /\d\d\d\d\/\d\d\/\d\d/;
+	const regExpFechaNac = /\d\d\d\d\-\d\d\-\d\d/;
 	const regExpColor = /[A-ZÑÁÉÍÓÚ][a-zñáéíóú]+/;
 	const regExpMatriculaCategoria = /^[0-9]{4}[A-Z]{4}$/;
 	const regExpMatriculaAntigua = /^[A-Z\-]{2}[0-9\-]{4}[A-Z\-]{2}$/;

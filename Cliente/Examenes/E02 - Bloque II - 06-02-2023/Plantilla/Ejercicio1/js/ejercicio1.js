@@ -1,25 +1,41 @@
-let PasarEncima = document.getElementsByName("tips")[0];
-PasarEncima.setAttribute("id", "tips");
+// Obtener el checkbox y los elementos con la clase "capa"
+let checkbox = document.querySelector("input[name=tips]");
+let capas = document.querySelectorAll(".capa");
 
-let CheckBox = document.getElementById("tips").checked;
+// Agregar evento "change" al checkbox para actualizar la variable mostrarTooltips
+checkbox.addEventListener("change", function () {
+	mostrarTooltips = this.checked;
+});
 
-if (CheckBox == true) {
-	let capas = document.querySelectorAll(".capa");
+// variable booleana para comprobar si el checkbox está marcado o no
+let mostrarTooltips = checkbox.checked;
 
-	for (const capa of capas) {
-		capa.addEventListener("mouseleave", Fucnion);
-	}
+// Iterar por cada elemento
+capas.forEach(function (capa) {
+	// Obtener la imagen dentro de la capa
+	let img = capa.querySelector("img");
 
-	function Fucnion() {
-		let Ediv = document.createElement("div");
-		Ediv.classList.add("tooltip");
-		let texto = capas.target.getAttribute("data-tip");
-		let textazo = document.createTextNode(texto);
-		Ediv.appendChild(textazo);
-		for (const capa2 of capas) {
-			capa2.appendChild(Ediv);
+	// Obtener el valor de data-tip
+	let tip = img.dataset.tip;
+
+	// Crear un elemento div para el tooltip
+	let tooltip = document.createElement("div");
+	tooltip.className = "tooltip";
+	tooltip.textContent = tip;
+
+	// Agregar el tooltip como hijo de la capa
+	capa.appendChild(tooltip);
+
+	// Agregar eventos mouseover y mouseout a la imagen
+	img.addEventListener("mouseover", function () {
+		// Mostrar el tooltip solo si el checkbox está marcado
+		if (mostrarTooltips) {
+			tooltip.style.display = "block";
 		}
-	}
-} else {
-	capa.removeEventListener("mouseleave"), Fucnion;
-}
+	});
+
+	img.addEventListener("mouseout", function () {
+		// Ocultar el tooltip
+		tooltip.style.display = "none";
+	});
+});
