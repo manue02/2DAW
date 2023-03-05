@@ -6,6 +6,7 @@ let capas = document.querySelectorAll(".capa");
 checkbox.addEventListener("change", function () {
 	mostrarTooltips = this.checked;
 });
+//si está marcado, mostrarTooltips = true y si no, mostrarTooltips = false
 
 // variable booleana para comprobar si el checkbox está marcado o no
 let mostrarTooltips = checkbox.checked;
